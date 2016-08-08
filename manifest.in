@@ -1,0 +1,10 @@
+include simplification/*.py
+include simplification/*.pyx
+include simplification/*.c
+include simplification/*.h
+include simplification/*.pxd
+include simplification/*.so
+include license.txt
+include README.md
+include README.rst
+recursive-include simplification *.so *.dylib *.dll *.lib
