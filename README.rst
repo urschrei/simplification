@@ -1,7 +1,12 @@
+Simplification 
+==============
+
 |Line|
-# Simplification Simplify a LineString using the
+
+Simplify a LineString using the
 `Ramer–Douglas–Peucker <https://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm>`_
 algorithm
+
 
 Installation
 ------------
