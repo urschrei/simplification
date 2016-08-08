@@ -34,6 +34,7 @@ simplified = simplify_coords(coords, 1.0)
 # simplified is [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
 ```
 
+Passing empty and/or 1-element lists will return them unaltered.
 ## How it Works
 FFI and a [Rust binary](https://github.com/urschrei/rdp)
 
