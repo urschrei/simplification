@@ -5,7 +5,7 @@ from simplification.util import simplify_coords
 from simplification.cutil import simplify_coords as csimplify_coords
 
 class PolylineTests(unittest.TestCase):
-    """ Tests for py_polyline """
+    """ Tests for simplification """
 
     def setUp(self):
         """ make these available to all tests """

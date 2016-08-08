@@ -64,7 +64,7 @@ if sys.platform == 'darwin':
     platform_lib = "librdp.dylib"
     ldirs = ["-Wl,-rpath", "-Wl,@loader_path/"]
 if sys.platform == "win32":
-    ddirs = ['pypolyline/header.h']
+    ddirs = ['simplification/header.h']
     platform_lib = "rdp.dll"
 
 

@@ -41,12 +41,14 @@ from rdp_p cimport (
 
 def simplify_coords(coords, double epsilon):
     """
-    Encode coordinates as a Polyline.
-    Input: a list of lat, lon coordinates, and a precision int (5 for Google, 6 for OSM-derived).
-    Output: an encoded Polyline string.
+    Simplify a LineString.
+    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)
+    Output: a simplified list of coordinates
 
-    Example: encode_coordinates([[38.5, -120.2], [40.7, -120.95], [43.252, -126.453]], 5)
-    Result: "_p~iF~ps|U_ulLnnqC_mqNvxq`@"
+    Example: simplify_coords([
+        [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],
+        1.0)
+    Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
 
     """
     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)

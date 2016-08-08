@@ -1,0 +1,82 @@
+language: generic
+
+env:
+  global:
+    - PROJECT_NAME=simplification
+    - DOCKER_IMAGE=quay.io/pypa/manylinux1_x86_64
+    - secure: xMNyCvo9jvFi//UNNeTS6OrgdVrKyWUFQvVVtMOzx9AiXhSmqWPxKhOdQswqZAb0di4bYCL29IWAAJHe+0BxroZzgnCCasYD7usAPbiQhurG0dZnJgwKyCE397guHl308lLYd9jPzV03/jm7vvxxfIlqoI7OuVi3sL+QExydcrMBYNbPCpins+fkrmFHkifzzZPxOJIM6uSa1GyRQECSnqVHZQn0HpNbr/9HhUimsIQ9foGkaAO05tigncSEUbnxQ9SV6+TCYtEICnR4hnBGi7nbpy4oS3+YIdbqivtIdckhD5hMZeSE7DI+V+clfojt4fBDI0JL9sOs3mKjvjRIw44HWUZtEGybF82XaHdrZdVREpgvIPjd/rvk7niQwjePBzUPeGgPnxjhX0FYXpIWuu8TgFBLn2ht9zgelwyDglyf8KrIfQpRU5vy9yr4jetmRaNpF9L6gmDAZWyLac0ys8eSwIxq/fUppzHhpJeG2hTuSMJNLfSCq3sslRlxyAmmoWN8caGDC4LfW6fufGaiR2wjkNv0rdch+GFP3BoZwXIa1++yIvc9Rc2UXxKjLTYlBAYCKy8KYL1HNnNVaC7T6eYmzUdddPofOGZ8pgKMEZWIfKRSaaxCaGlnl6XcUlTGwirf7Avfo05YPewOnbuzZDrLTTvSoDmyxxCqXUu5uRw=
+
+matrix:
+  include:
+    - sudo: required
+      env: TARGET=x86_64-unknown-linux-gnu
+      services:
+        - docker
+    - os: osx
+      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=2.7.11 RELEASE_PYTHON_VERSION=-cp27
+      sudo: required
+    - os: osx
+      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.5.1 RELEASE_PYTHON_VERSION=-cp35
+      sudo: required
+
+before_install:
+  - echo $LATEST_TAG > key.txt
+  - echo $PRE_CMD
+  - bash ci/pre_install.sh
+
+install:
+  - bash ci/install.sh
+
+cache: pip
+
+script:
+  - bash ci/script.sh
+  # only run coverage reporting on OS X
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      source venv/bin/activate;
+      python setup.py build_ext --inplace;
+      nosetests --with-coverage --cover-package $PROJECT_NAME;
+    fi
+
+branches:
+  only:
+    - master
+
+after_success:
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      source venv/bin/activate;
+      coveralls;
+    fi
+
+before_deploy:
+  - bash ci/before_deploy.sh
+
+deploy:
+  provider: releases
+  # TODO Regenerate this api_key for your project, this one won't work for you. Here's how:
+  # - Go to 'https://github.com/settings/tokens/new' and generate a Token with only the
+  # `public_repo` scope enabled
+  # - Call `travis encrypt $github_token` where $github_token is the token you got in the previous
+  # step and `travis` is the official Travis CI gem (see https://rubygems.org/gems/travis/)
+  # - Enter the "encrypted value" below
+  api_key:
+        - secure: p86OdWLSJ3VdPPZuOBPsgn8lLgBr1JdsRA7ohoxlyga0/De2DEbAs4B0dcqa5wPYk+BJ/cUHbVEkxOtByoJxfl3BXQGgyGyFOgVwVEJdR7J9XfmM8l5AavpcZ5AKjX64iG0GYgPJOoU9b/ZOEbwSl88L0t04ysWCaypbXG4/PsCqj/2x/tSGc7JzdIIrZkLv2YYO1GNWCKVqRNddG5JeW+FnNLJ1Qm2jJl2Py0rStJzkScgdKgyPERLJpK78EL93L4V9JVwD239glzKP21eaVVSY/wJ2HnCnRJPVdwk+kosWME00Osss1nT9f37/6/yLxNZ/S8z2DjXn5w5UMLRW9P0ahBXNIqReS77Z22bPpphfm6Wvn/bZzEkbihrTS3mAq0+N0FlmoadxxWApaVNh9R02/5D8EyvGA1VVcuVdbm03/Remg6BVc/w0VXC+0JprsEy8YatxZ7XJI6jkWBRuVOtpa2e7kA8r7OUblMXnouIoPyXAJChLSgwU2dP0MNukPwGbCoWKN6IzYMqwin3X0VkDiOz1sfLP6NYaPZ1KidNUbUqRBENQpZ9BD13zRAH/ctVXPb61T3aPwWbCr4pGorjU1sgBHR76/aCJp6kRj5XLJkvA+cQjtdTxCr1BOMvU/U5Np4it2Q9RSa8Jtsp7otjdWjb8wDFWEUx///YYtrM=
+  file_glob: true
+  file: ${PROJECT_NAME}-${TRAVIS_TAG}-${TARGET}${RELEASE_PYTHON_VERSION}.*
+  # don't delete the artifacts from previous phases
+  skip_cleanup: true
+  # deploy when a new tag is pushed
+  on:
+    tags: true
+
+branches:
+  only:
+    # Pushes and PR to the master branch
+    - master
+    # IMPORTANT Ruby regex to match tags. Required, or travis won't trigger deploys when a new tag
+    # is pushed. This regex matches semantic versions like v1.2.3-rc4+2016.02.22
+    - /^v\d+\.\d+\.\d+.*$/
+
+notifications:
+  email:
+    on_success: never
