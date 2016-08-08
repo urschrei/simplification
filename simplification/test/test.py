@@ -20,6 +20,10 @@ class PolylineTests(unittest.TestCase):
             [11.0, 5.5], [27.8, 0.1]
         ]
 
+        self.single = [[5.0, 4.0]]
+
+        self.empty = []
+
     def testSimplify(self):
         """ Test that a LineString can be simplified (Ctypes) """
         expected = self.result
@@ -33,3 +37,13 @@ class PolylineTests(unittest.TestCase):
         result = csimplify_coords(self.coords, 1.0)
         for _ in range(100):
             self.assertEqual(result, expected)
+
+    def testCSingle(self):
+        """ Test that a one-element LineString is returned unaltered (Cython) """
+        result = csimplify_coords(self.single, 1.0)
+        self.assertEqual(result, self.single)
+
+    def testCEmpty(self):
+        """ Test that an empty LineString is returned unaltered (Cython) """
+        result = csimplify_coords(self.empty, 1.0)
+        self.assertEqual(result, [])

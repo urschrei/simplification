@@ -51,6 +51,8 @@ def simplify_coords(coords, double epsilon):
     Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
 
     """
+    if not len(coords):
+        return coords
     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
     cdef _FFIArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
