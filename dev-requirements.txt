@@ -1,0 +1,5 @@
+numpy >= 1.11.0
+requests
+nose
+pip >= 8.1.2
+wheel >= 0.29.0
