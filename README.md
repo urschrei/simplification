@@ -17,7 +17,7 @@ Please use a recent (>= 8.1.2) version of `pip`.
 
 ## Usage
 ```python
-from pypolyline.util import encode_coordinates, decode_polyline
+from simplification.cutil import simplify_coords
 
 coords = [
             [0.0, 0.0], [5.0, 4.0],
