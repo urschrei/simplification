@@ -4,6 +4,7 @@
 Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm) algorithm
 
 ![Line](https://cdn.rawgit.com/urschrei/rdp/6c84264fd9cdc0b8fdf974fc98e51fea4834ed05/rdp.svg)  
+
 ## Installation
 `pip install simplification`  
 Please use a recent (>= 8.1.2) version of `pip`.
