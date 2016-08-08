@@ -37,7 +37,7 @@ from ctypes import Structure, POINTER, c_void_p, c_size_t, c_double, cast, cdll
 import numpy as np
 
 __author__ = u"Stephan Hügel"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 file_path = os.path.dirname(__file__)
 
@@ -103,6 +103,19 @@ simplify_coords = lib.simplify_linestring_ffi
 simplify_coords.argtypes = (_FFIArray, c_double)
 simplify_coords.restype = _CoordResult
 simplify_coords.errcheck = _void_array_to_nested_list
+simplify_coords.__doc__ = """
+    Simplify a LineString.
+    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)
+    Output: a simplified list of coordinates
+
+    Example:
+    simplify_coords([
+        [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],
+        1.0
+    )
+    Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
+
+    """
 
 drop_array = lib.drop_float_array
 drop_array.argtypes = (_FFIArray,)
