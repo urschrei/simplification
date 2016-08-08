@@ -12,6 +12,7 @@ Installation
 ------------
 
 ``pip install simplification``
+
 Please use a recent (>= 8.1.2) version of ``pip``.
 
 Supported Python Versions
@@ -36,11 +37,16 @@ Usage
 
     from simplification.cutil import simplify_coords
 
-    coords = [ [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8,
-    0.1] ]
+    coords = [
+        [0.0, 0.0],
+        [5.0, 4.0],
+        [11.0, 5.5],
+        [17.3, 3.2],
+        [27.8, 0.1]
+    ]
 
     # Try an epsilon of 1.0 to start with. Other sensible values include 0.01, 0.001
-    simplified = simplify\_coords(coords, 1.0)
+    simplified = simplify_coords(coords, 1.0)
 
     # simplified is [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
 
