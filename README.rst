@@ -13,7 +13,7 @@ Installation
 
 ``pip install simplification``
 
-Please use a recent (>= 8.1.2) version of ``pip``.
+Please use a recent (>= 8.1.2) version of ``pip``
 
 Supported Python Versions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
