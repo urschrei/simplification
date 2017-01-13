@@ -4,8 +4,8 @@ Simplification
 |Line|
 
 Simplify a LineString using the
-`Ramer–Douglas–Peucker <https://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm>`_
-algorithm
+`Ramer–Douglas–Peucker <https://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm>`_ or `Visvalingam–Whyatt <https://bost.ocks.org/mike/simplify/>`_
+algorithms
 
 
 Installation
@@ -21,6 +21,7 @@ Supported Python Versions
 
 -  Python 2.7
 -  Python 3.5
+-  Python 3.6
 
 Supported Platforms
 ~~~~~~~~~~~~~~~~~~~
@@ -35,7 +36,7 @@ Usage
 
 .. code-block:: python
 
-    from simplification.cutil import simplify_coords
+    from simplification.cutil import simplify_coords, simplify_coordsvw
 
     coords = [
         [0.0, 0.0],
@@ -45,7 +46,7 @@ Usage
         [27.8, 0.1]
     ]
 
-    # Try an epsilon of 1.0 to start with. Other sensible values include 0.01, 0.001
+    # For RDP, Try an epsilon of 1.0 to start with. Other sensible values include 0.01, 0.001
     simplified = simplify_coords(coords, 1.0)
 
     # simplified is [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]

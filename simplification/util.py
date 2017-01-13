@@ -37,7 +37,7 @@ from ctypes import Structure, POINTER, c_void_p, c_size_t, c_double, cast, cdll
 import numpy as np
 
 __author__ = u"Stephan Hügel"
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 file_path = os.path.dirname(__file__)
 
@@ -99,12 +99,12 @@ def _void_array_to_nested_list(res, _func, _args):
     finally:
         drop_array(res.coords)
 
-simplify_coords = lib.simplify_linestring_ffi
+simplify_coords = lib.simplify_rdp_ffi
 simplify_coords.argtypes = (_FFIArray, c_double)
 simplify_coords.restype = _CoordResult
 simplify_coords.errcheck = _void_array_to_nested_list
 simplify_coords.__doc__ = """
-    Simplify a LineString.
+    Simplify a LineString using the Ramer-Douglas-Peucker algorithm.
     Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)
     Output: a simplified list of coordinates
 
@@ -114,6 +114,24 @@ simplify_coords.__doc__ = """
         1.0
     )
     Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
+
+    """
+
+simplify_coords_vw = lib.simplify_visvalingam_ffi
+simplify_coords_vw.argtypes = (_FFIArray, c_double)
+simplify_coords_vw.restype = _CoordResult
+simplify_coords_vw.errcheck = _void_array_to_nested_list
+simplify_coords_vw.__doc__ = """
+    Simplify a LineString using the Visvalingam-Whyatt algorithm.
+    Input: a list of lat, lon coordinates, and an epsilon float
+    Output: a simplified list of coordinates
+
+    Example:
+    simplify_coords([
+        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],
+        30.0
+    )
+    Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]
 
     """
 

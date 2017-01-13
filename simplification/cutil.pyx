@@ -35,13 +35,14 @@ __author__ = u"Stephan Hügel"
 import numpy as np
 from rdp_p cimport (
     _FFIArray,
-    simplify_linestring_ffi,
+    simplify_rdp_ffi,
+    simplify_visvalingam_ffi,
     drop_float_array,
     )
 
 def simplify_coords(coords, double epsilon):
     """
-    Simplify a LineString.
+    Simplify a LineString using the Douglas-Ramer-Peucker algorithm.
     Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)
     Output: a simplified list of coordinates
 
@@ -57,7 +58,34 @@ def simplify_coords(coords, double epsilon):
     cdef _FFIArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
-    cdef _FFIArray result = simplify_linestring_ffi(coords_ffi, epsilon)
+    cdef _FFIArray result = simplify_rdp_ffi(coords_ffi, epsilon)
+    cdef double* incoming_ptr = <double*>(result.data)
+    cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
+    cdef outgoing = np.copy(view).tolist()
+    drop_float_array(result)
+    return outgoing
+
+def simplify_coords_vw(coords, double epsilon):
+    """
+    Simplify a LineString using the Visvalingam-Whyatt algorithm.
+    Input: a list of lat, lon coordinates, and an epsilon float
+    Output: a simplified list of coordinates
+
+    Example:
+    simplify_coords([
+        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],
+        30.0
+    )
+    Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]
+
+    """
+    if not len(coords):
+        return coords
+    cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
+    cdef _FFIArray coords_ffi
+    coords_ffi.data = <void*>&ncoords[0, 0]
+    coords_ffi.len = ncoords.shape[0]
+    cdef _FFIArray result = simplify_visvalingam_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
     cdef outgoing = np.copy(view).tolist()

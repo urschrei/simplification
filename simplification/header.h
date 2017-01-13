@@ -6,7 +6,9 @@ typedef struct _FFIArray {
     size_t len;
 } _FFIArray;
 
-_FFIArray simplify_linestring_ffi(_FFIArray coords, double epsilon);
+_FFIArray simplify_rdp_ffi(_FFIArray coords, double epsilon);
+
+_FFIArray simplify_visvalingam_ffi(_FFIArray coords, double epsilon);
 
 void drop_float_array(_FFIArray arr);
 
