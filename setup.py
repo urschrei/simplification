@@ -86,7 +86,7 @@ else:
 setup(
     name='simplification',
     version=version,
-    description='Fast linestring simplification',
+    description='Fast linestring simplification using RDP or Visvalingam-Whyatt and a Rust binary',
     author='Stephan Hügel',
     author_email='urschrei@gmail.com',
     license='MIT License',
@@ -97,12 +97,13 @@ setup(
         'simplification': [platform_lib],
     },
     download_url='https://github.com/urschrei/simplification/tarball/v%s' % version,
-    keywords=['Geo', 'Polyline', 'Linestring'],
+    keywords=['Geo', 'Polyline', 'Linestring', 'Ramer-Douglas-Peucker', 'Douglas-Peucker', 'Visvalingam-Whyatt'],
     classifiers=[
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
