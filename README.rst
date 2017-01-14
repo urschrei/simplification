@@ -50,6 +50,18 @@ Usage
 
     # simplified is [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
 
+    # Using Visvalingam-Whyatt
+    coords_vw = [
+        [5.0, 2.0],
+        [3.0, 8.0],
+        [6.0, 20.0],
+        [7.0, 25.0],
+        [10.0, 10.0]
+    ]
+    simplified_vw = simplify_coords_vw(coords, 30.0)
+
+    # simplified_vw is [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]
+
 
 How it Works
 ------------
