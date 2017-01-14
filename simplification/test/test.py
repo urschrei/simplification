@@ -43,7 +43,7 @@ class PolylineTests(unittest.TestCase):
     def testSimplify_vw(self):
         """ Test that a LineString can be simplified using VW (Ctypes) """
         expected = self.resultvw
-        result = simplify_coords_vw(self.coordsvw, 1.0)
+        result = simplify_coords_vw(self.coordsvw, 30.0)
         for _ in range(100):
             self.assertEqual(result, expected)
 
@@ -57,7 +57,7 @@ class PolylineTests(unittest.TestCase):
     def testCSimplify_vw(self):
         """ Test that a LineString can be simplified using VW (Cython) """
         expected = self.resultvw
-        result = csimplify_coords_vw(self.coordsvw, 1.0)
+        result = csimplify_coords_vw(self.coordsvw, 30.0)
         for _ in range(100):
             self.assertEqual(result, expected)
 
