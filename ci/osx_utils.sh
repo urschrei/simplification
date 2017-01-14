@@ -16,6 +16,7 @@ LATEST_2p7=2.7.11
 # LATEST_3p3=3.3.5
 # LATEST_3p4=3.4.4
 LATEST_3p5=3.5.1
+LATEST_3p6=3.6.0
 
 # Get our own location on this filesystem
 # MULTIBUILD_DIR=$(dirname "${BASH_SOURCE[0]}")
@@ -77,8 +78,8 @@ function fill_pyver {
         echo $LATEST_2p7
     elif [ $ver == "2.6" ]; then
         echo $LATEST_2p6
-    elif [ $ver == 3 ] || [ $ver == "3.5" ]; then
-        echo $LATEST_3p5
+    elif [ $ver == 3 ] || [ $ver == "3.6" ]; then
+        echo $LATEST_3p6
     elif [ $ver == "3.4" ]; then
         echo $LATEST_3p4
     elif [ $ver == "3.3" ]; then
