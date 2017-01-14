@@ -61,22 +61,22 @@ class PolylineTests(unittest.TestCase):
         for _ in range(100):
             self.assertEqual(result, expected)
 
-    def testCSingle_rdp(self):
-        """ Test that a one-element LineString is returned unaltered from RDP (Cython) """
-        result = csimplify_coords(self.single, 1.0)
-        self.assertEqual(result, self.single)
+    # def testCSingle_rdp(self):
+    #     """ Test that a one-element LineString is returned unaltered from RDP (Cython) """
+    #     result = csimplify_coords(self.single, 1.0)
+    #     self.assertEqual(result, self.single)
 
-    def testCSingle_vw(self):
-        """ Test that a one-element LineString is returned unaltered from VW (Cython) """
-        result = csimplify_coords_vw(self.single, 1.0)
-        self.assertEqual(result, self.single)
+    # def testCSingle_vw(self):
+    #     """ Test that a one-element LineString is returned unaltered from VW (Cython) """
+    #     result = csimplify_coords_vw(self.single, 1.0)
+    #     self.assertEqual(result, self.single)
 
-    # def testCEmpty_rdp(self):
-    #     """ Test that an empty LineString is returned unaltered from RDP (Cython) """
-    #     result = csimplify_coords(self.empty, 1.0)
-    #     self.assertEqual(result, [])
+    def testCEmpty_rdp(self):
+        """ Test that an empty LineString is returned unaltered from RDP (Cython) """
+        result = csimplify_coords(self.empty, 1.0)
+        self.assertEqual(result, [])
 
-    # def testCEmpty_vw(self):
-    #     """ Test that an empty LineString is returned unaltered from VW (Cython) """
-    #     result = csimplify_coords_vw(self.empty, 1.0)
-    #     self.assertEqual(result, [])
+    def testCEmpty_vw(self):
+        """ Test that an empty LineString is returned unaltered from VW (Cython) """
+        result = csimplify_coords_vw(self.empty, 1.0)
+        self.assertEqual(result, [])
