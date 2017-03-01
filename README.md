@@ -52,7 +52,7 @@ simplified_vw = simplify_coords_vw(coords, 30.0)
 
 Passing empty and/or 1-element lists will return them unaltered.
 
-## But I want to Simplify Polylines
+## But I Want to Simplify Polylines
 No problem; [Decode them to LineStrings](https://github.com/urschrei/pypolyline) first.
 
 ``` python
