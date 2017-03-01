@@ -51,6 +51,18 @@ simplified_vw = simplify_coords_vw(coords, 30.0)
 ```
 
 Passing empty and/or 1-element lists will return them unaltered.
+
+## But I want to Simplify Polylines
+No problem; [Decode them to LineStrings](https://github.com/urschrei/pypolyline) first.
+
+``` python
+# pip install pypolyline before you do this
+from pypolyline.cutil import decode_polyline
+# an iterable of Google-encoded Polylines, so precision is 5. For OSRM &c., it's 6
+decoded = (decode_polyline(line, 5) for line in polylines)
+simplified = [simplify_coords(line, 1.0) for line in decoded]
+```
+
 ## How it Works
 FFI and a [Rust binary](https://github.com/urschrei/rdp)
 
