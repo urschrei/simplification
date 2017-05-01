@@ -72,6 +72,16 @@ test_script:
   - python.exe setup.py build_ext --inplace
   - "%CMD_IN_ENV% dumpbin /dependents %PROJECT_NAME%/cutil.pyd"
   - dir PROJECT_NAME%
+#########
+  # Generate artifacts for release
+  - cd C:/projects/%PROJECT_NAME%/dist
+    # release zipfile will look like 'simplification-v1.2.3-x86_64-pc-windows-gnu'
+  - 7z a ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%PYTHON_RELEASE_VERSION%.zip *
+  - appveyor PushArtifact ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%PYTHON_RELEASE_VERSION%.zip
+#########
+  - cd ..
+  - dir
+  - cd to_test
   - nosetests %PROJECT_NAME%
   # - "%CMD_IN_ENV% dumpbin /dependents %PROJECT_NAME%/simplification.dll"
 
