@@ -67,25 +67,15 @@ test_script:
   - md to_test
   - cd to_test
   - pip install %PROJECT_NAME% --no-index -f C:/projects/%PROJECT_NAME%/dist
+  - nosetests %PROJECT_NAME%
+
+after_test:
   - cd C:/projects/%PROJECT_NAME%
   # needlessly generate pyd in-place, so I can peer at its dependencies
   - python.exe setup.py build_ext --inplace
   - "%CMD_IN_ENV% dumpbin /dependents %PROJECT_NAME%/cutil.pyd"
-  - dir PROJECT_NAME%
-#########
-  # Generate artifacts for release
-  - cd C:/projects/%PROJECT_NAME%/dist
-    # release zipfile will look like 'simplification-v1.2.3-x86_64-pc-windows-gnu'
-  - 7z a ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%PYTHON_RELEASE_VERSION%.zip *
-  - appveyor PushArtifact ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%PYTHON_RELEASE_VERSION%.zip
-#########
-  - cd ..
-  - dir
-  - cd to_test
-  - nosetests %PROJECT_NAME%
+  - "%CMD_IN_ENV% dir %PROJECT_NAME%"
   # - "%CMD_IN_ENV% dumpbin /dependents %PROJECT_NAME%/simplification.dll"
-
-after_test:
 
 artifacts:
   # Archive the generated packages in the ci.appveyor.com build report.
