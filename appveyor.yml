@@ -71,7 +71,7 @@ test_script:
   # needlessly generate pyd in-place, so I can peer at its dependencies
   - python.exe setup.py build_ext --inplace
   - "%CMD_IN_ENV% dumpbin /dependents %PROJECT_NAME%/cutil.pyd"
-  - dir
+  - dir PROJECT_NAME%
   - nosetests %PROJECT_NAME%
   # - "%CMD_IN_ENV% dumpbin /dependents %PROJECT_NAME%/simplification.dll"
 
