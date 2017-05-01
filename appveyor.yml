@@ -60,8 +60,8 @@ build_script:
   - python.exe ci/pre_install.py"
   - python.exe setup.py config --compiler=mingw32
   - python.exe setup.py build --compiler=mingw32
-  # - python.exe setup.py bdist_wheel
-  - pip wheel . C:/projects/%PROJECT_NAME%/dist --no-deps
+  - python.exe setup.py bdist_wheel
+  # - pip wheel . C:/projects/%PROJECT_NAME%/dist --no-deps
 
 test_script:
   # Run the project tests outside the project root, because it's on the PYTHONPATH
