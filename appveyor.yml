@@ -1,6 +1,6 @@
 environment:
   global:
-    CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\ci\\run_with_env.cmd"
+    # CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\ci\\run_with_env.cmd"
     PROJECT_NAME: simplification
     TARBALL_KEY:
       secure: t4hDWCSZFjJWo7sENSHNyWu9ez50xX9mU02G4gy/IZ/+cttOPJYVd4CY7UgRekB8
@@ -38,6 +38,12 @@ environment:
 
 install:
   - set OLDPATH=%PATH%
+  - ps: >-
+      If ($Env:TARGET -eq 'x86_64-pc-windows-gnu') {
+        $Env:PATH += ';C:\msys64\mingw64\bin'
+      } ElseIf ($Env:TARGET -eq 'i686-pc-windows-gnu') {
+        $Env:PATH += ';C:\msys64\mingw32\bin'
+      }
   - ps: if ($env:APPVEYOR_PULL_REQUEST_NUMBER -and $env:APPVEYOR_BUILD_NUMBER -ne ((Invoke-RestMethod `
         https://ci.appveyor.com/api/projects/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/history?recordsNumber=50).builds | `
         Where-Object pullRequestId -eq $env:APPVEYOR_PULL_REQUEST_NUMBER)[0].buildNumber) { `
@@ -45,8 +51,7 @@ install:
   - set PATH=C:\Miniconda\Scripts
   - ps: If ($env:PYTHON_ARCH -Match "64") {$env:PATH="C:\Miniconda-x64\Scripts"}
   - set PATH=%PATH%;%OLDPATH%
-  # - set %PATH%=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
-  # - "%CMD_IN_ENV% dumpbin /dependents foo.dll"
+  - set PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda create -q --name python%PYTHON_VERSION% python=%PYTHON_VERSION% 
@@ -61,7 +66,6 @@ build_script:
   - python.exe setup.py config --compiler=mingw32
   - python.exe setup.py build --compiler=mingw32
   - python.exe setup.py bdist_wheel
-  # - pip wheel . C:/projects/%PROJECT_NAME%/dist --no-deps
 
 test_script:
   # Run the project tests outside the project root, because it's on the PYTHONPATH
@@ -74,9 +78,8 @@ after_test:
   - cd C:/projects/%PROJECT_NAME%
   # needlessly generate pyd in-place, so I can peer at its dependencies
   - python.exe setup.py build_ext --inplace
-  - "%CMD_IN_ENV% dumpbin /dependents %PROJECT_NAME%/cutil.pyd"
-  - "%CMD_IN_ENV% dir %PROJECT_NAME%"
-  # - "%CMD_IN_ENV% dumpbin /dependents %PROJECT_NAME%/simplification.dll"
+  - dumpbin /dependents %PROJECT_NAME%/cutil.pyd
+  - dir %PROJECT_NAME%
 
 artifacts:
   # Archive the generated packages in the ci.appveyor.com build report.
