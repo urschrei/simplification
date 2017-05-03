@@ -1,6 +1,5 @@
 environment:
   global:
-    # CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\ci\\run_with_env.cmd"
     PROJECT_NAME: simplification
     TARBALL_KEY:
       secure: t4hDWCSZFjJWo7sENSHNyWu9ez50xX9mU02G4gy/IZ/+cttOPJYVd4CY7UgRekB8
