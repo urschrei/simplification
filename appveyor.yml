@@ -1,82 +1,83 @@
 environment:
   global:
     PROJECT_NAME: simplification
+    TEST_DEPENDS: "nose"
+    CMD_IN_ENV: "cmd /E:ON /V:ON /C %APPVEYOR_BUILD_FOLDER%\\ci\\appveyor\\windows_sdk.cmd"
     TARBALL_KEY:
       secure: t4hDWCSZFjJWo7sENSHNyWu9ez50xX9mU02G4gy/IZ/+cttOPJYVd4CY7UgRekB8
 
   matrix:
-
-    # Pre-installed Python versions, which Appveyor may upgrade to
-    # a later point release.
-    # See: http://www.appveyor.com/docs/installed-software#python
-
-    - PYTHON: "C:\\Python27-x64"
-      PYTHON_VERSION: "2.7.11"
-      PYTHON_ARCH: "64"
-      PYTHON_RELEASE_VERSION: "cp27"
-      TARGET: x86_64-pc-windows-gnu
-      CHANNEL: stable
-      PLATFORM: "win-amd64"
-
-    - PYTHON: "C:\\Python27"
-      PYTHON_VERSION: "2.7.11"
-      TARGET: i686-pc-windows-gnu
+    - PYTHON: "C:\\Miniconda"
+      PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "32"
-      PYTHON_RELEASE_VERSION: "cp27"
-      CHANNEL: stable
-      PLATFORM: "win32"
-
-    # MinGWPy isn't yet available for Python 3.5
-    - PYTHON: "C:\\Python34-x64"
-      PYTHON_VERSION: "3.4.3"
-      TARGET: x86_64-pc-windows-gnu
+    - PYTHON: "C:\\Miniconda-x64"
+      PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "64"
-      PYTHON_RELEASE_VERSION: "cp34"
-      CHANNEL: stable
-      PLATFORM: "win-amd64"
+    - PYTHON: "C:\\Miniconda3"
+      PYTHON_VERSION: "3.4"
+      PYTHON_ARCH: "32"
+    - PYTHON: "C:\\Miniconda3-x64"
+      PYTHON_VERSION: "3.4"
+      PYTHON_ARCH: "64"
+    - PYTHON: "C:\\Miniconda35"
+      PYTHON_VERSION: "3.5"
+      PYTHON_ARCH: "32"
+    - PYTHON: "C:\\Miniconda35-x64"
+      PYTHON_VERSION: "3.5"
+      PYTHON_ARCH: "64"
+    - PYTHON: "C:\\Miniconda36"
+      PYTHON_VERSION: "3.6"
+      PYTHON_ARCH: "32"
+    - PYTHON: "C:\\Miniconda36-x64"
+      PYTHON_VERSION: "3.6"
+      PYTHON_ARCH: "64"
+
+# We always use a 64-bit machine, but can build x86 distributions
+# with the TARGET_ARCH variable.
+platform:
+    - x64
+
+matrix:
+    fast_finish: true
 
 install:
-  - set OLDPATH=%PATH%
-  - ps: >-
-      If ($Env:TARGET -eq 'x86_64-pc-windows-gnu') {
-        $Env:PATH += ';C:\msys64\mingw64\bin'
-      } ElseIf ($Env:TARGET -eq 'i686-pc-windows-gnu') {
-        $Env:PATH += ';C:\msys64\mingw32\bin'
-      }
+    # Install miniconda and fix headers
+    - ps: .\\ci\\appveyor\\install.ps1
+    - ps: .\\ci\\appveyor\\missing-headers.ps1
+    - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PYTHON%\Library\bin;%PATH%
+    - SET PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
+    - conda info
+
+    # Check that we have the expected version and architecture for Python
+    - python --version
+    - python -c "import struct; print(struct.calcsize('P') * 8)"
+
   - ps: if ($env:APPVEYOR_PULL_REQUEST_NUMBER -and $env:APPVEYOR_BUILD_NUMBER -ne ((Invoke-RestMethod `
         https://ci.appveyor.com/api/projects/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/history?recordsNumber=50).builds | `
         Where-Object pullRequestId -eq $env:APPVEYOR_PULL_REQUEST_NUMBER)[0].buildNumber) { `
           throw "There are newer queued builds for this pull request, failing early." }
-  - set PATH=C:\Miniconda\Scripts
-  - ps: If ($env:PYTHON_ARCH -Match "64") {$env:PATH="C:\Miniconda-x64\Scripts"}
-  - set PATH=%PATH%;%OLDPATH%
-  - set PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  - conda create -q --name python%PYTHON_VERSION% python=%PYTHON_VERSION% 
-  - activate python%PYTHON_VERSION%
-  - pip install --disable-pip-version-check --user --upgrade pip
-  - pip install -i https://pypi.anaconda.org/carlkl/simple mingwpy
-  - conda install -q --name python%PYTHON_VERSION% --file dev-requirements.txt
 
 build_script:
+  # Install build requirements
+  - conda install -q --yes --file dev-requirements.txt
   # get correct Rust DLL
-  - python.exe ci/pre_install.py"
-  - python.exe setup.py config --compiler=mingw32
-  - python.exe setup.py build --compiler=mingw32
-  - python.exe setup.py bdist_wheel
+  - python ci/pre_install.py
+  # build wheel
+  - "%CMD_IN_ENV% python setup.py bdist_wheel"
+  - ls dist/*
 
 test_script:
-  # Run the project tests outside the project root, because it's on the PYTHONPATH
-  - md to_test
-  - cd to_test
-  - pip install %PROJECT_NAME% --no-index -f C:/projects/%PROJECT_NAME%/dist
-  # - nosetests %PROJECT_NAME%
+  # create test env
+  - conda create --yes -n test_env python=%PYTHON_VERSION% %TEST_DEPENDS%
+  - activate test_env
+  # install from wheel
+  - pip install --no-index --find-links dist/ %PROJECT_NAME%
+  - nosetests %PROJECT_NAME%
 
 after_test:
   - cd C:/projects/%PROJECT_NAME%
   # needlessly generate pyd in-place, so I can peer at its dependencies
-  - python.exe setup.py build_ext --inplace
+  - python setup.py build_ext --inplace
   - dumpbin /dependents %PROJECT_NAME%/cutil.pyd
   - dir %PROJECT_NAME%
 
