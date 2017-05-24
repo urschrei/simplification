@@ -38,9 +38,9 @@ elif 'win32' in platform:
     lib = "rdp.dll"
     # distinguish between 64-bit and 32-bit Windows Pythons
     if sys.maxsize > 2**32:
-        url = 'https://github.com/urschrei/{project}/releases/download/{tagname}/{project}-{tagname}-x86_64-pc-windows-gnu.zip'
+        url = 'https://github.com/urschrei/{project}/releases/download/{tagname}/{project}-{tagname}-x86_64-pc-windows-msvc.zip'
     else:
-        url = 'https://github.com/urschrei/{project}/releases/download/{tagname}/{project}-{tagname}-i686-pc-windows-gnu.zip'
+        url = 'https://github.com/urschrei/{project}/releases/download/{tagname}/{project}-{tagname}-i686-pc-windows-msvc.zip'
 elif 'linux' in platform:
     lib = "librdp.so"
     url = 'https://github.com/urschrei/{project}/releases/download/{tagname}/{project}-{tagname}-x86_64-unknown-linux-gnu.tar.gz'
