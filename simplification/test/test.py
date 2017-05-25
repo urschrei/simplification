@@ -2,8 +2,8 @@
 
 import unittest
 from simplification.util import simplify_coords, simplify_coords_vw
-from simplification.cutil import simplify_coords as csimplify_coords
-from simplification.cutil import simplify_coords_vw as csimplify_coords_vw
+# from simplification.cutil import simplify_coords as csimplify_coords
+# from simplification.cutil import simplify_coords_vw as csimplify_coords_vw
 
 class PolylineTests(unittest.TestCase):
     """ Tests for simplification """
@@ -47,19 +47,19 @@ class PolylineTests(unittest.TestCase):
         for _ in range(100):
             self.assertEqual(result, expected)
 
-    def testCSimplify_rdp(self):
-        """ Test that a LineString can be simplified using RDP (Cython) """
-        expected = self.result
-        result = csimplify_coords(self.coords, 1.0)
-        for _ in range(100):
-            self.assertEqual(result, expected)
+    # def testCSimplify_rdp(self):
+    #     """ Test that a LineString can be simplified using RDP (Cython) """
+    #     expected = self.result
+    #     result = csimplify_coords(self.coords, 1.0)
+    #     for _ in range(100):
+    #         self.assertEqual(result, expected)
 
-    def testCSimplify_vw(self):
-        """ Test that a LineString can be simplified using VW (Cython) """
-        expected = self.resultvw
-        result = csimplify_coords_vw(self.coordsvw, 30.0)
-        for _ in range(100):
-            self.assertEqual(result, expected)
+    # def testCSimplify_vw(self):
+    #     """ Test that a LineString can be simplified using VW (Cython) """
+    #     expected = self.resultvw
+    #     result = csimplify_coords_vw(self.coordsvw, 30.0)
+    #     for _ in range(100):
+    #         self.assertEqual(result, expected)
 
     # def testCSingle_rdp(self):
     #     """ Test that a one-element LineString is returned unaltered from RDP (Cython) """
@@ -71,12 +71,12 @@ class PolylineTests(unittest.TestCase):
     #     result = csimplify_coords_vw(self.single, 1.0)
     #     self.assertEqual(result, self.single)
 
-    def testCEmpty_rdp(self):
-        """ Test that an empty LineString is returned unaltered from RDP (Cython) """
-        result = csimplify_coords(self.empty, 1.0)
-        self.assertEqual(result, [])
+    # def testCEmpty_rdp(self):
+    #     """ Test that an empty LineString is returned unaltered from RDP (Cython) """
+    #     result = csimplify_coords(self.empty, 1.0)
+    #     self.assertEqual(result, [])
 
-    def testCEmpty_vw(self):
-        """ Test that an empty LineString is returned unaltered from VW (Cython) """
-        result = csimplify_coords_vw(self.empty, 1.0)
-        self.assertEqual(result, [])
+    # def testCEmpty_vw(self):
+    #     """ Test that an empty LineString is returned unaltered from VW (Cython) """
+    #     result = csimplify_coords_vw(self.empty, 1.0)
+    #     self.assertEqual(result, [])

@@ -68,14 +68,14 @@ test_script:
   - pip install -r dev-requirements.txt
   # install from wheel
   - pip install %PROJECT_NAME% --no-index -f C:/projects/%PROJECT_NAME%/dist
-  # - nosetests %PROJECT_NAME%
+  - nosetests %PROJECT_NAME%
 
 after_test:
-  - cd C:/projects/%PROJECT_NAME%
+  # - cd C:/projects/%PROJECT_NAME%
   # needlessly generate pyd in-place, so I can peer at its dependencies
-  - python setup.py build_ext --inplace
-  - dumpbin /dependents %PROJECT_NAME%/cutil.pyd
-  - dir %PROJECT_NAME%
+  # - python setup.py build_ext --inplace
+  # - dumpbin /dependents %PROJECT_NAME%/cutil.pyd
+  # - dir %PROJECT_NAME%
 
 artifacts:
   # Archive the generated packages in the ci.appveyor.com build report.
