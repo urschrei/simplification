@@ -65,7 +65,7 @@ test_script:
   # create test env
   - conda create --yes -n test_env python=%PYTHON_VERSION% %TEST_DEPENDS%
   - activate test_env
-  - pip install -f dev-requirements.txt
+  - pip install -r dev-requirements.txt
   # install from wheel
   - pip install %PROJECT_NAME% --no-index -f C:/projects/%PROJECT_NAME%/dist
   - nosetests %PROJECT_NAME%
