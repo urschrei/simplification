@@ -60,13 +60,8 @@ build_script:
   # build wheel
   - "%CMD_IN_ENV% python setup.py bdist_wheel"
   - ls dist/*
-  # - appveyor PushArtifact dist/%PROJECT_NAME%-0.2.2-cp27-cp27m-win32.whl
 
 test_script:
-  - dumpbin /dependents test.pyd > dumpbin_dependents.txt
-  - appveyor PushArtifact dumpbin_dependents.txt
-  - dumpbin test.pyd > dumpbin.txt
-  - appveyor PushArtifact dumpbin.txt
   # create test env
   - conda create --yes -n test_env python=%PYTHON_VERSION% %TEST_DEPENDS%
   - activate test_env
