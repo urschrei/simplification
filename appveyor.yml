@@ -65,7 +65,7 @@ build_script:
 test_script:
   - dumpbin /dependents test.pyd > dumpbin_dependents.txt
   - appveyor PushArtifact dumpbin_dependents.txt
-  - dumpbin test.pyd dumpbin.txt
+  - dumpbin test.pyd > dumpbin.txt
   - appveyor PushArtifact dumpbin.txt
   # create test env
   - conda create --yes -n test_env python=%PYTHON_VERSION% %TEST_DEPENDS%
