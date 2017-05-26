@@ -53,8 +53,6 @@ install:
     - python -c "import struct; print(struct.calcsize('P') * 8)"
 
 build_script:
-  - dir
-  - dir %PROJECT_NAME%
   # Install build requirements
   - conda install -q --yes --file dev-requirements.txt
   # get correct Rust DLL
@@ -72,7 +70,7 @@ test_script:
   - activate test_env
   - pip install -r dev-requirements.txt
   # install from wheel
-  - pip install %PROJECT_NAME% --no-index -f C:/projects/%PROJECT_NAME%/wheel_ok
+  - pip install %PROJECT_NAME% --no-index -f wheel_ok
   - nosetests %PROJECT_NAME%
   - pip uninstall %PROJECT_NAME%
 
