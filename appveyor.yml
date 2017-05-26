@@ -87,7 +87,7 @@ test_script:
   - pip install -r dev-requirements.txt
   # install from wheel
   - pip install %PROJECT_NAME% --no-index -f C:/projects/%PROJECT_NAME%/dist
-  # - nosetests %PROJECT_NAME%
+  - nosetests %PROJECT_NAME%
 
 after_test:
   # - cd C:/projects/%PROJECT_NAME%
