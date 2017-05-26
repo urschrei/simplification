@@ -9,36 +9,44 @@ environment:
   matrix:
     - PYTHON: "C:\\Miniconda"
       PYTHON_VERSION: "2.7"
+      ZIP_VERSION: "cp27"
       PYTHON_ARCH: "32"
-      TARGET: "i686"
+      TARGET: "i686-pc-windows-msvc"
     - PYTHON: "C:\\Miniconda-x64"
       PYTHON_VERSION: "2.7"
+      ZIP_VERSION: "cp27"
       PYTHON_ARCH: "64"
-      TARGET: "x86_64"
+      TARGET: "x86_64-pc-windows-msvc"
     - PYTHON: "C:\\Miniconda3"
       PYTHON_VERSION: "3.4"
+      ZIP_VERSION: "cp34"
       PYTHON_ARCH: "32"
-      TARGET: "i686"
+      TARGET: "i686-pc-windows-msvc"
     - PYTHON: "C:\\Miniconda3-x64"
       PYTHON_VERSION: "3.4"
+      ZIP_VERSION: "cp34"
       PYTHON_ARCH: "64"
-      TARGET: "x86_64"
+      TARGET: "x86_64-pc-windows-msvc"
     - PYTHON: "C:\\Miniconda35"
       PYTHON_VERSION: "3.5"
+      ZIP_VERSION: "cp35"
       PYTHON_ARCH: "32"
-      TARGET: "i686"
+      TARGET: "i686-pc-windows-msvc"
     - PYTHON: "C:\\Miniconda35-x64"
       PYTHON_VERSION: "3.5"
+      ZIP_VERSION: "cp35"
       PYTHON_ARCH: "64"
-      TARGET: "x86_64"
+      TARGET: "x86_64-pc-windows-msvc"
     - PYTHON: "C:\\Miniconda36"
       PYTHON_VERSION: "3.6"
+      ZIP_VERSION: "cp36"
       PYTHON_ARCH: "32"
-      TARGET: "i686"
+      TARGET: "i686-pc-windows-msvc"
     - PYTHON: "C:\\Miniconda36-x64"
       PYTHON_VERSION: "3.6"
+      ZIP_VERSION: "cp36"
       PYTHON_ARCH: "64"
-      TARGET: "x86_64"
+      TARGET: "x86_64-pc-windows-msvc"
 
 # We always use a 64-bit machine, but can build x86 distributions
 # with the TARGET_ARCH variable.
@@ -96,8 +104,8 @@ before_deploy:
   # Generate artifacts for release
   - cd C:/projects/%PROJECT_NAME%/dist
     # release zipfile will look like 'simplification-v1.2.3-x86_64-pc-windows-gnu'
-  - 7z a ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%PYTHON_VERSION%.zip *
-  - appveyor PushArtifact ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%PYTHON_VERSION%.zip
+  - 7z a ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%ZIP_VERSION%.zip *
+  - appveyor PushArtifact ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%ZIP_VERSION%.zip
 
 deploy:
   appveyor_repo_tag: true
