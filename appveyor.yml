@@ -64,9 +64,6 @@ build_script:
   # dump rdp dll dependencies
   - dumpbin /dependents simplification/rdp.dll > dumpbin_rdp_dll.txt
   - appveyor PushArtifact dumpbin_rdp_dll.txt
-  # dump Cython extension dependencies
-  - dumpbin /dependents simplification/cutil.pyd > dumpbin_cutil.txt
-  - appveyor PushArtifact dumpbin_cutil.txt
 
 test_script:
   # create test env
