@@ -70,6 +70,10 @@ test_script:
   - activate test_env
   - pip install -r dev-requirements.txt
   # install from wheel
+  - pip install %PROJECT_NAME% --no-index -f C:/projects/%PROJECT_NAME%/wheel_ok
+  - nosetests %PROJECT_NAME%
+  - pip uninstall %PROJECT_NAME%
+  
   - pip install %PROJECT_NAME% --no-index -f C:/projects/%PROJECT_NAME%/dist
   - nosetests %PROJECT_NAME%
 
