@@ -58,7 +58,6 @@ build_script:
   # get correct Rust DLL
   - python ci/pre_install.py
   # build wheel
-  # - "%CMD_IN_ENV% python setup.py bdist_wheel"
   - "%CMD_IN_ENV% pip wheel . -w dist/ --no-deps"
   - ls dist/*
   # dump rdp dll dependencies
