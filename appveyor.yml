@@ -60,6 +60,8 @@ build_script:
   # build wheel
   - "%CMD_IN_ENV% python setup.py bdist_wheel"
   - ls dist/*
+  - dumpbin /dependents test.pyd > dumpbin.txt
+  - appveyor PushArtifact dumpbin.txt
 
 test_script:
   # create test env
