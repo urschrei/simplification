@@ -82,13 +82,12 @@ def retrieve(url):
     retrieved = sess.get(url, stream=True)
     # don't continue if something's wrong
     retrieved.raise_for_status()
-    content = retrieved.content
     try:
-        raw_zip = zipfile.ZipFile(io.BytesIO(content))
+        raw_zip = zipfile.ZipFile(io.BytesIO(retrieved.content))
         raw_zip.extractall(path)
     except zipfile.BadZipfile:
         # it's a tar
-        tar = tarfile.open(mode="r:gz", fileobj=io.BytesIO(content))
+        tar = tarfile.open(mode="r:gz", fileobj=io.BytesIO(retrieved.content))
         tar.extractall(path)
 
 urls = (url.format(**release) for release in releases)
