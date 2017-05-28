@@ -94,4 +94,8 @@ urls = (url.format(**release) for release in releases)
 
 # let's do this in parallel
 pool = Pool(processes=5)
-pool.map(retrieve, urls)
+# we could use map, but it consumes the entire iterable (doesn't matter for small n)
+res = pool.map_async(retrieve, urls)
+# need these if we use _async
+pool.close()
+pool.join()
