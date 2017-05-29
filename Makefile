@@ -12,6 +12,7 @@ simplification/librdp.dylib: $(RUSTDIR)/src/*.rs $(RUSTDIR)/Cargo.toml simplific
 	@echo  "Rebuilding Rust release binary"
 	@cargo build --manifest-path=$(RUSTDIR)/Cargo.toml --release
 	@cp $(RUSTDIR)/target/release/librdp.dylib simplification
+	@cp $(RUSTDIR)/include/header.h simplification
 
 .PHONY: clean
 clean:

@@ -34,7 +34,7 @@ __author__ = u"Stephan Hügel"
 
 import numpy as np
 from rdp_p cimport (
-    _FFIArray,
+    Array,
     simplify_rdp_ffi,
     simplify_visvalingam_ffi,
     drop_float_array,
@@ -55,10 +55,10 @@ def simplify_coords(coords, double epsilon):
     if not len(coords):
         return coords
     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
-    cdef _FFIArray coords_ffi
+    cdef Array coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
-    cdef _FFIArray result = simplify_rdp_ffi(coords_ffi, epsilon)
+    cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
     cdef outgoing = np.copy(view).tolist()
@@ -82,10 +82,10 @@ def simplify_coords_vw(coords, double epsilon):
     if not len(coords):
         return coords
     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
-    cdef _FFIArray coords_ffi
+    cdef Array coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
-    cdef _FFIArray result = simplify_visvalingam_ffi(coords_ffi, epsilon)
+    cdef Array result = simplify_visvalingam_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
     cdef outgoing = np.copy(view).tolist()

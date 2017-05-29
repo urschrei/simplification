@@ -1790,8 +1790,8 @@ static PyObject *__pyx_pw_14simplification_5cutil_1simplify_coords(PyObject *__p
 
 static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_coords, double __pyx_v_epsilon) {
   __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
-  struct _FFIArray __pyx_v_coords_ffi;
-  struct _FFIArray __pyx_v_result;
+  struct Array __pyx_v_coords_ffi;
+  struct Array __pyx_v_result;
   double *__pyx_v_incoming_ptr;
   __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_v_outgoing = 0;
@@ -1827,7 +1827,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
  *     if not len(coords):
  *         return coords             # <<<<<<<<<<<<<<
  *     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
- *     cdef _FFIArray coords_ffi
+ *     cdef Array coords_ffi
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_v_coords);
@@ -1847,7 +1847,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
  *     if not len(coords):
  *         return coords
  *     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)             # <<<<<<<<<<<<<<
- *     cdef _FFIArray coords_ffi
+ *     cdef Array coords_ffi
  *     coords_ffi.data = <void*>&ncoords[0, 0]
  */
   __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
@@ -1883,10 +1883,10 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
 
   /* "simplification/cutil.pyx":59
  *     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
- *     cdef _FFIArray coords_ffi
+ *     cdef Array coords_ffi
  *     coords_ffi.data = <void*>&ncoords[0, 0]             # <<<<<<<<<<<<<<
  *     coords_ffi.len = ncoords.shape[0]
- *     cdef _FFIArray result = simplify_rdp_ffi(coords_ffi, epsilon)
+ *     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
  */
   __pyx_t_9 = 0;
   __pyx_t_10 = 0;
@@ -1895,10 +1895,10 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   __pyx_v_coords_ffi.data = ((void *)(&(*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_ncoords.data + __pyx_t_9 * __pyx_v_ncoords.strides[0]) )) + __pyx_t_10)) )))));
 
   /* "simplification/cutil.pyx":60
- *     cdef _FFIArray coords_ffi
+ *     cdef Array coords_ffi
  *     coords_ffi.data = <void*>&ncoords[0, 0]
  *     coords_ffi.len = ncoords.shape[0]             # <<<<<<<<<<<<<<
- *     cdef _FFIArray result = simplify_rdp_ffi(coords_ffi, epsilon)
+ *     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
  *     cdef double* incoming_ptr = <double*>(result.data)
  */
   __pyx_v_coords_ffi.len = (__pyx_v_ncoords.shape[0]);
@@ -1906,7 +1906,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   /* "simplification/cutil.pyx":61
  *     coords_ffi.data = <void*>&ncoords[0, 0]
  *     coords_ffi.len = ncoords.shape[0]
- *     cdef _FFIArray result = simplify_rdp_ffi(coords_ffi, epsilon)             # <<<<<<<<<<<<<<
+ *     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)             # <<<<<<<<<<<<<<
  *     cdef double* incoming_ptr = <double*>(result.data)
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
  */
@@ -1914,7 +1914,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
 
   /* "simplification/cutil.pyx":62
  *     coords_ffi.len = ncoords.shape[0]
- *     cdef _FFIArray result = simplify_rdp_ffi(coords_ffi, epsilon)
+ *     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
  *     cdef double* incoming_ptr = <double*>(result.data)             # <<<<<<<<<<<<<<
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
  *     cdef outgoing = np.copy(view).tolist()
@@ -1922,7 +1922,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   __pyx_v_incoming_ptr = ((double *)__pyx_v_result.data);
 
   /* "simplification/cutil.pyx":63
- *     cdef _FFIArray result = simplify_rdp_ffi(coords_ffi, epsilon)
+ *     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
  *     cdef double* incoming_ptr = <double*>(result.data)
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr             # <<<<<<<<<<<<<<
  *     cdef outgoing = np.copy(view).tolist()
@@ -2153,8 +2153,8 @@ static PyObject *__pyx_pw_14simplification_5cutil_3simplify_coords_vw(PyObject *
 
 static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_coords, double __pyx_v_epsilon) {
   __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
-  struct _FFIArray __pyx_v_coords_ffi;
-  struct _FFIArray __pyx_v_result;
+  struct Array __pyx_v_coords_ffi;
+  struct Array __pyx_v_result;
   double *__pyx_v_incoming_ptr;
   __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_v_outgoing = 0;
@@ -2190,7 +2190,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
  *     if not len(coords):
  *         return coords             # <<<<<<<<<<<<<<
  *     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
- *     cdef _FFIArray coords_ffi
+ *     cdef Array coords_ffi
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_v_coords);
@@ -2210,7 +2210,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
  *     if not len(coords):
  *         return coords
  *     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)             # <<<<<<<<<<<<<<
- *     cdef _FFIArray coords_ffi
+ *     cdef Array coords_ffi
  *     coords_ffi.data = <void*>&ncoords[0, 0]
  */
   __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
@@ -2246,10 +2246,10 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
 
   /* "simplification/cutil.pyx":86
  *     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
- *     cdef _FFIArray coords_ffi
+ *     cdef Array coords_ffi
  *     coords_ffi.data = <void*>&ncoords[0, 0]             # <<<<<<<<<<<<<<
  *     coords_ffi.len = ncoords.shape[0]
- *     cdef _FFIArray result = simplify_visvalingam_ffi(coords_ffi, epsilon)
+ *     cdef Array result = simplify_visvalingam_ffi(coords_ffi, epsilon)
  */
   __pyx_t_9 = 0;
   __pyx_t_10 = 0;
@@ -2258,10 +2258,10 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
   __pyx_v_coords_ffi.data = ((void *)(&(*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_ncoords.data + __pyx_t_9 * __pyx_v_ncoords.strides[0]) )) + __pyx_t_10)) )))));
 
   /* "simplification/cutil.pyx":87
- *     cdef _FFIArray coords_ffi
+ *     cdef Array coords_ffi
  *     coords_ffi.data = <void*>&ncoords[0, 0]
  *     coords_ffi.len = ncoords.shape[0]             # <<<<<<<<<<<<<<
- *     cdef _FFIArray result = simplify_visvalingam_ffi(coords_ffi, epsilon)
+ *     cdef Array result = simplify_visvalingam_ffi(coords_ffi, epsilon)
  *     cdef double* incoming_ptr = <double*>(result.data)
  */
   __pyx_v_coords_ffi.len = (__pyx_v_ncoords.shape[0]);
@@ -2269,7 +2269,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
   /* "simplification/cutil.pyx":88
  *     coords_ffi.data = <void*>&ncoords[0, 0]
  *     coords_ffi.len = ncoords.shape[0]
- *     cdef _FFIArray result = simplify_visvalingam_ffi(coords_ffi, epsilon)             # <<<<<<<<<<<<<<
+ *     cdef Array result = simplify_visvalingam_ffi(coords_ffi, epsilon)             # <<<<<<<<<<<<<<
  *     cdef double* incoming_ptr = <double*>(result.data)
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
  */
@@ -2277,7 +2277,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
 
   /* "simplification/cutil.pyx":89
  *     coords_ffi.len = ncoords.shape[0]
- *     cdef _FFIArray result = simplify_visvalingam_ffi(coords_ffi, epsilon)
+ *     cdef Array result = simplify_visvalingam_ffi(coords_ffi, epsilon)
  *     cdef double* incoming_ptr = <double*>(result.data)             # <<<<<<<<<<<<<<
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
  *     cdef outgoing = np.copy(view).tolist()
@@ -2285,7 +2285,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
   __pyx_v_incoming_ptr = ((double *)__pyx_v_result.data);
 
   /* "simplification/cutil.pyx":90
- *     cdef _FFIArray result = simplify_visvalingam_ffi(coords_ffi, epsilon)
+ *     cdef Array result = simplify_visvalingam_ffi(coords_ffi, epsilon)
  *     cdef double* incoming_ptr = <double*>(result.data)
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr             # <<<<<<<<<<<<<<
  *     cdef outgoing = np.copy(view).tolist()
@@ -15628,7 +15628,7 @@ PyMODINIT_FUNC PyInit_cutil(void)
  * 
  * import numpy as np             # <<<<<<<<<<<<<<
  * from rdp_p cimport (
- *     _FFIArray,
+ *     Array,
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
