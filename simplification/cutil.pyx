@@ -62,7 +62,7 @@ def simplify_coords(coords, double epsilon):
     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
-    if type(coords, numpy.ndarray):
+    if isinstance(coords, numpy.ndarray):
         outgoing = np.copy(view)
     else:
         outgoing = np.copy(view).tolist()

@@ -511,7 +511,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
   __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_12);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_13);
   <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -619,26 +619,16 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   __pyx_v_view = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
-</pre><pre class="cython line score-19" onclick='toggleDiv(this)'>+<span class="">65</span>:     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span></pre>
-<pre class='cython code score-19 '>  __pyx_t_5 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
+</pre><pre class="cython line score-11" onclick='toggleDiv(this)'>+<span class="">65</span>:     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span></pre>
+<pre class='cython code score-11 '>  __pyx_t_5 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
   __pyx_t_7 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_5, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_7);
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = <span class='py_c_api'>PyTuple_New</span>(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
-  <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_coords);
-  <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_v_coords);
-  <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_5, 0, __pyx_v_coords);
-  <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_7);
-  <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_5, 1, __pyx_t_7);
-  __pyx_t_7 = 0;
-  __pyx_t_7 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(((PyObject *)(&amp;PyType_Type)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_7);
-  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyObject_IsTrue</span>(__pyx_t_7); if (unlikely(__pyx_t_2 &lt; 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_2 = <span class='py_c_api'>PyObject_IsInstance</span>(__pyx_v_coords, __pyx_t_7); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 65, __pyx_L1_error)
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_7); __pyx_t_7 = 0;
-  if (__pyx_t_2) {
+  __pyx_t_12 = (__pyx_t_2 != 0);
+  if (__pyx_t_12) {
 /* … */
     goto __pyx_L4;
   }
@@ -742,15 +732,15 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
       } else
       #endif
       {
-        __pyx_t_12 = <span class='py_c_api'>PyTuple_New</span>(1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 68, __pyx_L1_error)
-        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_12);
-        <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_4); <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_12, 0, __pyx_t_4); __pyx_t_4 = NULL;
+        __pyx_t_13 = <span class='py_c_api'>PyTuple_New</span>(1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 68, __pyx_L1_error)
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_13);
+        <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_4); <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_13, 0, __pyx_t_4); __pyx_t_4 = NULL;
         <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_6);
-        <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_12, 0+1, __pyx_t_6);
+        <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_13, 0+1, __pyx_t_6);
         __pyx_t_6 = 0;
-        __pyx_t_3 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_5, __pyx_t_12, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
+        __pyx_t_3 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_5, __pyx_t_13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
         <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
-        <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_12); __pyx_t_12 = 0;
+        <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_13); __pyx_t_13 = 0;
       }
     }
     <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_5); __pyx_t_5 = 0;

@@ -1965,7 +1965,8 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   struct __pyx_array_obj *__pyx_t_11 = NULL;
-  PyObject *__pyx_t_12 = NULL;
+  int __pyx_t_12;
+  PyObject *__pyx_t_13 = NULL;
   __Pyx_RefNannySetupContext("simplify_coords", 0);
 
   /* "simplification/cutil.pyx":56
@@ -2074,7 +2075,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
  *     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
  *     cdef double* incoming_ptr = <double*>(result.data)             # <<<<<<<<<<<<<<
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
- *     if type(coords, numpy.ndarray):
+ *     if isinstance(coords, numpy.ndarray):
  */
   __pyx_v_incoming_ptr = ((double *)__pyx_v_result.data);
 
@@ -2082,7 +2083,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
  *     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
  *     cdef double* incoming_ptr = <double*>(result.data)
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr             # <<<<<<<<<<<<<<
- *     if type(coords, numpy.ndarray):
+ *     if isinstance(coords, numpy.ndarray):
  *         outgoing = np.copy(view)
  */
   if (!__pyx_v_incoming_ptr) {
@@ -2109,7 +2110,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   /* "simplification/cutil.pyx":65
  *     cdef double* incoming_ptr = <double*>(result.data)
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
- *     if type(coords, numpy.ndarray):             # <<<<<<<<<<<<<<
+ *     if isinstance(coords, numpy.ndarray):             # <<<<<<<<<<<<<<
  *         outgoing = np.copy(view)
  *     else:
  */
@@ -2118,24 +2119,14 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_INCREF(__pyx_v_coords);
-  __Pyx_GIVEREF(__pyx_v_coords);
-  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_coords);
-  __Pyx_GIVEREF(__pyx_t_7);
-  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_7);
-  __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)(&PyType_Type)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_2 = PyObject_IsInstance(__pyx_v_coords, __pyx_t_7); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__pyx_t_2) {
+  __pyx_t_12 = (__pyx_t_2 != 0);
+  if (__pyx_t_12) {
 
     /* "simplification/cutil.pyx":66
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
- *     if type(coords, numpy.ndarray):
+ *     if isinstance(coords, numpy.ndarray):
  *         outgoing = np.copy(view)             # <<<<<<<<<<<<<<
  *     else:
  *         outgoing = np.copy(view).tolist()
@@ -2199,7 +2190,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
     /* "simplification/cutil.pyx":65
  *     cdef double* incoming_ptr = <double*>(result.data)
  *     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
- *     if type(coords, numpy.ndarray):             # <<<<<<<<<<<<<<
+ *     if isinstance(coords, numpy.ndarray):             # <<<<<<<<<<<<<<
  *         outgoing = np.copy(view)
  *     else:
  */
@@ -2255,15 +2246,15 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
       } else
       #endif
       {
-        __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 68, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_12);
-        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_4); __pyx_t_4 = NULL;
+        __pyx_t_13 = PyTuple_New(1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 68, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_13);
+        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_4); __pyx_t_4 = NULL;
         __Pyx_GIVEREF(__pyx_t_6);
-        PyTuple_SET_ITEM(__pyx_t_12, 0+1, __pyx_t_6);
+        PyTuple_SET_ITEM(__pyx_t_13, 0+1, __pyx_t_6);
         __pyx_t_6 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_12, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+        __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -2331,7 +2322,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   __Pyx_XDECREF(__pyx_t_7);
   __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
   __Pyx_XDECREF(((PyObject *)__pyx_t_11));
-  __Pyx_XDECREF(__pyx_t_12);
+  __Pyx_XDECREF(__pyx_t_13);
   __Pyx_AddTraceback("simplification.cutil.simplify_coords", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
