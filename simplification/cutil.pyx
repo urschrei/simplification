@@ -1,4 +1,6 @@
 #cython: boundscheck=False
+#cython: optimize.use_switch=True
+#cython: optimize.unpack_method_calls=True
 # -*- coding: utf-8 -*-
 """
 cutil.pyx
@@ -92,6 +94,9 @@ def simplify_coords_vw(coords, double epsilon):
     cdef Array result = simplify_visvalingam_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
-    cdef outgoing = np.copy(view).tolist()
+    if isinstance(coords, numpy.ndarray):
+        outgoing = np.copy(view)
+    else:
+        outgoing = np.copy(view).tolist()
     drop_float_array(result)
     return outgoing
