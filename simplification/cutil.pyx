@@ -33,6 +33,7 @@ THE SOFTWARE.
 __author__ = u"Stephan Hügel"
 
 import numpy as np
+import numpy
 from rdp_p cimport (
     Array,
     simplify_rdp_ffi,
@@ -61,7 +62,10 @@ def simplify_coords(coords, double epsilon):
     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
-    cdef outgoing = np.copy(view).tolist()
+    if type(coords, numpy.ndarray):
+        outgoing = np.copy(view)
+    else:
+        outgoing = np.copy(view).tolist()
     drop_float_array(result)
     return outgoing
 
