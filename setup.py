@@ -35,7 +35,7 @@ class BinaryDistribution(Distribution):
         return False
 
 version=find_version("simplification/util.py")
-with open('README.rst') as f:
+with open('README.md') as f:
     readme = f.read()
 
 try:
