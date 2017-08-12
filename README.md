@@ -73,7 +73,7 @@ FFI and a [Rust binary](https://github.com/urschrei/rdp)
 I should think so.
 ### What does that mean
 Using `numpy` arrays for input and output, the library can be reasonably expected to process around 2500 1000-point LineStrings per second on a Core i7 or equivalent, for a 98%+ reduction in size.  
-A larger LineString, containing 200k+ points can be reduced to around 3k points (98.5%+) in around 50ms using RDP, vs around 150ms using Shapely.  
+A larger LineString, containing 200k+ points can be reduced to around 3k points (98.5%+) in around 50ms using RDP.
 
 This is based on a test harness available [here](benchmark_runner.py).
 #### Disclaimer
