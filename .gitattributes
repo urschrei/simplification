@@ -1,2 +1,4 @@
 *.sh linguist-language=Java
 ci/* linguist-vendored
+cutil.cpp linguist-vendored
+cutil.html linguist-vendored
