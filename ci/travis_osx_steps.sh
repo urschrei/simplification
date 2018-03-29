@@ -16,7 +16,7 @@ function before_install {
     source venv/bin/activate
     pip install --upgrade pip wheel
     pip install -r dev-requirements.txt
-    python ci/pre_install.py
+    python2 ci/pre_install.py
     pip install --install-option="--no-cython-compile" cython
     pip install python-coveralls
     pip install nosexcover
