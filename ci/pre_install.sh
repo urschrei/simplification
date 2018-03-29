@@ -11,9 +11,9 @@ fi
 if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     # install OSX
     brew unlink python
-    brew upgrade openssl
-    brew link --force openssl
-    brew install python@2 --with-brewed-openssl || brew link --overwrite python@2
+    # brew upgrade openssl
+    # brew link --force openssl
+    brew install python@2
     source ci/travis_osx_steps.sh
     before_install
  fi
