@@ -50,7 +50,8 @@ fdict = {'project': project, 'tagname': tagname}
 built = url.format(**fdict)
 print(("URL:", built))
 # Get compressed archive and extract binary (and lib, on Windows)
-release = requests.get(built, headers={'Authorization':'access_token %s' % ghkey}, stream=True)     
+print("Current Python version: %s " % sys.version)
+release = requests.get(built, headers={'Authorization':'access_token %s' % ghkey}, stream=True)
 fname = os.path.splitext(built)
 content = release.content
 so = io.BytesIO(content)
