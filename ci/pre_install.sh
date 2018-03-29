@@ -10,6 +10,7 @@ fi
 
 if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     # install OSX
+    brew unlink python
     brew install openssl
     brew link --force openssl
     brew install python@2 --with-brewed-openssl || brew link --overwrite python@2
