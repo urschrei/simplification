@@ -1,8 +1,10 @@
 environment:
   global:
-    PROJECT_NAME: simplification
+    REPO_DIR: simplification
+    PACKAGE_NAME: simplification
+    BUILD_COMMIT: master
+    BUILD_DEPENDS: "cython"
     TEST_DEPENDS: "nose"
-    CMD_IN_ENV: "cmd /E:ON /V:ON /C %APPVEYOR_BUILD_FOLDER%\\ci\\appveyor\\windows_sdk.cmd"
     TARBALL_KEY:
       secure: t4hDWCSZFjJWo7sENSHNyWu9ez50xX9mU02G4gy/IZ/+cttOPJYVd4CY7UgRekB8
 
@@ -17,12 +19,12 @@ environment:
       ZIP_VERSION: "cp27"
       PYTHON_ARCH: "64"
       TARGET: "x86_64-pc-windows-msvc"
-    - PYTHON: "C:\\Miniconda3"
+    - PYTHON: "C:\\Miniconda34"
       PYTHON_VERSION: "3.4"
       ZIP_VERSION: "cp34"
       PYTHON_ARCH: "32"
       TARGET: "i686-pc-windows-msvc"
-    - PYTHON: "C:\\Miniconda3-x64"
+    - PYTHON: "C:\\Miniconda34-x64"
       PYTHON_VERSION: "3.4"
       ZIP_VERSION: "cp34"
       PYTHON_ARCH: "64"
@@ -55,13 +57,9 @@ platform:
 
 matrix:
     fast_finish: true
-    allow_failures:
-      - PYTHON_ARCH: 32
 
 install:
     # Install miniconda and fix headers
-    - ps: .\\ci\\appveyor\\install.ps1
-    - ps: .\\ci\\appveyor\\missing-headers.ps1
     - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PYTHON%\Library\bin;%PATH%
     - SET PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
     - conda info
