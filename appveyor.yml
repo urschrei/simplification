@@ -89,15 +89,15 @@ test_script:
   # install from wheel
   - mkdir test
   - cd test
-  - pip install %PROJECT_NAME% --no-index -f C:/projects/%PROJECT_NAME%/dist
-  - nosetests -v %PROJECT_NAME%
+  - pip install %PACKAGE_NAME% --no-index -f C:/projects/%PACKAGE_NAME%/dist
+  - nosetests -v %PACKAGE_NAME%
 
 after_test:
-  - cd C:/projects/%PROJECT_NAME%
+  - cd C:/projects/%PACKAGE_NAME%
   # generate pyd in-place, so I can peer at its dependencies
   # this breaks on Python 3 bc the pyd is named cutil.cp3x-winxx
   # - python setup.py build_ext --inplace
-  # - dumpbin /dependents %PROJECT_NAME%/cutil.pyd > dumpbin_pyd.txt
+  # - dumpbin /dependents %PACKAGE_NAME%/cutil.pyd > dumpbin_pyd.txt
   # - appveyor PushArtifact dumpbin_pyd.txt
 
 artifacts:
@@ -106,10 +106,10 @@ artifacts:
 
 before_deploy:
   # Generate artifacts for release
-  - cd C:/projects/%PROJECT_NAME%/dist
+  - cd C:/projects/%PACKAGE_NAME%/dist
     # release zipfile will look like 'simplification-v1.2.3-x86_64-pc-windows-gnu'
-  - 7z a ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%ZIP_VERSION%.zip *
-  - appveyor PushArtifact ../%PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%ZIP_VERSION%.zip
+  - 7z a ../%PACKAGE_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%ZIP_VERSION%.zip *
+  - appveyor PushArtifact ../%PACKAGE_NAME%-%APPVEYOR_REPO_TAG_NAME%-%TARGET%-%ZIP_VERSION%.zip
 
 deploy:
   appveyor_repo_tag: true
