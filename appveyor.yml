@@ -60,6 +60,7 @@ matrix:
 
 install:
     # Install miniconda and fix headers
+    - ps: .\\ci\\appveyor\\missing-headers.ps1
     - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PYTHON%\Library\bin;%PATH%
     - SET PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
     - conda info
