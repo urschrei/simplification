@@ -27,6 +27,16 @@ releases = [
         },
     {
         'tag': tag,
+        'target': 'x86_64-apple-darwin-cp34',
+        'extension': 'tar.gz'
+        },
+    {
+        'tag': tag,
+        'target': 'x86_64-apple-darwin-cp35',
+        'extension': 'tar.gz'
+        },
+    {
+        'tag': tag,
         'target': 'x86_64-apple-darwin-cp36',
         'extension': 'tar.gz'
         },
