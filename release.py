@@ -27,7 +27,7 @@ releases = [
         },
     {
         'tag': tag,
-        'target': 'x86_64-apple-darwin-cp34',
+        'target': 'x86_64-apple-darwin-cp37',
         'extension': 'tar.gz'
         },
     {
