@@ -23,7 +23,7 @@ Please use a recent (>= 8.1.2) version of `pip`.
 ## Usage
 ```python
 import numpy as np
-from simplification.cutil import simplify_coords, simplify_coords_vw
+from simplification.cutil import simplify_coords, simplify_coords_vw, simplify_coords_vwp
 
 # Using Ramer–Douglas–Peucker
 coords = [
@@ -54,6 +54,10 @@ simplified_vw = simplify_coords_vw(coords, 30.0)
 ```
 
 Passing empty and/or 1-element lists will return them unaltered.
+
+## But I need to ensure that the resulting geometries are valid
+You can use the topology-preserving variant of `VW` for this: simplify_coords_vwp`. It's slower, but has a far greater likelihood of producing a valid geometry.
+
 
 ## But I Want to Simplify Polylines
 No problem; [Decode them to LineStrings](https://github.com/urschrei/pypolyline) first.

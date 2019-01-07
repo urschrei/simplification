@@ -52,6 +52,23 @@ Array simplify_rdp_ffi(Array coords, double precision);
 /// This function is unsafe because it accesses a raw pointer which could contain arbitrary data
 Array simplify_visvalingam_ffi(Array coords, double precision);
 
+/// FFI wrapper for [`topology-preserving visvalingam`](fn.visvalingam_preserve.html)
+///
+/// Callers must pass two arguments:
+///
+/// - a [Struct](struct.Array.html) with two fields:
+///     - `data`, a void pointer to an array of floating-point point coordinates: `[[1.0, 2.0], …]`
+///     - `len`, the length of the array being passed. Its type must be `size_t`
+/// - a double-precision `float` for the epsilon
+///
+/// Implementations calling this function **must** call [`drop_float_array`](fn.drop_float_array.html)
+/// with the returned `Array` pointer, in order to free the memory it allocates.
+///
+/// # Safety
+///
+/// This function is unsafe because it accesses a raw pointer which could contain arbitrary data
+Array simplify_visvalingamp_ffi(Array coords, double precision);
+
 /// Free Array memory which Rust has allocated across the FFI boundary by [`simplify_rdp_ffi`](fn.simplify_rdp_ffi.html)
 ///
 /// # Safety

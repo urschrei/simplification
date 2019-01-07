@@ -37,7 +37,7 @@ from ctypes import Structure, POINTER, c_void_p, c_size_t, c_double, cast, cdll
 import numpy as np
 
 __author__ = u"Stephan Hügel"
-__version__ = "0.3.9"
+__version__ = "0.4.0"
 
 file_path = os.path.dirname(__file__)
 
@@ -123,6 +123,25 @@ simplify_coords_vw.restype = _CoordResult
 simplify_coords_vw.errcheck = _void_array_to_nested_list
 simplify_coords_vw.__doc__ = """
     Simplify a LineString using the Visvalingam-Whyatt algorithm.
+    Input: a list of lat, lon coordinates, and an epsilon float
+    Output: a simplified list of coordinates
+
+    Example:
+    simplify_coords([
+        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],
+        30.0
+    )
+    Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]
+
+    """
+
+simplify_coords_vwp = lib.simplify_visvalingamp_ffi
+simplify_coords_vwp.argtypes = (_FFIArray, c_double)
+simplify_coords_vwp.restype = _CoordResult
+simplify_coords_vwp.errcheck = _void_array_to_nested_list
+simplify_coords_vwp.__doc__ = """
+    Simplify a LineString using a topology-preserving variant of
+    the Visvalingam-Whyatt algorithm.
     Input: a list of lat, lon coordinates, and an epsilon float
     Output: a simplified list of coordinates
 
