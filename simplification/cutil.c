@@ -5,31 +5,31 @@
     "distutils": {
         "depends": [
             "simplification/header.h"
-        ],
+        ], 
         "extra_compile_args": [
             "-O3"
-        ],
+        ], 
         "extra_link_args": [
-            "-Wl,-rpath",
+            "-Wl,-rpath", 
             "-Wl,@loader_path/"
-        ],
+        ], 
         "include_dirs": [
-            "./simplification",
-            "simplification",
-            "/Users/sth/dev/simplification/venv3/lib/python3.6/site-packages/numpy/core/include"
-        ],
-        "language": "c",
+            "./simplification", 
+            "simplification", 
+            "/Users/sth/dev/simplification/venv/lib/python2.7/site-packages/numpy/core/include"
+        ], 
+        "language": "c", 
         "libraries": [
             "rdp"
-        ],
+        ], 
         "library_dirs": [
             "simplification"
-        ],
-        "name": "simplification.cutil",
+        ], 
+        "name": "simplification.cutil", 
         "sources": [
             "simplification/cutil.pyx"
         ]
-    },
+    }, 
     "module_name": "simplification.cutil"
 }
 END: Cython Metadata */

@@ -286,6 +286,75 @@ body.cython { font-family: courier; font-size: 12; }
 .cython.score-252 {background-color: #FFFF09;}
 .cython.score-253 {background-color: #FFFF09;}
 .cython.score-254 {background-color: #FFFF09;}
+.cython .hll { background-color: #ffffcc }
+.cython  { background: #f8f8f8; }
+.cython .c { color: #408080; font-style: italic } /* Comment */
+.cython .err { border: 1px solid #FF0000 } /* Error */
+.cython .k { color: #008000; font-weight: bold } /* Keyword */
+.cython .o { color: #666666 } /* Operator */
+.cython .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cython .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cython .cp { color: #BC7A00 } /* Comment.Preproc */
+.cython .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.cython .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cython .cs { color: #408080; font-style: italic } /* Comment.Special */
+.cython .gd { color: #A00000 } /* Generic.Deleted */
+.cython .ge { font-style: italic } /* Generic.Emph */
+.cython .gr { color: #FF0000 } /* Generic.Error */
+.cython .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.cython .gi { color: #00A000 } /* Generic.Inserted */
+.cython .go { color: #888888 } /* Generic.Output */
+.cython .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.cython .gs { font-weight: bold } /* Generic.Strong */
+.cython .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.cython .gt { color: #0044DD } /* Generic.Traceback */
+.cython .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.cython .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.cython .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.cython .kp { color: #008000 } /* Keyword.Pseudo */
+.cython .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.cython .kt { color: #B00040 } /* Keyword.Type */
+.cython .m { color: #666666 } /* Literal.Number */
+.cython .s { color: #BA2121 } /* Literal.String */
+.cython .na { color: #7D9029 } /* Name.Attribute */
+.cython .nb { color: #008000 } /* Name.Builtin */
+.cython .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.cython .no { color: #880000 } /* Name.Constant */
+.cython .nd { color: #AA22FF } /* Name.Decorator */
+.cython .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.cython .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.cython .nf { color: #0000FF } /* Name.Function */
+.cython .nl { color: #A0A000 } /* Name.Label */
+.cython .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.cython .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.cython .nv { color: #19177C } /* Name.Variable */
+.cython .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.cython .w { color: #bbbbbb } /* Text.Whitespace */
+.cython .mb { color: #666666 } /* Literal.Number.Bin */
+.cython .mf { color: #666666 } /* Literal.Number.Float */
+.cython .mh { color: #666666 } /* Literal.Number.Hex */
+.cython .mi { color: #666666 } /* Literal.Number.Integer */
+.cython .mo { color: #666666 } /* Literal.Number.Oct */
+.cython .sa { color: #BA2121 } /* Literal.String.Affix */
+.cython .sb { color: #BA2121 } /* Literal.String.Backtick */
+.cython .sc { color: #BA2121 } /* Literal.String.Char */
+.cython .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.cython .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.cython .s2 { color: #BA2121 } /* Literal.String.Double */
+.cython .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.cython .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.cython .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.cython .sx { color: #008000 } /* Literal.String.Other */
+.cython .sr { color: #BB6688 } /* Literal.String.Regex */
+.cython .s1 { color: #BA2121 } /* Literal.String.Single */
+.cython .ss { color: #19177C } /* Literal.String.Symbol */
+.cython .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.cython .fm { color: #0000FF } /* Name.Function.Magic */
+.cython .vc { color: #19177C } /* Name.Variable.Class */
+.cython .vg { color: #19177C } /* Name.Variable.Global */
+.cython .vi { color: #19177C } /* Name.Variable.Instance */
+.cython .vm { color: #19177C } /* Name.Variable.Magic */
+.cython .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 </head>
 <body class="cython">
@@ -295,66 +364,66 @@ body.cython { font-family: courier; font-size: 12; }
     Click on a line that starts with a "<code>+</code>" to see the C code that Cython generated for it.
 </p>
 <p>Raw output: <a href="cutil.c">cutil.c</a></p>
-<div class="cython"><pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">001</span>: #cython: boundscheck=False</pre>
+<div class="cython"><pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">001</span>: <span class="c">#cython: boundscheck=False</span></pre>
 <pre class='cython code score-8 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyDict_NewPresized</span>(0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_test, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 1, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">002</span>: #cython: optimize.use_switch=True</pre>
-<pre class="cython line score-0">&#xA0;<span class="">003</span>: #cython: optimize.unpack_method_calls=True</pre>
-<pre class="cython line score-0">&#xA0;<span class="">004</span>: # -*- coding: utf-8 -*-</pre>
-<pre class="cython line score-0">&#xA0;<span class="">005</span>: """</pre>
-<pre class="cython line score-0">&#xA0;<span class="">006</span>: cutil.pyx</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">002</span>: <span class="c">#cython: optimize.use_switch=True</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">003</span>: <span class="c">#cython: optimize.unpack_method_calls=True</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">004</span>: <span class="c"># -*- coding: utf-8 -*-</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">005</span>: <span class="sd">&quot;&quot;&quot;</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">006</span>: <span class="sd">cutil.pyx</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">007</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">008</span>: Created by Stephan Hügel on 2016-08-08</pre>
+<pre class="cython line score-0">&#xA0;<span class="">008</span>: <span class="sd">Created by Stephan Hügel on 2016-08-08</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">009</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">010</span>: This file is part of simplification.</pre>
+<pre class="cython line score-0">&#xA0;<span class="">010</span>: <span class="sd">This file is part of simplification.</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">011</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">012</span>: The MIT License (MIT)</pre>
+<pre class="cython line score-0">&#xA0;<span class="">012</span>: <span class="sd">The MIT License (MIT)</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">013</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">014</span>: Copyright (c) 2016 Stephan Hügel</pre>
+<pre class="cython line score-0">&#xA0;<span class="">014</span>: <span class="sd">Copyright (c) 2016 Stephan Hügel</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">015</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">016</span>: Permission is hereby granted, free of charge, to any person obtaining a copy</pre>
-<pre class="cython line score-0">&#xA0;<span class="">017</span>: of this software and associated documentation files (the "Software"), to deal</pre>
-<pre class="cython line score-0">&#xA0;<span class="">018</span>: in the Software without restriction, including without limitation the rights</pre>
-<pre class="cython line score-0">&#xA0;<span class="">019</span>: to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</pre>
-<pre class="cython line score-0">&#xA0;<span class="">020</span>: copies of the Software, and to permit persons to whom the Software is</pre>
-<pre class="cython line score-0">&#xA0;<span class="">021</span>: furnished to do so, subject to the following conditions:</pre>
+<pre class="cython line score-0">&#xA0;<span class="">016</span>: <span class="sd">Permission is hereby granted, free of charge, to any person obtaining a copy</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">017</span>: <span class="sd">of this software and associated documentation files (the &quot;Software&quot;), to deal</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">018</span>: <span class="sd">in the Software without restriction, including without limitation the rights</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">019</span>: <span class="sd">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">020</span>: <span class="sd">copies of the Software, and to permit persons to whom the Software is</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">021</span>: <span class="sd">furnished to do so, subject to the following conditions:</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">022</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">023</span>: The above copyright notice and this permission notice shall be included in</pre>
-<pre class="cython line score-0">&#xA0;<span class="">024</span>: all copies or substantial portions of the Software.</pre>
+<pre class="cython line score-0">&#xA0;<span class="">023</span>: <span class="sd">The above copyright notice and this permission notice shall be included in</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">024</span>: <span class="sd">all copies or substantial portions of the Software.</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">025</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">026</span>: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</pre>
-<pre class="cython line score-0">&#xA0;<span class="">027</span>: IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">028</span>: FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</pre>
-<pre class="cython line score-0">&#xA0;<span class="">029</span>: AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</pre>
-<pre class="cython line score-0">&#xA0;<span class="">030</span>: LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">031</span>: OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</pre>
-<pre class="cython line score-0">&#xA0;<span class="">032</span>: THE SOFTWARE.</pre>
+<pre class="cython line score-0">&#xA0;<span class="">026</span>: <span class="sd">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">027</span>: <span class="sd">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">028</span>: <span class="sd">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">029</span>: <span class="sd">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">030</span>: <span class="sd">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">031</span>: <span class="sd">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">032</span>: <span class="sd">THE SOFTWARE.</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">033</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">034</span>: """</pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">035</span>: __author__ = u"Stephan Hügel"</pre>
+<pre class="cython line score-0">&#xA0;<span class="">034</span>: <span class="sd">&quot;&quot;&quot;</span></pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">035</span>: <span class="n">__author__</span> <span class="o">=</span> <span class="s">u&quot;Stephan Hügel&quot;</span></pre>
 <pre class='cython code score-5 '>  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_author, __pyx_kp_u_Stephan_Hgel) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 35, __pyx_L1_error)</span>
 </pre><pre class="cython line score-0">&#xA0;<span class="">036</span>: </pre>
-<pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">037</span>: import numpy as np</pre>
+<pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">037</span>: <span class="k">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span></pre>
 <pre class='cython code score-8 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_Import</span>(__pyx_n_s_numpy, 0, -1);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_np, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 37, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-</pre><pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">038</span>: import numpy</pre>
+</pre><pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">038</span>: <span class="k">import</span> <span class="nn">numpy</span></pre>
 <pre class='cython code score-8 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_Import</span>(__pyx_n_s_numpy, 0, -1);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_numpy, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 38, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">039</span>: from rdp_p cimport (</pre>
-<pre class="cython line score-0">&#xA0;<span class="">040</span>:     Array,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">041</span>:     simplify_rdp_ffi,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">042</span>:     simplify_visvalingam_ffi,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">043</span>:     simplify_visvalingamp_ffi,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">044</span>:     drop_float_array,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">045</span>:     )</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">039</span>: <span class="k">from</span> <span class="nn">rdp_p</span> <span class="k">cimport</span> <span class="p">(</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">040</span>:     <span class="n">Array</span><span class="p">,</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">041</span>:     <span class="n">simplify_rdp_ffi</span><span class="p">,</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">042</span>:     <span class="n">simplify_visvalingam_ffi</span><span class="p">,</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">043</span>:     <span class="n">simplify_visvalingamp_ffi</span><span class="p">,</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">044</span>:     <span class="n">drop_float_array</span><span class="p">,</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">045</span>:     <span class="p">)</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">046</span>: </pre>
-<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">047</span>: def simplify_coords(coords, double epsilon):</pre>
+<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">047</span>: <span class="k">def</span> <span class="nf">simplify_coords</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
 <pre class='cython code score-56 '>/* Python wrapper */
 static PyObject *__pyx_pw_14simplification_5cutil_1simplify_coords(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static char __pyx_doc_14simplification_5cutil_simplify_coords[] = "\n    Simplify a LineString using the Douglas-Ramer-Peucker algorithm.\n    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)\n    Output: a simplified list of coordinates\n\n    Example: simplify_coords([\n        [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],\n        1.0)\n    Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]\n\n    ";
@@ -458,29 +527,29 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_simplify_coords, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 47, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_codeobj__25 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_simplification_cutil_pyx, __pyx_n_s_simplify_coords, 47, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 47, __pyx_L1_error)</span>
-</pre><pre class="cython line score-0">&#xA0;<span class="">048</span>:     """</pre>
-<pre class="cython line score-0">&#xA0;<span class="">049</span>:     Simplify a LineString using the Douglas-Ramer-Peucker algorithm.</pre>
-<pre class="cython line score-0">&#xA0;<span class="">050</span>:     Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)</pre>
-<pre class="cython line score-0">&#xA0;<span class="">051</span>:     Output: a simplified list of coordinates</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">048</span>:     <span class="sd">&quot;&quot;&quot;</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">049</span>: <span class="sd">    Simplify a LineString using the Douglas-Ramer-Peucker algorithm.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">050</span>: <span class="sd">    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">051</span>: <span class="sd">    Output: a simplified list of coordinates</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">052</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">053</span>:     Example: simplify_coords([</pre>
-<pre class="cython line score-0">&#xA0;<span class="">054</span>:         [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],</pre>
-<pre class="cython line score-0">&#xA0;<span class="">055</span>:         1.0)</pre>
-<pre class="cython line score-0">&#xA0;<span class="">056</span>:     Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]</pre>
+<pre class="cython line score-0">&#xA0;<span class="">053</span>: <span class="sd">    Example: simplify_coords([</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">054</span>: <span class="sd">        [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">055</span>: <span class="sd">        1.0)</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">056</span>: <span class="sd">    Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">057</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">058</span>:     """</pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">059</span>:     if not len(coords):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">058</span>: <span class="sd">    &quot;&quot;&quot;</span></pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">059</span>:     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">):</span></pre>
 <pre class='cython code score-5 '>  __pyx_t_1 = <span class='py_c_api'>PyObject_Length</span>(__pyx_v_coords);<span class='error_goto'> if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 59, __pyx_L1_error)</span>
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 /* … */
   }
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">060</span>:         return coords</pre>
+</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">060</span>:         <span class="k">return</span> <span class="n">coords</span></pre>
 <pre class='cython code score-2 '>    <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
     <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_coords);
     __pyx_r = __pyx_v_coords;
     goto __pyx_L0;
-</pre><pre class="cython line score-33" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">061</span>:     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)</pre>
+</pre><pre class="cython line score-33" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">061</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:,::</span><span class="mf">1</span><span class="p">]</span> <span class="n">ncoords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span></pre>
 <pre class='cython code score-33 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_3, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
   __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_3, __pyx_n_s_array);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)</span>
@@ -510,20 +579,20 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   __pyx_v_ncoords = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
-</pre><pre class="cython line score-0">&#xA0;<span class="">062</span>:     cdef Array coords_ffi</pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">063</span>:     coords_ffi.data = &lt;void*&gt;&amp;ncoords[0, 0]</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">062</span>:     <span class="k">cdef</span> <span class="kt">Array</span> <span class="nf">coords_ffi</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">063</span>:     <span class="n">coords_ffi</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">void</span><span class="o">*&gt;&amp;</span><span class="n">ncoords</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>  __pyx_t_9 = 0;
   __pyx_t_10 = 0;
   if (__pyx_t_9 &lt; 0) __pyx_t_9 += __pyx_v_ncoords.shape[0];
   if (__pyx_t_10 &lt; 0) __pyx_t_10 += __pyx_v_ncoords.shape[1];
   __pyx_v_coords_ffi.data = ((void *)(&amp;(*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_ncoords.data + __pyx_t_9 * __pyx_v_ncoords.strides[0]) )) + __pyx_t_10)) )))));
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">064</span>:     coords_ffi.len = ncoords.shape[0]</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">064</span>:     <span class="n">coords_ffi</span><span class="o">.</span><span class="n">len</span> <span class="o">=</span> <span class="n">ncoords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_coords_ffi.len = (__pyx_v_ncoords.shape[0]);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">065</span>:     cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">065</span>:     <span class="k">cdef</span> <span class="kt">Array</span> <span class="nf">result</span> <span class="o">=</span> <span class="n">simplify_rdp_ffi</span><span class="p">(</span><span class="n">coords_ffi</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_result = simplify_rdp_ffi(__pyx_v_coords_ffi, __pyx_v_epsilon);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">066</span>:     cdef double* incoming_ptr = &lt;double*&gt;(result.data)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">066</span>:     <span class="k">cdef</span> <span class="kt">double</span>* <span class="nf">incoming_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">double</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_incoming_ptr = ((double *)__pyx_v_result.data);
-</pre><pre class="cython line score-16" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">067</span>:     cdef double[:, ::1] view = &lt;double[:result.len,:2:1]&gt;incoming_ptr</pre>
+</pre><pre class="cython line score-16" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">067</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:,</span> <span class="p">::</span><span class="mf">1</span><span class="p">]</span> <span class="n">view</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">double</span><span class="p">[:</span><span class="n">result</span><span class="o">.</span><span class="n">len</span><span class="p">,:</span><span class="mf">2</span><span class="p">:</span><span class="mf">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">incoming_ptr</span></pre>
 <pre class='cython code score-16 '>  if (!__pyx_v_incoming_ptr) {
     <span class='py_c_api'>PyErr_SetString</span>(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
     <span class='error_goto'>__PYX_ERR(0, 67, __pyx_L1_error)</span>
@@ -543,7 +612,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
   __pyx_v_view = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
-</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">068</span>:     if isinstance(coords, numpy.ndarray):</pre>
+</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">068</span>:     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span></pre>
 <pre class='cython code score-11 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_5, __pyx_n_s_numpy);<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 68, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
   __pyx_t_7 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_5, __pyx_n_s_ndarray);<span class='error_goto'> if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 68, __pyx_L1_error)</span>
@@ -556,7 +625,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
 /* … */
     goto __pyx_L4;
   }
-</pre><pre class="cython line score-20" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">069</span>:         outgoing = np.copy(view)</pre>
+</pre><pre class="cython line score-20" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">069</span>:         <span class="n">outgoing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">view</span><span class="p">)</span></pre>
 <pre class='cython code score-20 '>    <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_5, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)</span>
     <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
     __pyx_t_3 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_5, __pyx_n_s_copy);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)</span>
@@ -582,8 +651,8 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
     <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_outgoing = __pyx_t_7;
     __pyx_t_7 = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">070</span>:     else:</pre>
-<pre class="cython line score-39" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">071</span>:         outgoing = np.copy(view).tolist()</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">070</span>:     <span class="k">else</span><span class="p">:</span></pre>
+<pre class="cython line score-39" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">071</span>:         <span class="n">outgoing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">view</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span></pre>
 <pre class='cython code score-39 '>  /*else*/ {
     <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_5, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)</span>
     <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
@@ -630,15 +699,15 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
     __pyx_t_7 = 0;
   }
   __pyx_L4:;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">072</span>:     drop_float_array(result)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">072</span>:     <span class="n">drop_float_array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  drop_float_array(__pyx_v_result);
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">073</span>:     return outgoing</pre>
+</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">073</span>:     <span class="k">return</span> <span class="n">outgoing</span></pre>
 <pre class='cython code score-2 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_outgoing);
   __pyx_r = __pyx_v_outgoing;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">074</span>: </pre>
-<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">075</span>: def simplify_coords_vw(coords, double epsilon):</pre>
+<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">075</span>: <span class="k">def</span> <span class="nf">simplify_coords_vw</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
 <pre class='cython code score-56 '>/* Python wrapper */
 static PyObject *__pyx_pw_14simplification_5cutil_3simplify_coords_vw(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static char __pyx_doc_14simplification_5cutil_2simplify_coords_vw[] = "\n    Simplify a LineString using the Visvalingam-Whyatt algorithm.\n    Input: a list of lat, lon coordinates, and an epsilon float\n    Output: a simplified list of coordinates\n\n    Example:\n    simplify_coords([\n        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],\n        30.0\n    )\n    Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]\n\n    ";
@@ -742,31 +811,31 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_simplify_coords_vw, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 75, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_codeobj__27 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_simplification_cutil_pyx, __pyx_n_s_simplify_coords_vw, 75, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 75, __pyx_L1_error)</span>
-</pre><pre class="cython line score-0">&#xA0;<span class="">076</span>:     """</pre>
-<pre class="cython line score-0">&#xA0;<span class="">077</span>:     Simplify a LineString using the Visvalingam-Whyatt algorithm.</pre>
-<pre class="cython line score-0">&#xA0;<span class="">078</span>:     Input: a list of lat, lon coordinates, and an epsilon float</pre>
-<pre class="cython line score-0">&#xA0;<span class="">079</span>:     Output: a simplified list of coordinates</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">076</span>:     <span class="sd">&quot;&quot;&quot;</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">077</span>: <span class="sd">    Simplify a LineString using the Visvalingam-Whyatt algorithm.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">078</span>: <span class="sd">    Input: a list of lat, lon coordinates, and an epsilon float</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">079</span>: <span class="sd">    Output: a simplified list of coordinates</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">080</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">081</span>:     Example:</pre>
-<pre class="cython line score-0">&#xA0;<span class="">082</span>:     simplify_coords([</pre>
-<pre class="cython line score-0">&#xA0;<span class="">083</span>:         [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],</pre>
-<pre class="cython line score-0">&#xA0;<span class="">084</span>:         30.0</pre>
-<pre class="cython line score-0">&#xA0;<span class="">085</span>:     )</pre>
-<pre class="cython line score-0">&#xA0;<span class="">086</span>:     Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]</pre>
+<pre class="cython line score-0">&#xA0;<span class="">081</span>: <span class="sd">    Example:</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">082</span>: <span class="sd">    simplify_coords([</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">083</span>: <span class="sd">        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">084</span>: <span class="sd">        30.0</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">085</span>: <span class="sd">    )</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">086</span>: <span class="sd">    Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">087</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">088</span>:     """</pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">089</span>:     if not len(coords):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">088</span>: <span class="sd">    &quot;&quot;&quot;</span></pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">089</span>:     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">):</span></pre>
 <pre class='cython code score-5 '>  __pyx_t_1 = <span class='py_c_api'>PyObject_Length</span>(__pyx_v_coords);<span class='error_goto'> if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 89, __pyx_L1_error)</span>
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 /* … */
   }
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">090</span>:         return coords</pre>
+</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">090</span>:         <span class="k">return</span> <span class="n">coords</span></pre>
 <pre class='cython code score-2 '>    <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
     <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_coords);
     __pyx_r = __pyx_v_coords;
     goto __pyx_L0;
-</pre><pre class="cython line score-33" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">091</span>:     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)</pre>
+</pre><pre class="cython line score-33" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">091</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:,::</span><span class="mf">1</span><span class="p">]</span> <span class="n">ncoords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span></pre>
 <pre class='cython code score-33 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_3, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
   __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_3, __pyx_n_s_array);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
@@ -796,20 +865,20 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
   __pyx_v_ncoords = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
-</pre><pre class="cython line score-0">&#xA0;<span class="">092</span>:     cdef Array coords_ffi</pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">093</span>:     coords_ffi.data = &lt;void*&gt;&amp;ncoords[0, 0]</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">092</span>:     <span class="k">cdef</span> <span class="kt">Array</span> <span class="nf">coords_ffi</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">093</span>:     <span class="n">coords_ffi</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">void</span><span class="o">*&gt;&amp;</span><span class="n">ncoords</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>  __pyx_t_9 = 0;
   __pyx_t_10 = 0;
   if (__pyx_t_9 &lt; 0) __pyx_t_9 += __pyx_v_ncoords.shape[0];
   if (__pyx_t_10 &lt; 0) __pyx_t_10 += __pyx_v_ncoords.shape[1];
   __pyx_v_coords_ffi.data = ((void *)(&amp;(*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_ncoords.data + __pyx_t_9 * __pyx_v_ncoords.strides[0]) )) + __pyx_t_10)) )))));
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">094</span>:     coords_ffi.len = ncoords.shape[0]</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">094</span>:     <span class="n">coords_ffi</span><span class="o">.</span><span class="n">len</span> <span class="o">=</span> <span class="n">ncoords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_coords_ffi.len = (__pyx_v_ncoords.shape[0]);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">095</span>:     cdef Array result = simplify_visvalingam_ffi(coords_ffi, epsilon)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">095</span>:     <span class="k">cdef</span> <span class="kt">Array</span> <span class="nf">result</span> <span class="o">=</span> <span class="n">simplify_visvalingam_ffi</span><span class="p">(</span><span class="n">coords_ffi</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_result = simplify_visvalingam_ffi(__pyx_v_coords_ffi, __pyx_v_epsilon);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">096</span>:     cdef double* incoming_ptr = &lt;double*&gt;(result.data)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">096</span>:     <span class="k">cdef</span> <span class="kt">double</span>* <span class="nf">incoming_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">double</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_incoming_ptr = ((double *)__pyx_v_result.data);
-</pre><pre class="cython line score-16" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">097</span>:     cdef double[:, ::1] view = &lt;double[:result.len,:2:1]&gt;incoming_ptr</pre>
+</pre><pre class="cython line score-16" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">097</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:,</span> <span class="p">::</span><span class="mf">1</span><span class="p">]</span> <span class="n">view</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">double</span><span class="p">[:</span><span class="n">result</span><span class="o">.</span><span class="n">len</span><span class="p">,:</span><span class="mf">2</span><span class="p">:</span><span class="mf">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">incoming_ptr</span></pre>
 <pre class='cython code score-16 '>  if (!__pyx_v_incoming_ptr) {
     <span class='py_c_api'>PyErr_SetString</span>(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
     <span class='error_goto'>__PYX_ERR(0, 97, __pyx_L1_error)</span>
@@ -829,7 +898,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
   __pyx_v_view = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
-</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">098</span>:     if isinstance(coords, numpy.ndarray):</pre>
+</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">098</span>:     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span></pre>
 <pre class='cython code score-11 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_5, __pyx_n_s_numpy);<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
   __pyx_t_7 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_5, __pyx_n_s_ndarray);<span class='error_goto'> if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
@@ -842,7 +911,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
 /* … */
     goto __pyx_L4;
   }
-</pre><pre class="cython line score-20" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">099</span>:         outgoing = np.copy(view)</pre>
+</pre><pre class="cython line score-20" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">099</span>:         <span class="n">outgoing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">view</span><span class="p">)</span></pre>
 <pre class='cython code score-20 '>    <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_5, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 99, __pyx_L1_error)</span>
     <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
     __pyx_t_3 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_5, __pyx_n_s_copy);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)</span>
@@ -868,8 +937,8 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
     <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_outgoing = __pyx_t_7;
     __pyx_t_7 = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">100</span>:     else:</pre>
-<pre class="cython line score-39" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">101</span>:         outgoing = np.copy(view).tolist()</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">100</span>:     <span class="k">else</span><span class="p">:</span></pre>
+<pre class="cython line score-39" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">101</span>:         <span class="n">outgoing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">view</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span></pre>
 <pre class='cython code score-39 '>  /*else*/ {
     <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_5, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)</span>
     <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
@@ -916,15 +985,15 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_vw(CYTHON_UNU
     __pyx_t_7 = 0;
   }
   __pyx_L4:;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">102</span>:     drop_float_array(result)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">102</span>:     <span class="n">drop_float_array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  drop_float_array(__pyx_v_result);
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">103</span>:     return outgoing</pre>
+</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">103</span>:     <span class="k">return</span> <span class="n">outgoing</span></pre>
 <pre class='cython code score-2 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_outgoing);
   __pyx_r = __pyx_v_outgoing;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">104</span>: </pre>
-<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">105</span>: def simplify_coords_vwp(coords, double epsilon):</pre>
+<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">105</span>: <span class="k">def</span> <span class="nf">simplify_coords_vwp</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
 <pre class='cython code score-56 '>/* Python wrapper */
 static PyObject *__pyx_pw_14simplification_5cutil_5simplify_coords_vwp(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static char __pyx_doc_14simplification_5cutil_4simplify_coords_vwp[] = "\n    Simplify a LineString using a topology-preserving variant of the\n    Visvalingam-Whyatt algorithm.\n    Input: a list of lat, lon coordinates, and an epsilon float\n    Output: a simplified list of coordinates\n\n    Example:\n    simplify_coords([\n        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],\n        30.0\n    )\n    Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]\n\n    ";
@@ -1028,32 +1097,32 @@ static PyObject *__pyx_pf_14simplification_5cutil_4simplify_coords_vwp(CYTHON_UN
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_simplify_coords_vwp, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 105, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_codeobj__29 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_simplification_cutil_pyx, __pyx_n_s_simplify_coords_vwp, 105, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 105, __pyx_L1_error)</span>
-</pre><pre class="cython line score-0">&#xA0;<span class="">106</span>:     """</pre>
-<pre class="cython line score-0">&#xA0;<span class="">107</span>:     Simplify a LineString using a topology-preserving variant of the</pre>
-<pre class="cython line score-0">&#xA0;<span class="">108</span>:     Visvalingam-Whyatt algorithm.</pre>
-<pre class="cython line score-0">&#xA0;<span class="">109</span>:     Input: a list of lat, lon coordinates, and an epsilon float</pre>
-<pre class="cython line score-0">&#xA0;<span class="">110</span>:     Output: a simplified list of coordinates</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">106</span>:     <span class="sd">&quot;&quot;&quot;</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">107</span>: <span class="sd">    Simplify a LineString using a topology-preserving variant of the</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">108</span>: <span class="sd">    Visvalingam-Whyatt algorithm.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">109</span>: <span class="sd">    Input: a list of lat, lon coordinates, and an epsilon float</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">110</span>: <span class="sd">    Output: a simplified list of coordinates</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">111</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">112</span>:     Example:</pre>
-<pre class="cython line score-0">&#xA0;<span class="">113</span>:     simplify_coords([</pre>
-<pre class="cython line score-0">&#xA0;<span class="">114</span>:         [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],</pre>
-<pre class="cython line score-0">&#xA0;<span class="">115</span>:         30.0</pre>
-<pre class="cython line score-0">&#xA0;<span class="">116</span>:     )</pre>
-<pre class="cython line score-0">&#xA0;<span class="">117</span>:     Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]</pre>
+<pre class="cython line score-0">&#xA0;<span class="">112</span>: <span class="sd">    Example:</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">113</span>: <span class="sd">    simplify_coords([</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">114</span>: <span class="sd">        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">115</span>: <span class="sd">        30.0</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">116</span>: <span class="sd">    )</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">117</span>: <span class="sd">    Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">118</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">119</span>:     """</pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">120</span>:     if not len(coords):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">119</span>: <span class="sd">    &quot;&quot;&quot;</span></pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">120</span>:     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">):</span></pre>
 <pre class='cython code score-5 '>  __pyx_t_1 = <span class='py_c_api'>PyObject_Length</span>(__pyx_v_coords);<span class='error_goto'> if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 120, __pyx_L1_error)</span>
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 /* … */
   }
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">121</span>:         return coords</pre>
+</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">121</span>:         <span class="k">return</span> <span class="n">coords</span></pre>
 <pre class='cython code score-2 '>    <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
     <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_coords);
     __pyx_r = __pyx_v_coords;
     goto __pyx_L0;
-</pre><pre class="cython line score-33" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">122</span>:     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)</pre>
+</pre><pre class="cython line score-33" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">122</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:,::</span><span class="mf">1</span><span class="p">]</span> <span class="n">ncoords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span></pre>
 <pre class='cython code score-33 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_3, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
   __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_3, __pyx_n_s_array);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)</span>
@@ -1083,20 +1152,20 @@ static PyObject *__pyx_pf_14simplification_5cutil_4simplify_coords_vwp(CYTHON_UN
   __pyx_v_ncoords = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
-</pre><pre class="cython line score-0">&#xA0;<span class="">123</span>:     cdef Array coords_ffi</pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">124</span>:     coords_ffi.data = &lt;void*&gt;&amp;ncoords[0, 0]</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">123</span>:     <span class="k">cdef</span> <span class="kt">Array</span> <span class="nf">coords_ffi</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">124</span>:     <span class="n">coords_ffi</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">void</span><span class="o">*&gt;&amp;</span><span class="n">ncoords</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>  __pyx_t_9 = 0;
   __pyx_t_10 = 0;
   if (__pyx_t_9 &lt; 0) __pyx_t_9 += __pyx_v_ncoords.shape[0];
   if (__pyx_t_10 &lt; 0) __pyx_t_10 += __pyx_v_ncoords.shape[1];
   __pyx_v_coords_ffi.data = ((void *)(&amp;(*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_ncoords.data + __pyx_t_9 * __pyx_v_ncoords.strides[0]) )) + __pyx_t_10)) )))));
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">125</span>:     coords_ffi.len = ncoords.shape[0]</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">125</span>:     <span class="n">coords_ffi</span><span class="o">.</span><span class="n">len</span> <span class="o">=</span> <span class="n">ncoords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_coords_ffi.len = (__pyx_v_ncoords.shape[0]);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">126</span>:     cdef Array result = simplify_visvalingamp_ffi(coords_ffi, epsilon)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">126</span>:     <span class="k">cdef</span> <span class="kt">Array</span> <span class="nf">result</span> <span class="o">=</span> <span class="n">simplify_visvalingamp_ffi</span><span class="p">(</span><span class="n">coords_ffi</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_result = simplify_visvalingamp_ffi(__pyx_v_coords_ffi, __pyx_v_epsilon);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">127</span>:     cdef double* incoming_ptr = &lt;double*&gt;(result.data)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">127</span>:     <span class="k">cdef</span> <span class="kt">double</span>* <span class="nf">incoming_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">double</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_incoming_ptr = ((double *)__pyx_v_result.data);
-</pre><pre class="cython line score-16" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">128</span>:     cdef double[:, ::1] view = &lt;double[:result.len,:2:1]&gt;incoming_ptr</pre>
+</pre><pre class="cython line score-16" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">128</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:,</span> <span class="p">::</span><span class="mf">1</span><span class="p">]</span> <span class="n">view</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">double</span><span class="p">[:</span><span class="n">result</span><span class="o">.</span><span class="n">len</span><span class="p">,:</span><span class="mf">2</span><span class="p">:</span><span class="mf">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">incoming_ptr</span></pre>
 <pre class='cython code score-16 '>  if (!__pyx_v_incoming_ptr) {
     <span class='py_c_api'>PyErr_SetString</span>(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
     <span class='error_goto'>__PYX_ERR(0, 128, __pyx_L1_error)</span>
@@ -1116,7 +1185,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_4simplify_coords_vwp(CYTHON_UN
   __pyx_v_view = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
-</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">129</span>:     if isinstance(coords, numpy.ndarray):</pre>
+</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">129</span>:     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span></pre>
 <pre class='cython code score-11 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_5, __pyx_n_s_numpy);<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 129, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
   __pyx_t_7 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_5, __pyx_n_s_ndarray);<span class='error_goto'> if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 129, __pyx_L1_error)</span>
@@ -1129,7 +1198,7 @@ static PyObject *__pyx_pf_14simplification_5cutil_4simplify_coords_vwp(CYTHON_UN
 /* … */
     goto __pyx_L4;
   }
-</pre><pre class="cython line score-20" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">130</span>:         outgoing = np.copy(view)</pre>
+</pre><pre class="cython line score-20" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">130</span>:         <span class="n">outgoing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">view</span><span class="p">)</span></pre>
 <pre class='cython code score-20 '>    <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_5, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)</span>
     <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
     __pyx_t_3 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_5, __pyx_n_s_copy);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)</span>
@@ -1155,8 +1224,8 @@ static PyObject *__pyx_pf_14simplification_5cutil_4simplify_coords_vwp(CYTHON_UN
     <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_outgoing = __pyx_t_7;
     __pyx_t_7 = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">131</span>:     else:</pre>
-<pre class="cython line score-39" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">132</span>:         outgoing = np.copy(view).tolist()</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">131</span>:     <span class="k">else</span><span class="p">:</span></pre>
+<pre class="cython line score-39" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">132</span>:         <span class="n">outgoing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">view</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span></pre>
 <pre class='cython code score-39 '>  /*else*/ {
     <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_5, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)</span>
     <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
@@ -1203,9 +1272,9 @@ static PyObject *__pyx_pf_14simplification_5cutil_4simplify_coords_vwp(CYTHON_UN
     __pyx_t_7 = 0;
   }
   __pyx_L4:;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">133</span>:     drop_float_array(result)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">133</span>:     <span class="n">drop_float_array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  drop_float_array(__pyx_v_result);
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">134</span>:     return outgoing</pre>
+</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">134</span>:     <span class="k">return</span> <span class="n">outgoing</span></pre>
 <pre class='cython code score-2 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_outgoing);
   __pyx_r = __pyx_v_outgoing;
