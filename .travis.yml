@@ -7,6 +7,11 @@ env:
     # LATEST_TAG
     - secure: nvXdikXqNjrI9jHVCctGy2WWJgj34x+ohrMF/hd6tEcpOJ9vDOEv5nZw2l+ojN1ylK5IJdHPEK5jIQAOh2xwtgFhKEiJ/lV42+fOnv2FnwvP+T5v/ApaTPbYxAWMX6bviQJM7CZmRZ5efrfCkt0jZkkKKHNlIEYpoCFNGnunNTOVJ0HAlwh4YtnwoX2K7fNhlFrCUxZdWgRkP3KbsqDN5IUTCBvTL1+8eTO1n1EGzcvWEM+1E8Ow9KkmhZPc1oEwXolkwhUUJE9viDwtqHAino9w82/P+bQlJhAq+giDrEELoUEb9gRl0VLBOP/TcOLHRRAy6kKFnBUPgYWveHfwzesZxHTmUmpcog4TGI1bd7JARocZQolUQ6ZelhzWOFIUoUNyoh8+f/AEvglg4TAnmzqRQ/B9Whqp87MH6Pppoa+liQgmK83M5ZSQCOZINfTlcSwolgpIBpZA4a0b030XBMlcDnuwnA4TVHEpYB12ANqw5bXngWCkNSkiXXLd17Z3LHuk5zqghZ4XR8l88BYhM0eBDh/Ps8/bNERdnHkt9bu2+ayo3pMpkKkK9e7omJ07Hae2w5b/5LJjeOhyXT4qz6LK8RJPqF2IHbRvNR/jeqFMQF/QduAFZqNcwzdmEKdSJe3ZOevD3vA8wGYibOtaYVtF9l5lA8AMhaGvKjKdJm8=
 
+addons:
+  homebrew:
+    packages:
+    - python@2
+
 matrix:
   include:
     - sudo: required
