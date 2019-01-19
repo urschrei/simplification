@@ -39,6 +39,16 @@ environment:
       ZIP_VERSION: "cp36"
       PYTHON_ARCH: "64"
       TARGET: "x86_64-pc-windows-msvc"
+    - PYTHON: "C:\\Miniconda37-x64"
+      PYTHON_VERSION: "3.7"
+      ZIP_VERSION: "cp37"
+      PYTHON_ARCH: "64"
+      TARGET: "x86_64-pc-windows-msvc"
+    - PYTHON: "C:\\Miniconda37"
+      PYTHON_VERSION: "3.7"
+      ZIP_VERSION: "cp37"
+      PYTHON_ARCH: "32"
+      TARGET: "i686-pc-windows-msvc"
 
 # We always use a 64-bit machine, but can build x86 distributions
 # with the TARGET_ARCH variable.

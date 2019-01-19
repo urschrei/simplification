@@ -32,7 +32,7 @@ matrix:
       sudo: required
     - os: osx
       osx_image: xcode10.1
-      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.7.0 RELEASE_PYTHON_VERSION=-cp37
+      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.7.2 RELEASE_PYTHON_VERSION=-cp37
       sudo: required
 
 before_install:
