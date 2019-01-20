@@ -56,7 +56,7 @@ simplified_vw = simplify_coords_vw(coords, 30.0)
 Passing empty and/or 1-element lists will return them unaltered.
 
 ## But I need to ensure that the resulting geometries are valid
-You can use the topology-preserving variant of `VW` for this: simplify_coords_vwp`. It's slower, but has a far greater likelihood of producing a valid geometry.
+You can use the topology-preserving variant of `VW` for this: `simplify_coords_vwp`. It's slower, but has a far greater likelihood of producing a valid geometry.
 
 
 ## But I Want to Simplify Polylines
