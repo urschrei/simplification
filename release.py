@@ -48,6 +48,11 @@ releases = [
         },
     {
         'tag': tag,
+        'target': 'i686-pc-windows-msvc-cp37',
+        'extension': 'zip'
+        },
+    {
+        'tag': tag,
         'target': 'i686-pc-windows-msvc-cp27',
         'extension': 'zip'
         },
