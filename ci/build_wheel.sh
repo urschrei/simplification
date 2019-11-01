@@ -9,7 +9,7 @@ PYBINS=(
   # "/opt/python/cp35-cp35m/bin"
   "/opt/python/cp36-cp36m/bin"
   "/opt/python/cp37-cp37m/bin"
-  "/opt/python/cp38-cp38m/bin"
+  "/opt/python/cp38-cp38/bin"
   )
 
 mkdir -p /io/wheelhouse
