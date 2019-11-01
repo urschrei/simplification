@@ -128,7 +128,7 @@ function install_macpython {
     # sets $PYTHON_EXE variable to python executable
     local py_version=$(fill_pyver $1)
     local inst_ext=$(pyinst_ext_for_version $py_version)
-    local py_inst=python-$py_version-macosx10.6.$inst_ext
+    local py_inst=python-$py_version-macosx10.9.$inst_ext
     local inst_path=$DOWNLOADS_SDIR/$py_inst
     mkdir -p $DOWNLOADS_SDIR
     curl $MACPYTHON_URL/$py_version/${py_inst} > $inst_path
