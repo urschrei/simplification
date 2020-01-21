@@ -10,15 +10,15 @@ WORKING_SDIR=working
 
 # As of 7 April 2016 - latest Python of this version with binary
 # download.
-LATEST_2p7=2.7.14
+LATEST_2p7=2.7.17
 # LATEST_2p6=2.6.6
 # LATEST_3p2=3.2.5
 # LATEST_3p3=3.3.5
 LATEST_3p4=3.4.4
-LATEST_3p5=3.5.1
+LATEST_3p5=3.5.9
 LATEST_3p6=3.6.5
-LATEST_3p7=3.7.5
-LATEST_3p8=3.8.0
+LATEST_3p7=3.7.6
+LATEST_3p8=3.8.1
 
 # Get our own location on this filesystem
 # MULTIBUILD_DIR=$(dirname "${BASH_SOURCE[0]}")
