@@ -24,10 +24,6 @@ matrix:
       sudo: required
     - os: osx
       osx_image: xcode11.2
-      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.5.9 RELEASE_PYTHON_VERSION=-cp35
-      sudo: required
-    - os: osx
-      osx_image: xcode11.2
       env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.6.5 RELEASE_PYTHON_VERSION=-cp36
       sudo: required
     - os: osx
