@@ -43,6 +43,11 @@ releases = [
         },
     {
         'tag': tag,
+        'target': 'x86_64-apple-darwin-cp38',
+        'extension': 'tar.gz'
+        },
+    {
+        'tag': tag,
         'target': 'x86_64-pc-windows-msvc-cp37',
         'extension': 'zip'
         },
