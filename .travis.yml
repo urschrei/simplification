@@ -20,11 +20,11 @@ matrix:
         - docker
     - os: osx
       osx_image: xcode11.2
-      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=2.7.14 RELEASE_PYTHON_VERSION=-cp27
+      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=2.7.17 RELEASE_PYTHON_VERSION=-cp27
       sudo: required
     - os: osx
       osx_image: xcode11.2
-      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.5.1 RELEASE_PYTHON_VERSION=-cp35
+      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.5.9 RELEASE_PYTHON_VERSION=-cp35
       sudo: required
     - os: osx
       osx_image: xcode11.2
@@ -32,11 +32,11 @@ matrix:
       sudo: required
     - os: osx
       osx_image: xcode11.2
-      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.7.5 RELEASE_PYTHON_VERSION=-cp37
+      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.7.6 RELEASE_PYTHON_VERSION=-cp37
       sudo: required
     - os: osx
       osx_image: xcode11.2
-      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.8.0 RELEASE_PYTHON_VERSION=-cp38
+      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.8.1 RELEASE_PYTHON_VERSION=-cp38
       sudo: required
 
 before_install:
