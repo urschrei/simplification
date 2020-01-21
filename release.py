@@ -14,93 +14,32 @@ import zipfile
 import requests
 from subprocess import check_output
 from multiprocessing import Pool
-from urlparse import urlsplit
+from urllib.parse import urlsplit
 
-path = 'dist/'
+path = "dist/"
 url = "https://github.com/urschrei/simplification/releases/download/{tag}/simplification-{tag}-{target}.{extension}"
 # get latest tag
-tag = check_output(["git", "describe", "--abbrev=0", "--tags"]).strip()
+tag = check_output(["git", "describe", "--abbrev=0", "--tags"]).strip().decode()
+
 releases = [
-    {
-        'tag': tag,
-        'target': 'x86_64-apple-darwin-cp27',
-        'extension': 'tar.gz'
-        },
-    {
-        'tag': tag,
-        'target': 'x86_64-apple-darwin-cp35',
-        'extension': 'tar.gz'
-        },
-    {
-        'tag': tag,
-        'target': 'x86_64-apple-darwin-cp36',
-        'extension': 'tar.gz'
-        },
-    {
-        'tag': tag,
-        'target': 'x86_64-apple-darwin-cp37',
-        'extension': 'tar.gz'
-        },
-    {
-        'tag': tag,
-        'target': 'x86_64-apple-darwin-cp38',
-        'extension': 'tar.gz'
-        },
-    {
-        'tag': tag,
-        'target': 'x86_64-pc-windows-msvc-cp37',
-        'extension': 'zip'
-        },
-    {
-        'tag': tag,
-        'target': 'i686-pc-windows-msvc-cp37',
-        'extension': 'zip'
-        },
-    {
-        'tag': tag,
-        'target': 'i686-pc-windows-msvc-cp27',
-        'extension': 'zip'
-        },
-    {
-        'tag': tag,
-        'target': 'x86_64-unknown-linux-gnu',
-        'extension': 'tar.gz'
-        },
-    {
-        'tag': tag,
-        'target': 'x86_64-pc-windows-msvc-cp27',
-        'extension': 'zip'
-        },
-    {
-        'tag': tag,
-        'target': 'i686-pc-windows-msvc-cp27',
-        'extension': 'zip'
-        },
-    {
-        'tag': tag,
-        'target': 'x86_64-pc-windows-msvc-cp35',
-        'extension': 'zip'
-        },
-    {
-        'tag': tag,
-        'target': 'i686-pc-windows-msvc-cp35',
-        'extension': 'zip'
-        },
-    {
-        'tag': tag,
-        'target': 'x86_64-pc-windows-msvc-cp36',
-        'extension': 'zip'
-        },
-    {
-        'tag': tag,
-        'target': 'i686-pc-windows-msvc-cp36',
-        'extension': 'zip'
-        },
+    {"tag": tag, "target": "x86_64-apple-darwin-cp27", "extension": "tar.gz"},
+    {"tag": tag, "target": "x86_64-apple-darwin-cp36", "extension": "tar.gz"},
+    {"tag": tag, "target": "x86_64-apple-darwin-cp37", "extension": "tar.gz"},
+    {"tag": tag, "target": "x86_64-apple-darwin-cp38", "extension": "tar.gz"},
+    {"tag": tag, "target": "x86_64-pc-windows-msvc-cp37", "extension": "zip"},
+    {"tag": tag, "target": "i686-pc-windows-msvc-cp37", "extension": "zip"},
+    {"tag": tag, "target": "i686-pc-windows-msvc-cp27", "extension": "zip"},
+    {"tag": tag, "target": "x86_64-unknown-linux-gnu", "extension": "tar.gz"},
+    {"tag": tag, "target": "x86_64-pc-windows-msvc-cp27", "extension": "zip"},
+    {"tag": tag, "target": "i686-pc-windows-msvc-cp27", "extension": "zip"},
+    {"tag": tag, "target": "x86_64-pc-windows-msvc-cp36", "extension": "zip"},
+    {"tag": tag, "target": "i686-pc-windows-msvc-cp36", "extension": "zip"},
 ]
+
 
 def retrieve(url):
     sess = requests.Session()
-    print("Getting %s" % urlsplit(url).path.split('/')[-1])
+    print("Getting %s" % urlsplit(url).path.split("/")[-1])
     retrieved = sess.get(url, stream=True)
     # don't continue if something's wrong
     retrieved.raise_for_status()
@@ -111,6 +50,7 @@ def retrieve(url):
         # it's a tar
         tar = tarfile.open(mode="r:gz", fileobj=io.BytesIO(retrieved.content))
         tar.extractall(path)
+
 
 urls = (url.format(**release) for release in releases)
 
