@@ -8,33 +8,24 @@ from simplification.cutil import simplify_coords as csimplify_coords
 from simplification.cutil import simplify_coords_vw as csimplify_coords_vw
 from simplification.cutil import simplify_coords_vwp as csimplify_coords_vwp
 
+
 class PolylineTests(unittest.TestCase):
     """ Tests for simplification """
 
     def setUp(self):
         """ make these available to all tests """
-        self.coords = [
-            [0.0, 0.0], [5.0, 4.0],
-            [11.0, 5.5], [17.3, 3.2],
-            [27.8, 0.1]
-        ]
+        self.coords = [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]]
 
-        self.coordsvw = [
-            [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]
-        ]
+        self.coordsvw = [[5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]]
 
-        self.result = [
-            [0.0, 0.0], [5.0, 4.0],
-            [11.0, 5.5], [27.8, 0.1]
-        ]
+        self.result = [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
 
-        self.resultvw = [
-            [5.0, 2.0], [7.0, 25.0], [10.0, 10.0]
-        ]
+        self.resultvw = [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]
 
         self.single = [[5.0, 4.0]]
 
         self.empty = []
+
     def testSimplify_rdp_numpy(self):
         """ Test that numpy arrays can be consumed and returned """
         npcoords = np.array(self.coords)
