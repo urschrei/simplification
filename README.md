@@ -67,7 +67,17 @@ Passing empty and/or 1-element lists will return them unaltered.
 - `cutil.simplify_coords_idx`
 - `cutil.simplify_coords_vw_idx`
 
-Which return the __indices__ of the simplified input LineString.
+The values returned by these functions are the **retained** indices. In order to use them as e.g. a [masked array](https://docs.scipy.org/doc/numpy/reference/maskedarray.generic.html#what-is-a-masked-array) in Numpy, something like the following will work:
+
+    import numpy as np
+    from simplification.cutil import simplify_coords_idx
+
+    # assume an array of coordinates: orig
+    simplified = simplify_coords_idx(orig, 1.0)
+    mask_array = np.ones(len(orig), dtype=int)
+    mask_array[simplified] = 0
+    # mask_array now has 0 values for indices to retain
+
 
 ## But I need to ensure that the resulting geometries are valid
 You can use the topology-preserving variant of `VW` for this: `simplify_coords_vwp`. It's slower, but has a far greater likelihood of producing a valid geometry.
