@@ -4,4 +4,3 @@ wheel==0.33.6
 requests[security]
 numpy
 cython
-auditwheel
