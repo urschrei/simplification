@@ -74,9 +74,8 @@ The values returned by these functions are the **retained** indices. In order to
 
     # assume an array of coordinates: orig
     simplified = simplify_coords_idx(orig, 1.0)
-    mask_array = np.ones(len(orig), dtype=int)
-    mask_array[simplified] = 0
-    # mask_array now has 0 values for indices to retain
+    # build new geometry using only retained coordinates
+    orig_simplified = orig[simplified]
 
 
 ## But I need to ensure that the resulting geometries are valid
