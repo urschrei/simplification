@@ -73,8 +73,10 @@ def simplify_coords(coords, double epsilon):
         outgoing = np.copy(view)
     else:
         outgoing = np.copy(view).tolist()
-    drop_float_array(result)
-    return outgoing
+    try:
+        return outgoing
+    finally:
+        drop_float_array(result)
 
 def simplify_coords_idx(coords, double epsilon):
     """
@@ -101,8 +103,10 @@ def simplify_coords_idx(coords, double epsilon):
         outgoing = np.copy(view)
     else:
         outgoing = np.copy(view).tolist()
-    drop_usize_array(result)
-    return outgoing
+    try:
+        return outgoing
+    finally:
+        drop_usize_array(result)
 
 def simplify_coords_vw(coords, double epsilon):
     """
@@ -131,8 +135,10 @@ def simplify_coords_vw(coords, double epsilon):
         outgoing = np.copy(view)
     else:
         outgoing = np.copy(view).tolist()
-    drop_float_array(result)
-    return outgoing
+    try:
+        return outgoing
+    finally:
+        drop_float_array(result)
 
 def simplify_coords_vw_idx(coords, double epsilon):
     """
@@ -159,8 +165,10 @@ def simplify_coords_vw_idx(coords, double epsilon):
         outgoing = np.copy(view)
     else:
         outgoing = np.copy(view).tolist()
-    drop_usize_array(result)
-    return outgoing
+    try:
+        return outgoing
+    finally:
+        drop_usize_array(result)
 
 def simplify_coords_vwp(coords, double epsilon):
     """
@@ -183,6 +191,7 @@ def simplify_coords_vwp(coords, double epsilon):
     cdef Array coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
+
     cdef Array result = simplify_visvalingamp_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
@@ -190,5 +199,7 @@ def simplify_coords_vwp(coords, double epsilon):
         outgoing = np.copy(view)
     else:
         outgoing = np.copy(view).tolist()
-    drop_float_array(result)
-    return outgoing
+    try:
+        return outgoing
+    finally:
+        drop_float_array(result)
