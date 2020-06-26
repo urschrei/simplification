@@ -14,31 +14,37 @@ environment:
       ZIP_VERSION: "cp27"
       PYTHON_ARCH: "32"
       TARGET: "i686-pc-windows-msvc"
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - PYTHON: "C:\\Miniconda-x64"
       PYTHON_VERSION: "2.7"
       ZIP_VERSION: "cp27"
       PYTHON_ARCH: "64"
       TARGET: "x86_64-pc-windows-msvc"
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - PYTHON: "C:\\Miniconda36"
       PYTHON_VERSION: "3.6"
       ZIP_VERSION: "cp36"
       PYTHON_ARCH: "32"
       TARGET: "i686-pc-windows-msvc"
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - PYTHON: "C:\\Miniconda36-x64"
       PYTHON_VERSION: "3.6"
       ZIP_VERSION: "cp36"
       PYTHON_ARCH: "64"
       TARGET: "x86_64-pc-windows-msvc"
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - PYTHON: "C:\\Miniconda37-x64"
       PYTHON_VERSION: "3.7"
       ZIP_VERSION: "cp37"
       PYTHON_ARCH: "64"
       TARGET: "x86_64-pc-windows-msvc"
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - PYTHON: "C:\\Miniconda37"
       PYTHON_VERSION: "3.7"
       ZIP_VERSION: "cp37"
       PYTHON_ARCH: "32"
       TARGET: "i686-pc-windows-msvc"
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - PYTHON: "C:\\Python38-x64"
       MINICONDA: "C:\\Miniconda38-x64"
       PYTHON_VERSION: "3.8"
@@ -64,9 +70,10 @@ matrix:
 
 install:
     # Install miniconda and fix headers
-    - ps: .\\ci\\appveyor\\missing-headers.ps1
+    # - ps: .\\ci\\appveyor\\missing-headers.ps1
     - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PYTHON%\Library\bin;%PATH%
-    - SET PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
+    - SET PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio 19.0\VC\bin
+    - SET PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%
     - conda info
 
     # Check that we have the expected version and architecture for Python
