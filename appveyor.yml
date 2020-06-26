@@ -39,18 +39,20 @@ environment:
       ZIP_VERSION: "cp37"
       PYTHON_ARCH: "32"
       TARGET: "i686-pc-windows-msvc"
-    - PYTHON: "C:\\Miniconda38-x64"
-      CONDA: "C:\\Miniconda37"
+    - PYTHON: "C:\\Python38-x64"
+      MINICONDA: "C:\\Miniconda38-x64"
       PYTHON_VERSION: "3.8"
       ZIP_VERSION: "cp38"
       PYTHON_ARCH: "64"
       TARGET: "x86_64-pc-windows-msvc"
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - PYTHON: "C:\\Miniconda38"
-      CONDA: "C:\\Miniconda37"
+      MINICONDA: "C:\\Miniconda38"
       PYTHON_VERSION: "3.8"
       ZIP_VERSION: "cp38"
       PYTHON_ARCH: "32"
       TARGET: "i686-pc-windows-msvc"
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
 
 # We always use a 64-bit machine, but can build x86 distributions
 # with the TARGET_ARCH variable.
