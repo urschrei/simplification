@@ -69,7 +69,8 @@ install:
     - python -c "import struct; print(struct.calcsize('P') * 8)"
 
 build_script:
-  - "%PYTHON%\\Scripts\\activate"
+  # - "%PYTHON%\\Scripts\\activate"
+  - cmd: activate
   # Install build requirements
   - conda install -q --yes --file dev-requirements.txt
   # get correct Rust DLL
@@ -78,8 +79,8 @@ build_script:
   - "%CMD_IN_ENV% pip wheel . -w dist/ --no-deps"
   - ls dist/*
   # dump rdp dll dependencies
-  - dumpbin /dependents simplification/rdp.dll > dumpbin_rdp_dll.txt
-  - appveyor PushArtifact dumpbin_rdp_dll.txt
+  # - dumpbin /dependents simplification/rdp.dll > dumpbin_rdp_dll.txt
+  # - appveyor PushArtifact dumpbin_rdp_dll.txt
 
 test_script:
   # create test env
