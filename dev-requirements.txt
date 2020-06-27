@@ -1,4 +1,3 @@
-mkl-service
 setuptools
 nose
 wheel==0.33.6
