@@ -40,7 +40,7 @@ environment:
       PYTHON_ARCH: "64"
       TARGET: "x86_64-pc-windows-msvc"
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-    - PYTHON: "C:\\Miniconda38"
+    - PYTHON: "C:\\Python38"
       MINICONDA: "C:\\Miniconda38"
       PYTHON_VERSION: "3.8"
       ZIP_VERSION: "cp38"
