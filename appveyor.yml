@@ -69,7 +69,7 @@ install:
     - python -c "import struct; print(struct.calcsize('P') * 8)"
 
 build_script:
-  - %PYTHON%\\Scripts\\activate
+  - "%PYTHON%\\Scripts\\activate"
   # Install build requirements
   - conda install -q --yes --file dev-requirements.txt
   # get correct Rust DLL
