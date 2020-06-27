@@ -62,15 +62,14 @@ install:
     - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PYTHON%\Library\bin;%PATH%
     - SET PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio 19.0\VC\bin
     - SET PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%
-    - conda info
 
     # Check that we have the expected version and architecture for Python
     - python --version
     - python -c "import struct; print(struct.calcsize('P') * 8)"
 
 build_script:
-  # - "%PYTHON%\\Scripts\\activate"
   - cmd: activate
+  - conda info
   # Install build requirements
   - conda install -q --yes --file dev-requirements.txt
   # get correct Rust DLL
