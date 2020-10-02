@@ -27,6 +27,7 @@ releases = [
     {"tag": tag, "target": "x86_64-apple-darwin-cp37", "extension": "tar.gz"},
     {"tag": tag, "target": "x86_64-apple-darwin-cp38", "extension": "tar.gz"},
     {"tag": tag, "target": "x86_64-pc-windows-msvc-cp37", "extension": "zip"},
+    {"tag": tag, "target": "x86_64-pc-windows-msvc-cp38", "extension": "zip"},
     {"tag": tag, "target": "i686-pc-windows-msvc-cp37", "extension": "zip"},
     {"tag": tag, "target": "i686-pc-windows-msvc-cp27", "extension": "zip"},
     {"tag": tag, "target": "x86_64-unknown-linux-gnu", "extension": "tar.gz"},
