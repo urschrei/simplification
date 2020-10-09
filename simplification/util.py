@@ -37,7 +37,7 @@ from ctypes import Structure, POINTER, c_void_p, c_size_t, c_double, cast, cdll
 import numpy as np
 
 __author__ = u"Stephan Hügel"
-__version__ = "0.5.2"
+__version__ = "0.5.3"
 
 file_path = os.path.dirname(__file__)
 
