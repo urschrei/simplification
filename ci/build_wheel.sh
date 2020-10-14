@@ -14,13 +14,12 @@ PYBINS=(
 
 mkdir -p /io/wheelhouse
 # ls -la /io
-# ls -la /io/simplification
+
 echo $LD_LIBRARY_PATH
 mkdir -p /usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export DOCKER_BUILD=true
 cp /io/simplification/librdp.so /usr/local/lib
-# cp /io/simplification/cutil.so /usr/local/lib
 
 # Compile wheels
 for PYBIN in ${PYBINS[@]}; do
@@ -28,13 +27,28 @@ for PYBIN in ${PYBINS[@]}; do
     ${PYBIN}/pip wheel /io/ -w wheelhouse/ --no-deps
 done
 
-# Bundle external shared libraries into the wheels
+# output possibly-renamed wheels to new dir
+mkdir /io/wheelhouse_r
+
+# Show dependencies, then bundle external shared libraries into the wheels
 for whl in wheelhouse/*.whl; do
-    auditwheel repair $whl -w /io/wheelhouse/
+    auditwheel show $whl
+    auditwheel repair $whl -w /io/wheelhouse_r/
+done
+
+# remove the 2010 wheels, since we're manylinux1-compatible
+rm wheelhouse/*.whl
+rm /io/wheelhouse_r/*20*
+cp /io/wheelhouse_r/*.whl wheelhouse
+FILES=wheelhouse/*
+for f in $FILES
+do
+  auditwheel show $f
 done
 
 # Install packages and test
 for PYBIN in ${PYBINS[@]}; do
-    ${PYBIN}/pip install simplification --no-index -f /io/wheelhouse
+    ${PYBIN}/pip install simplification --no-index -f wheelhouse
     (cd $HOME; ${PYBIN}/nosetests simplification)
 done
+cp wheelhouse/* /io/wheelhouse
