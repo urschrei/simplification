@@ -1,6 +1,7 @@
 setuptools
 nose
-wheel==0.33.6
+wheel
 requests[security]
 numpy
 cython
+auditwheel
