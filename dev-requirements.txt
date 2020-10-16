@@ -4,4 +4,3 @@ wheel
 requests[security]
 numpy
 cython
-auditwheel
