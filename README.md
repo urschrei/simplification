@@ -10,9 +10,8 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 Please use a recent (>= 8.1.2) version of `pip`.
 
 ### Supported Python Versions
-- Python 2.7
-- Python 3.6
 - Python 3.7
+- Python 3.8
 - Python 3.8 (Linux and macOS only)
 
 ### Supported Platforms
