@@ -121,4 +121,4 @@ deploy:
 branches:
   only:
     - master
-    - /v\d\.\d\.\d/
+    - /v\d+\.\d+\.\d+/
