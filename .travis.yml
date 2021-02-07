@@ -34,6 +34,10 @@ matrix:
       osx_image: xcode11.4
       env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.8.1 RELEASE_PYTHON_VERSION=-cp38
       sudo: required
+    - os: osx
+      osx_image: xcode11.4
+      env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.8.1 RELEASE_PYTHON_VERSION=-cp39
+      sudo: required
 
 before_install:
   - echo $LATEST_TAG > key.txt
