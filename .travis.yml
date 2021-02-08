@@ -19,15 +19,15 @@ matrix:
       services:
         - docker
     - os: osx
-      osx_image: xcode11.4
+      osx_image: xcode12.1
       env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.7.6 RELEASE_PYTHON_VERSION=-cp37
       sudo: required
     - os: osx
-      osx_image: xcode11.4
+      osx_image: xcode12.1
       env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.8.1 RELEASE_PYTHON_VERSION=-cp38
       sudo: required
     - os: osx
-      osx_image: xcode11.4
+      osx_image: xcode12.1
       env: TARGET=x86_64-apple-darwin TRAVIS_PYTHON_VERSION=3.9.1 RELEASE_PYTHON_VERSION=-cp39
       sudo: required
 
