@@ -9,12 +9,6 @@ environment:
       secure: t4hDWCSZFjJWo7sENSHNyWu9ez50xX9mU02G4gy/IZ/+cttOPJYVd4CY7UgRekB8
 
   matrix:
-    - PYTHON: "C:\\Miniconda36-x64"
-      PYTHON_VERSION: "3.6"
-      ZIP_VERSION: "cp36"
-      PYTHON_ARCH: "64"
-      TARGET: "x86_64-pc-windows-msvc"
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - PYTHON: "C:\\Miniconda37-x64"
       PYTHON_VERSION: "3.7"
       ZIP_VERSION: "cp37"

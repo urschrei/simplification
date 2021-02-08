@@ -10,13 +10,13 @@ WORKING_SDIR=working
 
 # As of 7 April 2016 - latest Python of this version with binary
 # download.
-LATEST_2p7=2.7.18
+# LATEST_2p7=2.7.18
 # LATEST_2p6=2.6.6
 # LATEST_3p2=3.2.5
 # LATEST_3p3=3.3.5
-LATEST_3p4=3.4.4
-LATEST_3p5=3.5.10
-LATEST_3p6=3.6.12
+# LATEST_3p4=3.4.4
+# LATEST_3p5=3.5.10
+# LATEST_3p6=3.6.12
 LATEST_3p7=3.7.9
 LATEST_3p8=3.8.7
 LATEST_3p9=3.9.1
