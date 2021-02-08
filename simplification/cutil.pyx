@@ -48,7 +48,7 @@ from rdp_p cimport (
     drop_usize_array,
     )
 
-def simplify_coords(coords, double epsilon):
+cpdef simplify_coords(coords, double epsilon):
     """
     Simplify a LineString using the Douglas-Ramer-Peucker algorithm.
     Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)
@@ -78,7 +78,7 @@ def simplify_coords(coords, double epsilon):
     finally:
         drop_float_array(result)
 
-def simplify_coords_idx(coords, double epsilon):
+cpdef simplify_coords_idx(coords, double epsilon):
     """
     Simplify a LineString using the Douglas-Ramer-Peucker algorithm.
     Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)
@@ -108,7 +108,7 @@ def simplify_coords_idx(coords, double epsilon):
     finally:
         drop_usize_array(result)
 
-def simplify_coords_vw(coords, double epsilon):
+cpdef simplify_coords_vw(coords, double epsilon):
     """
     Simplify a LineString using the Visvalingam-Whyatt algorithm.
     Input: a list of lat, lon coordinates, and an epsilon float
@@ -140,7 +140,7 @@ def simplify_coords_vw(coords, double epsilon):
     finally:
         drop_float_array(result)
 
-def simplify_coords_vw_idx(coords, double epsilon):
+cpdef simplify_coords_vw_idx(coords, double epsilon):
     """
     Simplify a LineString using the Visvalingam-Whyatt algorithm.
     Input: a list of lat, lon coordinates, and an epsilon float
@@ -170,7 +170,7 @@ def simplify_coords_vw_idx(coords, double epsilon):
     finally:
         drop_usize_array(result)
 
-def simplify_coords_vwp(coords, double epsilon):
+cpdef simplify_coords_vwp(coords, double epsilon):
     """
     Simplify a LineString using a topology-preserving variant of the
     Visvalingam-Whyatt algorithm.

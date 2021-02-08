@@ -432,11 +432,42 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding: 0 5px
 <pre class="cython line score-0">&#xA0;<span class="">048</span>:     <span class="n">drop_usize_array</span><span class="p">,</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">049</span>:     <span class="p">)</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">050</span>: </pre>
-<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">051</span>: <span class="k">def</span> <span class="nf">simplify_coords</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
-<pre class='cython code score-56 '>/* Python wrapper */
+<pre class="cython line score-47" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">051</span>: <span class="k">cpdef</span> <span class="nf">simplify_coords</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
+<pre class='cython code score-47 '>static PyObject *__pyx_pw_14simplification_5cutil_1simplify_coords(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_14simplification_5cutil_simplify_coords(PyObject *__pyx_v_coords, double __pyx_v_epsilon, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
+  struct Array __pyx_v_coords_ffi;
+  struct Array __pyx_v_result;
+  double *__pyx_v_incoming_ptr;
+  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_outgoing = NULL;
+  PyObject *__pyx_r = NULL;
+  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
+  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords", 0);
+/* … */
+  /* function exit code */
+  __pyx_L1_error:;
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
+  <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
+  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
+  return __pyx_r;
+}
+
+/* Python wrapper */
 static PyObject *__pyx_pw_14simplification_5cutil_1simplify_coords(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static char __pyx_doc_14simplification_5cutil_simplify_coords[] = "\n    Simplify a LineString using the Douglas-Ramer-Peucker algorithm.\n    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)\n    Output: a simplified list of coordinates\n\n    Example: simplify_coords([\n        [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],\n        1.0)\n    Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]\n\n    ";
-static PyMethodDef __pyx_mdef_14simplification_5cutil_1simplify_coords = {"simplify_coords", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14simplification_5cutil_1simplify_coords, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14simplification_5cutil_simplify_coords};
 static PyObject *__pyx_pw_14simplification_5cutil_1simplify_coords(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_coords = 0;
   double __pyx_v_epsilon;
@@ -500,45 +531,26 @@ static PyObject *__pyx_pw_14simplification_5cutil_1simplify_coords(PyObject *__p
 }
 
 static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_coords, double __pyx_v_epsilon) {
-  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
-  struct Array __pyx_v_coords_ffi;
-  struct Array __pyx_v_result;
-  double *__pyx_v_incoming_ptr;
-  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_v_outgoing = NULL;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords", 0);
-/* … */
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
+  __pyx_t_1 = __pyx_f_14simplification_5cutil_simplify_coords(__pyx_v_coords, __pyx_v_epsilon, 0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)</span>
+  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
   /* function exit code */
   __pyx_L1_error:;
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
   <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-/* … */
-  __pyx_tuple__24 = <span class='py_c_api'>PyTuple_Pack</span>(8, __pyx_n_s_coords, __pyx_n_s_epsilon, __pyx_n_s_ncoords, __pyx_n_s_coords_ffi, __pyx_n_s_result, __pyx_n_s_incoming_ptr, __pyx_n_s_view, __pyx_n_s_outgoing);<span class='error_goto'> if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 51, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__24);
-  <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__24);
-/* … */
-  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_14simplification_5cutil_1simplify_coords, NULL, __pyx_n_s_simplification_cutil);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_simplify_coords, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 51, __pyx_L1_error)</span>
-  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_codeobj__25 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_simplification_cutil_pyx, __pyx_n_s_simplify_coords, 51, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 51, __pyx_L1_error)</span>
 </pre><pre class="cython line score-0">&#xA0;<span class="">052</span>:     <span class="sd">&quot;&quot;&quot;</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">053</span>: <span class="sd">    Simplify a LineString using the Douglas-Ramer-Peucker algorithm.</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">054</span>: <span class="sd">    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)</span></pre>
@@ -731,11 +743,43 @@ static PyObject *__pyx_pf_14simplification_5cutil_simplify_coords(CYTHON_UNUSED 
     }
   }
 </pre><pre class="cython line score-0">&#xA0;<span class="">080</span>: </pre>
-<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">081</span>: <span class="k">def</span> <span class="nf">simplify_coords_idx</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
-<pre class='cython code score-56 '>/* Python wrapper */
+<pre class="cython line score-47" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">081</span>: <span class="k">cpdef</span> <span class="nf">simplify_coords_idx</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
+<pre class='cython code score-47 '>static PyObject *__pyx_pw_14simplification_5cutil_3simplify_coords_idx(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_14simplification_5cutil_simplify_coords_idx(PyObject *__pyx_v_coords, double __pyx_v_epsilon, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
+  struct Array __pyx_v_coords_ffi;
+  struct Array __pyx_v_result;
+  size_t *__pyx_v_incoming_ptr;
+  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_outgoing = NULL;
+  PyObject *__pyx_r = NULL;
+  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
+  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords_idx", 0);
+/* … */
+  /* function exit code */
+  __pyx_L1_error:;
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_12, 1);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords_idx", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
+  <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
+  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
+  return __pyx_r;
+}
+
+/* Python wrapper */
 static PyObject *__pyx_pw_14simplification_5cutil_3simplify_coords_idx(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static char __pyx_doc_14simplification_5cutil_2simplify_coords_idx[] = "\n    Simplify a LineString using the Douglas-Ramer-Peucker algorithm.\n    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)\n    Output: a simplified list of coordinate indices\n\n    Example: simplify_coords([\n        [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],\n        1.0)\n    Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]\n\n    ";
-static PyMethodDef __pyx_mdef_14simplification_5cutil_3simplify_coords_idx = {"simplify_coords_idx", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14simplification_5cutil_3simplify_coords_idx, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14simplification_5cutil_2simplify_coords_idx};
 static PyObject *__pyx_pw_14simplification_5cutil_3simplify_coords_idx(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_coords = 0;
   double __pyx_v_epsilon;
@@ -799,46 +843,26 @@ static PyObject *__pyx_pw_14simplification_5cutil_3simplify_coords_idx(PyObject 
 }
 
 static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_idx(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_coords, double __pyx_v_epsilon) {
-  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
-  struct Array __pyx_v_coords_ffi;
-  struct Array __pyx_v_result;
-  size_t *__pyx_v_incoming_ptr;
-  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_v_outgoing = NULL;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords_idx", 0);
-/* … */
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
+  __pyx_t_1 = __pyx_f_14simplification_5cutil_simplify_coords_idx(__pyx_v_coords, __pyx_v_epsilon, 0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)</span>
+  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
   /* function exit code */
   __pyx_L1_error:;
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_12, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
   <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords_idx", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-/* … */
-  __pyx_tuple__26 = <span class='py_c_api'>PyTuple_Pack</span>(8, __pyx_n_s_coords, __pyx_n_s_epsilon, __pyx_n_s_ncoords, __pyx_n_s_coords_ffi, __pyx_n_s_result, __pyx_n_s_incoming_ptr, __pyx_n_s_view, __pyx_n_s_outgoing);<span class='error_goto'> if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 81, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__26);
-  <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__26);
-/* … */
-  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_14simplification_5cutil_3simplify_coords_idx, NULL, __pyx_n_s_simplification_cutil);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_simplify_coords_idx, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 81, __pyx_L1_error)</span>
-  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_codeobj__27 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_simplification_cutil_pyx, __pyx_n_s_simplify_coords_idx, 81, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 81, __pyx_L1_error)</span>
 </pre><pre class="cython line score-0">&#xA0;<span class="">082</span>:     <span class="sd">&quot;&quot;&quot;</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">083</span>: <span class="sd">    Simplify a LineString using the Douglas-Ramer-Peucker algorithm.</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">084</span>: <span class="sd">    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)</span></pre>
@@ -1031,11 +1055,42 @@ static PyObject *__pyx_pf_14simplification_5cutil_2simplify_coords_idx(CYTHON_UN
     }
   }
 </pre><pre class="cython line score-0">&#xA0;<span class="">110</span>: </pre>
-<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">111</span>: <span class="k">def</span> <span class="nf">simplify_coords_vw</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
-<pre class='cython code score-56 '>/* Python wrapper */
+<pre class="cython line score-47" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">111</span>: <span class="k">cpdef</span> <span class="nf">simplify_coords_vw</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
+<pre class='cython code score-47 '>static PyObject *__pyx_pw_14simplification_5cutil_5simplify_coords_vw(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_14simplification_5cutil_simplify_coords_vw(PyObject *__pyx_v_coords, double __pyx_v_epsilon, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
+  struct Array __pyx_v_coords_ffi;
+  struct Array __pyx_v_result;
+  double *__pyx_v_incoming_ptr;
+  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_outgoing = NULL;
+  PyObject *__pyx_r = NULL;
+  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
+  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords_vw", 0);
+/* … */
+  /* function exit code */
+  __pyx_L1_error:;
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords_vw", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
+  <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
+  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
+  return __pyx_r;
+}
+
+/* Python wrapper */
 static PyObject *__pyx_pw_14simplification_5cutil_5simplify_coords_vw(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static char __pyx_doc_14simplification_5cutil_4simplify_coords_vw[] = "\n    Simplify a LineString using the Visvalingam-Whyatt algorithm.\n    Input: a list of lat, lon coordinates, and an epsilon float\n    Output: a simplified list of coordinates\n\n    Example:\n    simplify_coords([\n        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],\n        30.0\n    )\n    Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]\n\n    ";
-static PyMethodDef __pyx_mdef_14simplification_5cutil_5simplify_coords_vw = {"simplify_coords_vw", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14simplification_5cutil_5simplify_coords_vw, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14simplification_5cutil_4simplify_coords_vw};
 static PyObject *__pyx_pw_14simplification_5cutil_5simplify_coords_vw(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_coords = 0;
   double __pyx_v_epsilon;
@@ -1099,45 +1154,26 @@ static PyObject *__pyx_pw_14simplification_5cutil_5simplify_coords_vw(PyObject *
 }
 
 static PyObject *__pyx_pf_14simplification_5cutil_4simplify_coords_vw(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_coords, double __pyx_v_epsilon) {
-  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
-  struct Array __pyx_v_coords_ffi;
-  struct Array __pyx_v_result;
-  double *__pyx_v_incoming_ptr;
-  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_v_outgoing = NULL;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords_vw", 0);
-/* … */
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
+  __pyx_t_1 = __pyx_f_14simplification_5cutil_simplify_coords_vw(__pyx_v_coords, __pyx_v_epsilon, 0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)</span>
+  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
   /* function exit code */
   __pyx_L1_error:;
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
   <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords_vw", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-/* … */
-  __pyx_tuple__28 = <span class='py_c_api'>PyTuple_Pack</span>(8, __pyx_n_s_coords, __pyx_n_s_epsilon, __pyx_n_s_ncoords, __pyx_n_s_coords_ffi, __pyx_n_s_result, __pyx_n_s_incoming_ptr, __pyx_n_s_view, __pyx_n_s_outgoing);<span class='error_goto'> if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 111, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__28);
-  <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__28);
-/* … */
-  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_14simplification_5cutil_5simplify_coords_vw, NULL, __pyx_n_s_simplification_cutil);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_simplify_coords_vw, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 111, __pyx_L1_error)</span>
-  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_codeobj__29 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_simplification_cutil_pyx, __pyx_n_s_simplify_coords_vw, 111, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 111, __pyx_L1_error)</span>
 </pre><pre class="cython line score-0">&#xA0;<span class="">112</span>:     <span class="sd">&quot;&quot;&quot;</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">113</span>: <span class="sd">    Simplify a LineString using the Visvalingam-Whyatt algorithm.</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">114</span>: <span class="sd">    Input: a list of lat, lon coordinates, and an epsilon float</span></pre>
@@ -1332,11 +1368,43 @@ static PyObject *__pyx_pf_14simplification_5cutil_4simplify_coords_vw(CYTHON_UNU
     }
   }
 </pre><pre class="cython line score-0">&#xA0;<span class="">142</span>: </pre>
-<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">143</span>: <span class="k">def</span> <span class="nf">simplify_coords_vw_idx</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
-<pre class='cython code score-56 '>/* Python wrapper */
+<pre class="cython line score-47" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">143</span>: <span class="k">cpdef</span> <span class="nf">simplify_coords_vw_idx</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
+<pre class='cython code score-47 '>static PyObject *__pyx_pw_14simplification_5cutil_7simplify_coords_vw_idx(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_14simplification_5cutil_simplify_coords_vw_idx(PyObject *__pyx_v_coords, double __pyx_v_epsilon, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
+  struct Array __pyx_v_coords_ffi;
+  struct Array __pyx_v_result;
+  size_t *__pyx_v_incoming_ptr;
+  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_outgoing = NULL;
+  PyObject *__pyx_r = NULL;
+  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
+  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords_vw_idx", 0);
+/* … */
+  /* function exit code */
+  __pyx_L1_error:;
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_12, 1);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords_vw_idx", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
+  <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
+  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
+  return __pyx_r;
+}
+
+/* Python wrapper */
 static PyObject *__pyx_pw_14simplification_5cutil_7simplify_coords_vw_idx(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static char __pyx_doc_14simplification_5cutil_6simplify_coords_vw_idx[] = "\n    Simplify a LineString using the Visvalingam-Whyatt algorithm.\n    Input: a list of lat, lon coordinates, and an epsilon float\n    Output: a simplified list of coordinate indices\n\n    Example: simplify_coords([\n        [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],\n        1.0)\n    Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]\n\n    ";
-static PyMethodDef __pyx_mdef_14simplification_5cutil_7simplify_coords_vw_idx = {"simplify_coords_vw_idx", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14simplification_5cutil_7simplify_coords_vw_idx, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14simplification_5cutil_6simplify_coords_vw_idx};
 static PyObject *__pyx_pw_14simplification_5cutil_7simplify_coords_vw_idx(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_coords = 0;
   double __pyx_v_epsilon;
@@ -1400,46 +1468,26 @@ static PyObject *__pyx_pw_14simplification_5cutil_7simplify_coords_vw_idx(PyObje
 }
 
 static PyObject *__pyx_pf_14simplification_5cutil_6simplify_coords_vw_idx(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_coords, double __pyx_v_epsilon) {
-  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
-  struct Array __pyx_v_coords_ffi;
-  struct Array __pyx_v_result;
-  size_t *__pyx_v_incoming_ptr;
-  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_v_outgoing = NULL;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords_vw_idx", 0);
-/* … */
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
+  __pyx_t_1 = __pyx_f_14simplification_5cutil_simplify_coords_vw_idx(__pyx_v_coords, __pyx_v_epsilon, 0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)</span>
+  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
   /* function exit code */
   __pyx_L1_error:;
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_12, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
   <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords_vw_idx", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-/* … */
-  __pyx_tuple__30 = <span class='py_c_api'>PyTuple_Pack</span>(8, __pyx_n_s_coords, __pyx_n_s_epsilon, __pyx_n_s_ncoords, __pyx_n_s_coords_ffi, __pyx_n_s_result, __pyx_n_s_incoming_ptr, __pyx_n_s_view, __pyx_n_s_outgoing);<span class='error_goto'> if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 143, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__30);
-  <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__30);
-/* … */
-  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_14simplification_5cutil_7simplify_coords_vw_idx, NULL, __pyx_n_s_simplification_cutil);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_simplify_coords_vw_idx, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 143, __pyx_L1_error)</span>
-  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_codeobj__31 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_simplification_cutil_pyx, __pyx_n_s_simplify_coords_vw_idx, 143, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 143, __pyx_L1_error)</span>
 </pre><pre class="cython line score-0">&#xA0;<span class="">144</span>:     <span class="sd">&quot;&quot;&quot;</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">145</span>: <span class="sd">    Simplify a LineString using the Visvalingam-Whyatt algorithm.</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">146</span>: <span class="sd">    Input: a list of lat, lon coordinates, and an epsilon float</span></pre>
@@ -1632,11 +1680,42 @@ static PyObject *__pyx_pf_14simplification_5cutil_6simplify_coords_vw_idx(CYTHON
     }
   }
 </pre><pre class="cython line score-0">&#xA0;<span class="">172</span>: </pre>
-<pre class="cython line score-56" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">173</span>: <span class="k">def</span> <span class="nf">simplify_coords_vwp</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
-<pre class='cython code score-56 '>/* Python wrapper */
+<pre class="cython line score-47" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">173</span>: <span class="k">cpdef</span> <span class="nf">simplify_coords_vwp</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">):</span></pre>
+<pre class='cython code score-47 '>static PyObject *__pyx_pw_14simplification_5cutil_9simplify_coords_vwp(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_14simplification_5cutil_simplify_coords_vwp(PyObject *__pyx_v_coords, double __pyx_v_epsilon, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
+  struct Array __pyx_v_coords_ffi;
+  struct Array __pyx_v_result;
+  double *__pyx_v_incoming_ptr;
+  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_outgoing = NULL;
+  PyObject *__pyx_r = NULL;
+  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
+  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords_vwp", 0);
+/* … */
+  /* function exit code */
+  __pyx_L1_error:;
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords_vwp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
+  <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
+  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
+  return __pyx_r;
+}
+
+/* Python wrapper */
 static PyObject *__pyx_pw_14simplification_5cutil_9simplify_coords_vwp(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static char __pyx_doc_14simplification_5cutil_8simplify_coords_vwp[] = "\n    Simplify a LineString using a topology-preserving variant of the\n    Visvalingam-Whyatt algorithm.\n    Input: a list of lat, lon coordinates, and an epsilon float\n    Output: a simplified list of coordinates\n\n    Example:\n    simplify_coords([\n        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],\n        30.0\n    )\n    Result: [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]\n\n    ";
-static PyMethodDef __pyx_mdef_14simplification_5cutil_9simplify_coords_vwp = {"simplify_coords_vwp", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14simplification_5cutil_9simplify_coords_vwp, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14simplification_5cutil_8simplify_coords_vwp};
 static PyObject *__pyx_pw_14simplification_5cutil_9simplify_coords_vwp(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_coords = 0;
   double __pyx_v_epsilon;
@@ -1700,45 +1779,26 @@ static PyObject *__pyx_pw_14simplification_5cutil_9simplify_coords_vwp(PyObject 
 }
 
 static PyObject *__pyx_pf_14simplification_5cutil_8simplify_coords_vwp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_coords, double __pyx_v_epsilon) {
-  __Pyx_memviewslice __pyx_v_ncoords = { 0, 0, { 0 }, { 0 }, { 0 } };
-  struct Array __pyx_v_coords_ffi;
-  struct Array __pyx_v_result;
-  double *__pyx_v_incoming_ptr;
-  __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_v_outgoing = NULL;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("simplify_coords_vwp", 0);
-/* … */
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
+  __pyx_t_1 = __pyx_f_14simplification_5cutil_simplify_coords_vwp(__pyx_v_coords, __pyx_v_epsilon, 0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)</span>
+  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
   /* function exit code */
   __pyx_L1_error:;
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_6);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_t_8, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(((PyObject *)__pyx_t_11));
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
   <span class='pyx_c_api'>__Pyx_AddTraceback</span>("simplification.cutil.simplify_coords_vwp", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ncoords, 1);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_view, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_outgoing);
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-/* … */
-  __pyx_tuple__32 = <span class='py_c_api'>PyTuple_Pack</span>(8, __pyx_n_s_coords, __pyx_n_s_epsilon, __pyx_n_s_ncoords, __pyx_n_s_coords_ffi, __pyx_n_s_result, __pyx_n_s_incoming_ptr, __pyx_n_s_view, __pyx_n_s_outgoing);<span class='error_goto'> if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 173, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__32);
-  <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__32);
-/* … */
-  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_14simplification_5cutil_9simplify_coords_vwp, NULL, __pyx_n_s_simplification_cutil);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_simplify_coords_vwp, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 173, __pyx_L1_error)</span>
-  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_codeobj__33 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_simplification_cutil_pyx, __pyx_n_s_simplify_coords_vwp, 173, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 173, __pyx_L1_error)</span>
 </pre><pre class="cython line score-0">&#xA0;<span class="">174</span>:     <span class="sd">&quot;&quot;&quot;</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">175</span>: <span class="sd">    Simplify a LineString using a topology-preserving variant of the</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">176</span>: <span class="sd">    Visvalingam-Whyatt algorithm.</span></pre>
