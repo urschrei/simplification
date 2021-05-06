@@ -53,7 +53,7 @@ coords_vw = np.array([
     [7.0, 25.0],
     [10.0, 10.0]
 ])
-simplified_vw = simplify_coords_vw(coords, 30.0)
+simplified_vw = simplify_coords_vw(coords_vw, 30.0)
 
 # simplified_vw is [[5.0, 2.0], [7.0, 25.0], [10.0, 10.0]]
 ```
