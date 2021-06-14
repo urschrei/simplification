@@ -71,8 +71,8 @@ jobs:
                     cp ${{ env.wheelname }}/lib${{ env.rustlib }}.dylib .
                fi
         shell: bash
-      - name: check lib path
-        run: echo $LD_LIBRARY_PATH
+      - name: pwd
+        run: pwd
 
       - name: Build wheels and test
         run: python -m cibuildwheel --output-dir wheelhouse
@@ -82,7 +82,7 @@ jobs:
           CIBW_BUILD_VERBOSITY: 1
           CIBW_TEST_REQUIRES: setuptools pytest numpy cython
           CIBW_BUILD: cp37-macosx_x86_64  cp37-manylinux_x86_64 cp38-macosx_x86_64 cp38-manylinux_x86_64 cp39-macosx_x86_64 cp39-macosx_arm64 cp39-manylinux_x86_64
-          CIBW_TEST_COMMAND: pytest ${{ env.HOME }}/${{ env.wheelname }}/test
+          CIBW_TEST_COMMAND: pytest ${{ env.wheelname }}/test
 
       - uses: actions/upload-artifact@v2
         with:
