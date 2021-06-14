@@ -97,6 +97,7 @@ setup(
     package_data={
         'simplification': [platform_lib],
     },
+    test_suite="test",
     download_url='https://github.com/urschrei/simplification/tarball/v%s' % version,
     keywords=['Geo', 'Polyline', 'Linestring', 'Ramer-Douglas-Peucker', 'Douglas-Peucker', 'Visvalingam-Whyatt'],
     classifiers=[
