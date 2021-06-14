@@ -1,0 +1,89 @@
+name: Build
+env:
+  rustlib: rdp
+  wheelname: simplification
+
+on: [push, pull_request]
+
+jobs:
+  get_latest_lib_tag:
+    name: Get latest Rust lib tag
+    runs-on: ubuntu-latest
+    outputs:
+      repo: ${{ env.rustlib_repo }}
+      tag: ${{ steps.latest-tag.outputs.tag}}
+    steps:
+      - id: set_rustlib_repo
+        run: |
+          echo "rustlib_repo=${{ env.rustlib }}" >> $GITHUB_ENV
+      - id: latest-tag
+        uses: oprypin/find-latest-tag@v1
+        with:
+          repository: urschrei/${{ env.rustlib }}  # The repository to scan.
+          releases-only: true  # We know that all relevant tags have a GitHub release for them.
+      - run: echo "Lib version ${{ steps.latest-tag.outputs.tag }}"
+
+
+
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    needs: get_latest_lib_tag
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, macOS-10.15]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Used to host cibuildwheel
+      - uses: actions/setup-python@v2
+      - id: set-filename
+        run: |
+            if [ "$RUNNER_OS" == "Linux" ]; then
+                echo "filename=${{ needs.get_latest_lib_tag.outputs.repo }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
+            elif [ "$RUNNER_OS" == "Windows" ]; then
+                echo "filename=${{ needs.get_latest_lib_tag.outputs.repo }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-pc-windows-msvc.zip" >> $GITHUB_ENV
+            else
+                echo "filename=${{ needs.get_latest_lib_tag.outputs.repo }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-apple-darwin.tar.gz" >> $GITHUB_ENV
+            fi
+        shell: bash
+
+      - id: get-rust-lib
+        uses: stryd/fetch-release-asset@v1
+        with:
+          access_token: ${{ secrets.RDP_RETRIEVAL }}
+          repo: urschrei/${{ needs.get_latest_lib_tag.outputs.repo }}
+          version: ${{ needs.get_latest_lib_tag.outputs.tag }}
+          asset_name: ${{ env.filename }}
+          save_as: rustlib.zip # maps to outputs.location
+
+      - name: Install cibuildwheel
+
+        run:   |
+               python -m pip install cibuildwheel==1.11.1.post1
+               if [ "$RUNNER_OS" == "Linux" ]; then
+                    tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
+               elif [ "$RUNNER_OS" == "Windows" ]; then
+                    7z x ${{ steps.get-rust-lib.outputs.location }} -o.\${{ env.wheelname }}
+               else
+                    tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
+                    cp ${{ env.wheelname }}/lib${{ env.rustlib }}.dylib .
+               fi
+        shell: bash
+      - name: check lib path
+        run: echo $LD_LIBRARY_PATH
+
+      - name: Build wheels
+        run: python -m cibuildwheel --output-dir wheelhouse
+        # to supply options, put them in 'env', like:
+        env:
+          CIBW_BEFORE_BUILD: pip install numpy
+          CIBW_BUILD_VERBOSITY: 1
+          CIBW_TEST_REQUIRES: setuptools nose numpy cython
+          CIBW_BUILD: cp37-macosx_x86_64  cp37-manylinux_x86_64 cp38-macosx_x86_64 cp38-manylinux_x86_64 cp39-macosx_x86_64 cp39-macosx_arm64 cp39-manylinux_x86_64
+          CIBW_TEST_COMMAND: nosetests
+
+      - uses: actions/upload-artifact@v2
+        with:
+          path: ./wheelhouse/*.whl
