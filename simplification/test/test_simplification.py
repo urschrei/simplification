@@ -33,11 +33,11 @@ class PolylineTests(unittest.TestCase):
 
         self.empty = []
 
-    def testSimplify_rdp_numpy(self):
-        """ Test that numpy arrays can be consumed and returned """
-        npcoords = np.array(self.coords)
-        result = csimplify_coords(npcoords, 1.0)
-        self.assertEqual(type(result), numpy.ndarray)
+    # def testSimplify_rdp_numpy(self):
+    #     """ Test that numpy arrays can be consumed and returned """
+    #     npcoords = np.array(self.coords)
+    #     result = csimplify_coords(npcoords, 1.0)
+    #     self.assertEqual(type(result), numpy.ndarray)
 
     def testSimplify_rdp(self):
         """ Test that a LineString can be simplified using RDP (Ctypes) """
