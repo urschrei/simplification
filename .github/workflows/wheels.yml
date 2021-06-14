@@ -74,7 +74,7 @@ jobs:
       - name: check lib path
         run: echo $LD_LIBRARY_PATH
 
-      - name: Build wheels
+      - name: Build wheels and test
         run: python -m cibuildwheel --output-dir wheelhouse
         # to supply options, put them in 'env', like:
         env:
