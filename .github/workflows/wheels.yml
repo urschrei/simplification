@@ -72,7 +72,7 @@ jobs:
                fi
         shell: bash
       - name: pwd
-        run: ls ${{ github.workspace }}
+        run: ls ${{ github.workspace }}/${{ wheelname }}
 
       - name: Build wheels and test
         run: python -m cibuildwheel --output-dir wheelhouse
