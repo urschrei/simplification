@@ -52,8 +52,8 @@ jobs:
 
       - id: get-rust-lib
         uses: stryd/fetch-release-asset@v1
-        run: |
-            echo "retrieval_path=${{ runner.workspace }}" >> $GITHUB_ENV
+        run: echo "retrieval_path=${{ runner.workspace }}" >> $GITHUB_ENV
+        shell: bash
         with:
           access_token: ${{ secrets.RDP_RETRIEVAL }}
           repo: urschrei/${{ needs.get_latest_lib_tag.outputs.repo }}
