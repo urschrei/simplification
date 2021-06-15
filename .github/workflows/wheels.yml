@@ -58,6 +58,7 @@ jobs:
           version: ${{ needs.get_latest_lib_tag.outputs.tag }}
           asset_name: ${{ env.filename }}
           save_as: rustlib.zip # maps to outputs.location
+        run: echo "retrieval_path=${{ runner.workspace }}" >> $GITHUB_ENV
 
       - name: Install cibuildwheel
 
@@ -66,8 +67,7 @@ jobs:
                if [ "$RUNNER_OS" == "Linux" ]; then
                     tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                elif [ "$RUNNER_OS" == "Windows" ]; then
-                    echo ${{ steps.get-rust-lib.outputs.location }}
-                    7z x "${{ steps.get-rust-lib.outputs.location }}"
+                    7z x $RETRIEVAL_PATH -o${{ env.wheelname }}
                else
                     tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                fi
