@@ -5,7 +5,6 @@ import numpy as np
 import numpy
 from simplification.util import simplify_coords, simplify_coords_vw
 from simplification.cutil import simplify_coords as csimplify_coords
-from simplification.cutil import simplify_coords as csimplify_coords
 from simplification.cutil import simplify_coords_idx as csimplify_coords_idx
 from simplification.cutil import simplify_coords_vw as csimplify_coords_vw
 from simplification.cutil import simplify_coords_vw_idx as csimplify_coords_vw_idx
