@@ -52,23 +52,20 @@ jobs:
 
       - id: get-rust-lib
         uses: stryd/fetch-release-asset@v1
-        run: echo "retrieval_path=${{ runner.workspace }}" >> $GITHUB_ENV
-        shell: bash
         with:
           access_token: ${{ secrets.RDP_RETRIEVAL }}
           repo: urschrei/${{ needs.get_latest_lib_tag.outputs.repo }}
           version: ${{ needs.get_latest_lib_tag.outputs.tag }}
           asset_name: ${{ env.filename }}
-          save_as: rustlib.zip # maps to outputs.location
+          save_as: ${{ github.workspace }}/rustlib.zip # maps to outputs.location
 
       - name: Install cibuildwheel
-
         run:   |
                python -m pip install cibuildwheel==1.11.1.post1
                if [ "$RUNNER_OS" == "Linux" ]; then
                     tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                elif [ "$RUNNER_OS" == "Windows" ]; then
-                    7z x $RETRIEVAL_PATH -o${{ env.wheelname }}
+                    7z x ${{ github.workspace }}/rustlib.zip -o${{ env.wheelname }}
                else
                     tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                fi
