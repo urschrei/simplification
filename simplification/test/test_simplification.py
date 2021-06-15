@@ -87,10 +87,10 @@ class PolylineTests(unittest.TestCase):
         for _ in range(100):
             self.assertEqual(result, expected)
 
-    def testCSingle_rdp(self):
-        """ Test that a one-element LineString is returned unaltered from RDP (Cython) """
-        result = csimplify_coords(self.single, 1.0)
-        self.assertEqual(result, self.single)
+    # def testCSingle_rdp(self):
+    #     """ Test that a one-element LineString is returned unaltered from RDP (Cython) """
+    #     result = csimplify_coords(self.single, 1.0)
+    #     self.assertEqual(result, self.single)
 
     def testCSingle_vw(self):
         """ Test that a one-element LineString is returned unaltered from VW (Cython) """
