@@ -82,7 +82,7 @@ jobs:
           CIBW_BUILD_VERBOSITY: 1
           CIBW_TEST_REQUIRES: setuptools pytest nose numpy cython
           CIBW_BUILD: cp37-macosx_x86_64  cp37-manylinux_x86_64 cp38-macosx_x86_64 cp38-manylinux_x86_64 cp39-macosx_x86_64 cp39-macosx_arm64 cp39-manylinux_x86_64
-          CIBW_TEST_COMMAND: cd {project} && nosetests
+          CIBW_TEST_COMMAND: nosetests ${{ env.wheelname }} && cd {project} && nosetests ${{ env.wheelname }}
 
       - uses: actions/upload-artifact@v2
         with:
