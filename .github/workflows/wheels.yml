@@ -30,6 +30,7 @@ jobs:
     needs: get_latest_lib_tag
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-20.04, macOS-10.15]
 
