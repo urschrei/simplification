@@ -66,6 +66,7 @@ jobs:
                if [ "$RUNNER_OS" == "Linux" ]; then
                     tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                elif [ "$RUNNER_OS" == "Windows" ]; then
+                    echo ${{ steps.get-rust-lib.outputs.location }}
                     7z x ${{ steps.get-rust-lib.outputs.location }}
                else
                     tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
