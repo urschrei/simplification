@@ -13,9 +13,6 @@ jobs:
       repo: ${{ env.rustlib_repo }}
       tag: ${{ steps.latest-tag.outputs.tag}}
     steps:
-      - id: set_rustlib_repo
-        run: |
-          echo "rustlib_repo=${{ env.rustlib }}" >> $GITHUB_ENV
       - id: latest-tag
         uses: oprypin/find-latest-tag@v1
         with:
@@ -36,10 +33,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        name: Check out repo
 
       # Used to host cibuildwheel
       - uses: actions/setup-python@v2
       - id: set-filename
+        name: Set compressed Rust lib filename to retrieve based on OS
         run: |
             if [ "$RUNNER_OS" == "Linux" ]; then
                 echo "filename=${{ needs.get_latest_lib_tag.outputs.repo }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
@@ -52,6 +51,7 @@ jobs:
 
       - id: get-rust-lib
         uses: stryd/fetch-release-asset@v1
+        name: Download latest Rust lib release
         with:
           access_token: ${{ secrets.RDP_RETRIEVAL }}
           repo: urschrei/${{ needs.get_latest_lib_tag.outputs.repo }}
@@ -70,8 +70,6 @@ jobs:
                     tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                fi
         shell: bash
-      - name: pwd
-        run: ls ${{ github.workspace }}/${{ env.wheelname }}/test
 
       - name: Build wheels and test
         run: python -m cibuildwheel --output-dir wheelhouse
@@ -84,5 +82,6 @@ jobs:
           CIBW_TEST_COMMAND: nosetests ${{ env.wheelname }}
 
       - uses: actions/upload-artifact@v2
+        name: Upload repaired wheels as artifact
         with:
           path: ./wheelhouse/*.whl
