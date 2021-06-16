@@ -1,4 +1,4 @@
-name: Build
+name: Build and test wheels, release on new tag
 env:
   rustlib: rdp
   wheelname: simplification
@@ -18,8 +18,6 @@ jobs:
           repository: urschrei/${{ env.rustlib }}  # The repository to scan.
           releases-only: true  # We know that all relevant tags have a GitHub release for them.
       - run: echo "Latest lib tag ${{ steps.latest-tag.outputs.tag }}"
-
-
 
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
@@ -60,13 +58,16 @@ jobs:
 
       - name: Install cibuildwheel
         run:   |
+               mkdir wheelhouse
                python -m pip install cibuildwheel==1.11.1.post1
                if [ "$RUNNER_OS" == "Linux" ]; then
                     tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
+                    cp ${{ env.wheelname }}/*.so wheelhouse
                elif [ "$RUNNER_OS" == "Windows" ]; then
                     7z x ${{ steps.get-rust-lib.outputs.location }} -o${{ env.wheelname }}
                else
                     tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
+                    cp ${{ env.wheelname }}/*.dylib wheelhouse
                fi
         shell: bash
 
@@ -83,4 +84,36 @@ jobs:
       - uses: actions/upload-artifact@v2
         name: Upload repaired wheels as artifact
         with:
-          path: ./wheelhouse/*.whl
+          name: wheels-${{ matrix.os }}
+          path: |
+            ./wheelhouse/*.whl
+            ./wheelhouse/*.so
+            ./wheelhouse/*.dylib
+            ./wheelhouse/*.lib
+            ./wheelhouse/*.dll
+
+  release_artifacts:
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    name: Release repaired and tested wheels
+    needs: build_wheels
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Download compressed artifacts
+      id: download
+      uses: actions/download-artifact@v2
+      with:
+        path: ./artifacts
+
+    - name: 'List downloaded files'
+      run: ls ${{ steps.download.outputs.download-path }}/**/*.*
+
+    - name: Create release and upload wheels
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        artifacts: "${{ steps.download.outputs.download-path }}/**/*.whl,${{ steps.download.outputs.download-path }}/**/*.so,${{ steps.download.outputs.download-path }}/**/*.dylib,${{ steps.download.outputs.download-path }}/**/*.lib,${{ steps.download.outputs.download-path }}/**/*.dll"
+
+        token: ${{ secrets.GITHUB_TOKEN }}
