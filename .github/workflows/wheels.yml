@@ -10,7 +10,6 @@ jobs:
     name: Get latest Rust lib tag
     runs-on: ubuntu-latest
     outputs:
-      repo: ${{ env.rustlib_repo }}
       tag: ${{ steps.latest-tag.outputs.tag}}
     steps:
       - id: latest-tag
@@ -18,7 +17,7 @@ jobs:
         with:
           repository: urschrei/${{ env.rustlib }}  # The repository to scan.
           releases-only: true  # We know that all relevant tags have a GitHub release for them.
-      - run: echo "Lib version ${{ steps.latest-tag.outputs.tag }}"
+      - run: echo "Latest lib tag ${{ steps.latest-tag.outputs.tag }}"
 
 
 
@@ -41,11 +40,11 @@ jobs:
         name: Set compressed Rust lib filename to retrieve based on OS
         run: |
             if [ "$RUNNER_OS" == "Linux" ]; then
-                echo "filename=${{ needs.get_latest_lib_tag.outputs.repo }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
+                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
             elif [ "$RUNNER_OS" == "Windows" ]; then
-                echo "filename=${{ needs.get_latest_lib_tag.outputs.repo }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-pc-windows-msvc.zip" >> $GITHUB_ENV
+                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-pc-windows-msvc.zip" >> $GITHUB_ENV
             else
-                echo "filename=${{ needs.get_latest_lib_tag.outputs.repo }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-apple-darwin.tar.gz" >> $GITHUB_ENV
+                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-apple-darwin.tar.gz" >> $GITHUB_ENV
             fi
         shell: bash
 
@@ -54,7 +53,7 @@ jobs:
         name: Download latest Rust lib release
         with:
           access_token: ${{ secrets.RDP_RETRIEVAL }}
-          repo: urschrei/${{ needs.get_latest_lib_tag.outputs.repo }}
+          repo: urschrei/${{ env.rustlib }}
           version: ${{ needs.get_latest_lib_tag.outputs.tag }}
           asset_name: ${{ env.filename }}
           save_as: rustlib.zip # maps to outputs.location
