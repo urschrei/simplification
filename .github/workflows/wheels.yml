@@ -49,14 +49,14 @@ jobs:
       - id: get-rust-lib
         uses: stryd/fetch-release-asset@v1
         name: Download latest Rust lib release
+        run: echo "liblocation=${{ runner.workspace }}/rustlib.zip >> $GITHUB_ENV
+        shell: bash
         with:
           access_token: ${{ secrets.RDP_RETRIEVAL }}
           repo: urschrei/${{ env.rustlib }}
           version: ${{ needs.get_latest_lib_tag.outputs.tag }}
           asset_name: ${{ env.filename }}
           save_as: rustlib.zip # maps to outputs.location
-        run: echo "liblocation=${{ runner.workspace }}/rustlib.zip >> $GITHUB_ENV
-        shell: bash
 
       - name: Install cibuildwheel
         run:   |
