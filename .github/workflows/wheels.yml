@@ -58,15 +58,16 @@ jobs:
 
       - name: Install cibuildwheel
         run:   |
+               echo ${{ runner.location }}
+               echo ${{ steps.get-rust-lib.outputs.location }}
                mkdir wheelhouse
                python -m pip install cibuildwheel==1.11.1.post1
+               tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                if [ "$RUNNER_OS" == "Linux" ]; then
-                    tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                     cp ${{ env.wheelname }}/*.so wheelhouse
                elif [ "$RUNNER_OS" == "Windows" ]; then
-                    7z x ${{ steps.get-rust-lib.outputs.location }} -o${{ env.wheelname }}
+                    cp ${{ env.wheelname }}/*.{dll,lib} wheelhouse
                else
-                    tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                     cp ${{ env.wheelname }}/*.dylib wheelhouse
                fi
         shell: bash
