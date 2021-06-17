@@ -55,10 +55,13 @@ jobs:
           version: ${{ needs.get_latest_lib_tag.outputs.tag }}
           asset_name: ${{ env.filename }}
           save_as: rustlib.zip # maps to outputs.location
+        run: echo "liblocation=${{ runner.workspace }}/rustlib.zip >> $GITHUB_ENV
+        shell: bash
 
       - name: Install cibuildwheel
         run:   |
                echo ${{ steps.get-rust-lib.outputs.location }}
+               echo ${{ env.liblocation }}
                mkdir wheelhouse
                python -m pip install cibuildwheel==1.11.1.post1
                tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
