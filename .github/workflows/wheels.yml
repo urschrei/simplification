@@ -56,12 +56,12 @@ jobs:
           asset_name: ${{ env.filename }}
           save_as: rustlib.zip # maps to outputs.location
 
-      - name: Install cibuildwheel
+      - name: Extract downloaded lib and install cibuildwheel
         run:   |
                echo ${{ steps.get-rust-lib.outputs.location }}
+               tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                mkdir wheelhouse
                python -m pip install cibuildwheel==1.11.1.post1
-               tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                if [ "$RUNNER_OS" == "Linux" ]; then
                     cp ${{ env.wheelname }}/*.so wheelhouse
                elif [ "$RUNNER_OS" == "Windows" ]; then
