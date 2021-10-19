@@ -73,6 +73,7 @@ jobs:
       - name: Build and Test Wheels
         uses: pypa/cibuildwheel@v2.1.3
         env:
+          CIBW_BEFORE_BUILD_MACOS: brew install openblas && OPENBLAS="$(brew --prefix openblas)" pip install numpy
           CIBW_BEFORE_BUILD: pip install numpy
           CIBW_BUILD_VERBOSITY: 1
           CIBW_TEST_REQUIRES: setuptools pytest numpy cython
