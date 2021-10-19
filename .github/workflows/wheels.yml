@@ -73,6 +73,7 @@ jobs:
       - name: Build and Test Wheels
         uses: pypa/cibuildwheel@v2.1.3
         env:
+          CIBW_BEFORE_BUILD: pip install numpy
           CIBW_BUILD_VERBOSITY: 1
           CIBW_TEST_REQUIRES: setuptools pytest numpy cython
           CIBW_BUILD: cp37-macosx_x86_64 cp37-manylinux_x86_64 cp38-macosx_x86_64 cp38-manylinux_x86_64 cp39-macosx_x86_64 cp39-macosx_arm64 cp39-manylinux_x86_64 cp310-macosx_x86_64 cp310-macosx_arm64 cp310-manylinux_x86_64
