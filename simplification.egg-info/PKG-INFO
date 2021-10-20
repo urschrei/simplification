@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: simplification
-Version: 0.5.12
+Version: 0.5.14
 Summary: Fast linestring simplification using RDP or Visvalingam-Whyatt and a Rust binary
 Home-page: https://github.com/urschrei/simplification
 Author: Stephan Hügel
 Author-email: urschrei@gmail.com
 License: MIT License
-Download-URL: https://github.com/urschrei/simplification/tarball/v0.5.12
+Download-URL: https://github.com/urschrei/simplification/tarball/v0.5.14
 Description: [![Build Status](https://travis-ci.org/urschrei/simplification.svg?branch=master)](https://travis-ci.org/urschrei/simplification) [![Build status](https://ci.appveyor.com/api/projects/status/0n7d5iwb3uqhsos6/branch/master?svg=true)](https://ci.appveyor.com/project/urschrei/simplification/branch/master) [![Coverage Status](https://coveralls.io/repos/github/urschrei/simplification/badge.svg?branch=master)](https://coveralls.io/github/urschrei/simplification?branch=master)
         
         # Simplification
@@ -21,11 +21,13 @@ Description: [![Build Status](https://travis-ci.org/urschrei/simplification.svg?
         ### Supported Python Versions
         - Python 3.7
         - Python 3.8
-        - Python 3.8 (Linux and macOS only)
+        - Python 3.8 (Linux and macOS Darwin only)
+        - Python 3.9 (Linux and macOS Darwin only)
+        - Python 3.10 (Linux and macOS Darwin only)
         
         ### Supported Platforms
         - Linux (`manylinux1`-compatible)
-        - macOS
+        - macOS Darwin
         - Windows 32-bit / 64-bit
         
         ## Usage
@@ -123,6 +125,7 @@ Classifier: Programming Language :: Python
 Classifier: Programming Language :: Python :: 3.7
 Classifier: Programming Language :: Python :: 3.8
 Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
 Classifier: Development Status :: 4 - Beta
 Classifier: Intended Audience :: Developers
 Classifier: Intended Audience :: Science/Research

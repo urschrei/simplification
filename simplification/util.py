@@ -5,7 +5,7 @@ ffi.py
 
 Created by Stephan Hügel on 2016-08-3
 
-This file is part of rdp.
+This file is part of simplification.
 
 The MIT License (MIT)
 

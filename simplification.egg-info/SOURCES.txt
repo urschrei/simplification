@@ -17,8 +17,4 @@ simplification.egg-info/SOURCES.txt
 simplification.egg-info/dependency_links.txt
 simplification.egg-info/requires.txt
 simplification.egg-info/top_level.txt
-simplification/test/__init__.py
-simplification/test/cprofile_rust_cython.py
-simplification/test/cprofile_rust_cython_complex.py
-simplification/test/cprofile_rust_cython_shapely.py
-simplification/test/test.py
+test/test_simplification.py

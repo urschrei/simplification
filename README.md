@@ -12,12 +12,13 @@ Please use a recent (>= 8.1.2) version of `pip`.
 ### Supported Python Versions
 - Python 3.7
 - Python 3.8
-- Python 3.8 (Linux and macOS only)
-- Python 3.9 (Linux and macOS only)
+- Python 3.8 (Linux and macOS Darwin only)
+- Python 3.9 (Linux and macOS Darwin only)
+- Python 3.10 (Linux and macOS Darwin only)
 
 ### Supported Platforms
 - Linux (`manylinux1`-compatible)
-- macOS
+- macOS Darwin
 - Windows 32-bit / 64-bit
 
 ## Usage
