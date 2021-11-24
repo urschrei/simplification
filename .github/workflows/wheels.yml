@@ -26,14 +26,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, macOS-10.15]
+        os: [ubuntu-latest, macos-latest]
 
     steps:
       - uses: actions/checkout@v2
         name: Check out repo
 
-      # Used to host cibuildwheel
-      - uses: actions/setup-python@v2
       - id: set-filename
         name: Set compressed Rust lib filename to retrieve based on OS
         run: |
@@ -61,23 +59,21 @@ jobs:
                echo ${{ steps.get-rust-lib.outputs.location }}
                tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
                mkdir wheelhouse
-               if [ "$RUNNER_OS" == "Linux" ]; then
-                    cp ${{ env.wheelname }}/*.so wheelhouse
-               elif [ "$RUNNER_OS" == "Windows" ]; then
+               if [ "$RUNNER_OS" == "Windows" ]; then
                     cp ${{ env.wheelname }}/*.{dll,lib} wheelhouse
-               else
-                    cp ${{ env.wheelname }}/*.dylib wheelhouse
                fi
         shell: bash
 
       - name: Build and Test Wheels
-        uses: pypa/cibuildwheel@v2.1.3
+        uses: pypa/cibuildwheel@v2.2.2
         env:
-          CIBW_BEFORE_BUILD_MACOS: brew install openblas && OPENBLAS="$(brew --prefix openblas)" pip install numpy
-          CIBW_BEFORE_BUILD: pip install numpy
+          CIBW_BEFORE_BUILD_MACOS: pip install numpy cython
+          CIBW_BEFORE_BUILD: pip install numpy cython
           CIBW_TEST_REQUIRES: setuptools pytest numpy cython
           CIBW_TEST_COMMAND: 'pytest {package}'
-          CIBW_BUILD: cp37-macosx_x86_64 cp37-manylinux_x86_64 cp38-macosx_x86_64 cp38-manylinux_x86_64 cp39-macosx_x86_64 cp39-macosx_arm64 cp39-manylinux_x86_64 cp310-macosx_x86_64 cp310-macosx_arm64 cp310-manylinux_x86_64
+          CIBW_BUILD: cp3{7,8,9,10}-macosx_x86_64 cp3{7,8,9,10}-manylinux_x86_64 cp3{8,9,10}-macosx_arm64
+          CIBW_ARCHS_MACOS: x86_64 arm64
+          CIBW_TEST_SKIP: "*:arm64"
 
       - uses: actions/upload-artifact@v2
         name: Upload repaired wheels as artifact
@@ -94,7 +90,7 @@ jobs:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     name: Release repaired and tested wheels
     needs: build_wheels
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
