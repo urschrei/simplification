@@ -41,16 +41,18 @@ __version__ = "0.5.16"
 
 file_path = os.path.dirname(__file__)
 
-prefix = {'win32': ''}.get(platform, 'lib')
-extension = {'darwin': '.dylib', 'win32': '.dll'}.get(platform, '.so')
-fpath = {'darwin': '', 'win32': ''}.get(platform, os.path.join(file_path, ".libs"))
+prefix = {"win32": ""}.get(platform, "lib")
+extension = {"darwin": ".dylib", "win32": ".dll"}.get(platform, ".so")
+fpath = {"darwin": "", "win32": ""}.get(platform, os.path.join(file_path, ".libs"))
 
 # Python 3 check
-if (version_info > (3, 0)):
+if version_info > (3, 0):
     from subprocess import getoutput as spop
+
     py3 = True
 else:
     from subprocess import check_output as spop
+
     py3 = False
 
 try:
@@ -63,31 +65,33 @@ except OSError:
         fname = spop(["ls %s" % fpath]).split()[0]
     lib = cdll.LoadLibrary(os.path.join(file_path, ".libs", fname))
 
+
 class _FFIArray(Structure):
     """
     Convert sequence of float lists to a C-compatible void array
     example: [[1.0, 2.0], [3.0, 4.0]]
 
     """
-    _fields_ = [("data", c_void_p),
-                ("len", c_size_t)]
+
+    _fields_ = [("data", c_void_p), ("len", c_size_t)]
 
     @classmethod
     def from_param(cls, seq):
         """  Allow implicit conversions """
         return seq if isinstance(seq, cls) else cls(seq)
 
-    def __init__(self, seq, data_type = c_double):
+    def __init__(self, seq, data_type=c_double):
         self.data = cast(
-            np.array(seq, dtype=np.float64).ctypes.data_as(POINTER(data_type)),
-            c_void_p
+            np.array(seq, dtype=np.float64).ctypes.data_as(POINTER(data_type)), c_void_p
         )
         self.len = len(seq)
 
 
 class _CoordResult(Structure):
     """ Container for returned FFI coordinate data """
+
     _fields_ = [("coords", _FFIArray)]
+
 
 def _void_array_to_nested_list(res, _func, _args):
     """ Dereference the FFI result to a list of coordinates """
@@ -98,6 +102,7 @@ def _void_array_to_nested_list(res, _func, _args):
         return array.tolist()
     finally:
         drop_array(res.coords)
+
 
 simplify_coords = lib.simplify_rdp_ffi
 simplify_coords.argtypes = (_FFIArray, c_double)

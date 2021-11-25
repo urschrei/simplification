@@ -34,9 +34,9 @@ class PolylineTests(unittest.TestCase):
 
     def test_contiguous(self):
         """ Test that non-contiguous arrays are transformed into contiguous arrays """
-        x = np.array([1,2,3,4,5])
-        y = np.array([0,1,1,1,0])
-        coords = np.transpose(np.stack((x,y)))
+        x = np.array([1, 2, 3, 4, 5])
+        y = np.array([0, 1, 1, 1, 0])
+        coords = np.transpose(np.stack((x, y)))
 
         simplified = csimplify_coords(coords, 1.0)
 
