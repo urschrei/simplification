@@ -62,7 +62,10 @@ cpdef simplify_coords(coords, double epsilon):
     """
     if not len(coords):
         return coords
-    cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
+    arr = np.array(coords, dtype=np.float64)
+    if not arr.flags['C_CONTIGUOUS']:
+        arr = np.ascontiguousarray(arr)
+    cdef double[:,::1] ncoords = np.array(arr, dtype=np.float64)
     cdef Array coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
