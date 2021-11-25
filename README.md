@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/urschrei/simplification.svg?branch=master)](https://travis-ci.org/urschrei/simplification) [![Build status](https://ci.appveyor.com/api/projects/status/0n7d5iwb3uqhsos6/branch/master?svg=true)](https://ci.appveyor.com/project/urschrei/simplification/branch/master) [![Coverage Status](https://coveralls.io/repos/github/urschrei/simplification/badge.svg?branch=master)](https://coveralls.io/github/urschrei/simplification?branch=master)
+[![Build Status](https://github.com/urschrei/simplification/actions/workflows/wheels.yml/badge.svg)](https://github.com/urschrei/simplification/actions/workflows/wheels.yml) [![Coverage Status](https://coveralls.io/repos/github/urschrei/simplification/badge.svg?branch=master)](https://coveralls.io/github/urschrei/simplification?branch=master)
 
 # Simplification
 Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm) or [Visvalingam-Whyatt](https://bost.ocks.org/mike/simplify/) algorithms
