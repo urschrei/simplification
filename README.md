@@ -10,14 +10,14 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 Please use a recent (>= 8.1.2) version of `pip`.
 
 ### Supported Python Versions
-- Python 3.7 (Linux and macOS Darwin only)
-- Python 3.8 (Linux and macOS Darwin only)
-- Python 3.9 (Linux and macOS Darwin only)
-- Python 3.10 (Linux and macOS Darwin only)
+- Python 3.7 (Linux x86_64 and macOS x86_64 + aarch64 only)
+- Python 3.8 (Linux x86_64 and macOS x86_64 + aarch64 only)
+- Python 3.9 (Linux x86_64 and macOS x86_64 + aarch64 only)
+- Python 3.10 (Linux x86_64 and macOS x86_64 + aarch64 only)
 
 ### Supported Platforms
-- Linux (`manylinux`-compatible)
-- macOS Darwin
+- Linux (`manylinux`-compatible) x86_64
+- macOS Darwin x86_64 and aarch64
 - Windows 32-bit / 64-bit
 
 ## Usage
