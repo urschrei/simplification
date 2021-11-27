@@ -10,4 +10,4 @@ with open("test/coords_complex.json", "r") as f:
     coords = np.array(json.load(f))
     ls = LineString(coords)
 for x in range(50):
-    ls.simplify(14.0, preserve_topology=False)
+    ls.simplify(0.01, preserve_topology=False)
