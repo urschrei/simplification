@@ -65,7 +65,7 @@ jobs:
         shell: bash
 
       - name: Build and Test Wheels
-        uses: pypa/cibuildwheel@v2.2.2
+        uses: pypa/cibuildwheel@v2.3.0
         env:
           CIBW_BEFORE_BUILD_MACOS: pip install numpy cython
           CIBW_BEFORE_BUILD: pip install numpy cython
