@@ -1,12 +1,17 @@
 cdef extern from "header.h":
-    struct Array:
+    struct ExternalArray:
         void* data
         size_t len
 
-    cdef Array simplify_rdp_ffi(Array, double epsilon);
-    cdef Array simplify_rdp_idx_ffi(Array, double epsilon);
-    cdef Array simplify_visvalingam_ffi(Array, double epsilon);
-    cdef Array simplify_visvalingam_idx_ffi(Array, double epsilon);
-    cdef Array simplify_visvalingamp_ffi(Array, double epsilon);
-    cdef void drop_float_array(Array coords);
-    cdef void drop_usize_array(Array coords);
+cdef extern from "header.h":
+    struct InternalArray:
+        void* data
+        size_t len
+
+    cdef InternalArray simplify_rdp_ffi(ExternalArray, double epsilon);
+    cdef InternalArray simplify_rdp_idx_ffi(ExternalArray, double epsilon);
+    cdef InternalArray simplify_visvalingam_ffi(ExternalArray, double epsilon);
+    cdef InternalArray simplify_visvalingam_idx_ffi(ExternalArray, double epsilon);
+    cdef InternalArray simplify_visvalingamp_ffi(ExternalArray, double epsilon);
+    cdef void drop_float_array(InternalArray coords);
+    cdef void drop_usize_array(InternalArray coords);

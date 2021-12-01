@@ -38,7 +38,8 @@ import numpy as np
 import numpy
 from cython cimport view
 from rdp_p cimport (
-    Array,
+    ExternalArray,
+    InternalArray,
     simplify_rdp_ffi,
     simplify_rdp_idx_ffi,
     simplify_visvalingam_ffi,
@@ -66,10 +67,10 @@ cpdef simplify_coords(coords, double epsilon):
     if not arr.flags['C_CONTIGUOUS']:
         arr = np.ascontiguousarray(arr)
     cdef double[:,::1] ncoords = np.array(arr, dtype=np.float64)
-    cdef Array coords_ffi
+    cdef ExternalArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
-    cdef Array result = simplify_rdp_ffi(coords_ffi, epsilon)
+    cdef InternalArray result = simplify_rdp_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
     if isinstance(coords, numpy.ndarray):
@@ -96,10 +97,10 @@ cpdef simplify_coords_idx(coords, double epsilon):
     if not len(coords):
         return coords
     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
-    cdef Array coords_ffi
+    cdef ExternalArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
-    cdef Array result = simplify_rdp_idx_ffi(coords_ffi, epsilon)
+    cdef InternalArray result = simplify_rdp_idx_ffi(coords_ffi, epsilon)
     cdef size_t* incoming_ptr = <size_t*>(result.data)
     cdef size_t[::1] view = <size_t[:result.len]>incoming_ptr
     if isinstance(coords, numpy.ndarray):
@@ -128,10 +129,10 @@ cpdef simplify_coords_vw(coords, double epsilon):
     if not len(coords):
         return coords
     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
-    cdef Array coords_ffi
+    cdef ExternalArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
-    cdef Array result = simplify_visvalingam_ffi(coords_ffi, epsilon)
+    cdef InternalArray result = simplify_visvalingam_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
     if isinstance(coords, numpy.ndarray):
@@ -158,10 +159,10 @@ cpdef simplify_coords_vw_idx(coords, double epsilon):
     if not len(coords):
         return coords
     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
-    cdef Array coords_ffi
+    cdef ExternalArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
-    cdef Array result = simplify_visvalingam_idx_ffi(coords_ffi, epsilon)
+    cdef InternalArray result = simplify_visvalingam_idx_ffi(coords_ffi, epsilon)
     cdef size_t* incoming_ptr = <size_t*>(result.data)
     cdef size_t[::1] view = <size_t[:result.len]>incoming_ptr
     if isinstance(coords, numpy.ndarray):
@@ -191,11 +192,11 @@ cpdef simplify_coords_vwp(coords, double epsilon):
     if not len(coords):
         return coords
     cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
-    cdef Array coords_ffi
+    cdef ExternalArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
 
-    cdef Array result = simplify_visvalingamp_ffi(coords_ffi, epsilon)
+    cdef InternalArray result = simplify_visvalingamp_ffi(coords_ffi, epsilon)
     cdef double* incoming_ptr = <double*>(result.data)
     cdef double[:, ::1] view = <double[:result.len,:2:1]>incoming_ptr
     if isinstance(coords, numpy.ndarray):
