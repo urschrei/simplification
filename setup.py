@@ -50,5 +50,8 @@ extensions = cythonize(
 )
 
 setup(
+    package_data={
+        "simplification": [platform_lib],
+    },
     ext_modules=extensions,
 )
