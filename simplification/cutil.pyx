@@ -1,4 +1,5 @@
 #cython: boundscheck=False
+#cython: wraparound=False
 #cython: optimize.use_switch=True
 #cython: optimize.unpack_method_calls=True
 # -*- coding: utf-8 -*-

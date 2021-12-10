@@ -6,7 +6,6 @@ include simplification/*.pxd
 include simplification/*.pyd
 include simplification/*.so
 include simplification/*.dylib
-include simplification/librdp.so
 include simplification/rdp.dll
 include license.txt
 include README.md
