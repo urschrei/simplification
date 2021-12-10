@@ -1,6 +1,0 @@
-setuptools
-nose
-wheel
-requests[security]
-numpy
-cython
