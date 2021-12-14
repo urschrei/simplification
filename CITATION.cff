@@ -1,0 +1,19 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it using these metadata."
+abstract: "Simplification: a Python library for line simplification using the Ramer-Douglas-Peucker or Visvaligam-Whyatt algorithms"
+authors:
+  -
+    family-names: "Hügel"
+    given-names: Stephan
+    orcid: "https://orcid.org/0000-0003-4379-2450"
+title: "Simplification"
+date-released: 2021-12-12
+doi: "10.5281/zenodo.5774852"
+keywords:
+  - geo
+  - gis
+  - ramer-douglas-peucker
+  - visvalingam-whyatt
+license: MIT
+repository-code: "https://github.com/urschrei/simplification"
+version: "0.5.21"
