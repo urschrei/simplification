@@ -108,3 +108,21 @@ All benchmarks are subjective, and pathological input will greatly increase proc
 
 ## License
 [MIT](license.txt)
+
+## Citing `Simplification`
+If Simplification has been significant in your research, and you would like to acknowledge the project in your academic publication, we suggest citing it as follows (example in APA style, 7th edition):
+
+> Hügel, S. (2021). Simplification (Version X.Y.Z) [Computer software]. https://doi.org/10.5281/zenodo.5774852
+
+In Bibtex format:
+
+    @software{Hugel_Simplification_2021,
+    author = {Hügel, Stephan},
+    doi = {10.5281/zenodo.5774852},
+    license = {MIT},
+    month = {12},
+    title = {{Simplification}},
+    url = {https://github.com/urschrei/simplification},
+    version = {X.Y.Z},
+    year = {2021}
+    }
