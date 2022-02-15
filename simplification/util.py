@@ -37,7 +37,7 @@ from ctypes import Structure, POINTER, c_void_p, c_size_t, c_double, cast, cdll
 import numpy as np
 
 __author__ = "Stephan Hügel"
-__version__ = "0.5.21"
+__version__ = "0.5.22"
 
 file_path = os.path.dirname(__file__)
 
@@ -77,7 +77,7 @@ class _FFIArray(Structure):
 
     @classmethod
     def from_param(cls, seq):
-        """  Allow implicit conversions """
+        """Allow implicit conversions"""
         return seq if isinstance(seq, cls) else cls(seq)
 
     def __init__(self, seq, data_type=c_double):
@@ -88,13 +88,13 @@ class _FFIArray(Structure):
 
 
 class _CoordResult(Structure):
-    """ Container for returned FFI coordinate data """
+    """Container for returned FFI coordinate data"""
 
     _fields_ = [("coords", _FFIArray)]
 
 
 def _void_array_to_nested_list(res, _func, _args):
-    """ Dereference the FFI result to a list of coordinates """
+    """Dereference the FFI result to a list of coordinates"""
     try:
         shape = res.coords.len, 2
         ptr = cast(res.coords.data, POINTER(c_double))
