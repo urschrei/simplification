@@ -26,7 +26,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        include:
+        - os: ubuntu-latest
+          pybuilds: cp3{7,8,9,10}-manylinux_x86_64
+          arch: x86_64
+          id: linux
+        - os: macos-latest
+          pybuilds: cp3{7,8,9,10}-macosx_x86_64
+          arch: x86_64
+          id: macos_x86
+        - os: macos-latest
+          pybuilds: cp3{8,9,10}-macosx_arm64
+          arch: arm64
+          id: macos_arm64
 
     steps:
       - uses: actions/checkout@v2
@@ -35,11 +47,13 @@ jobs:
       - id: set-filename
         name: Set compressed Rust lib filename to retrieve based on OS
         run: |
-            if [ "$RUNNER_OS" == "Linux" ]; then
+            if [ "${{ matrix.id }}" == "linux" ]; then
                 echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
-            elif [ "$RUNNER_OS" == "Windows" ]; then
+            elif [ "$RUNNER_OS" == "windows" ]; then
                 echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-pc-windows-msvc.zip" >> $GITHUB_ENV
-            else
+            elif [ "${{ matrix.id }}" == "macos_arm64" ]; then
+                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-aarch64-apple-darwin.tar.gz" >> $GITHUB_ENV
+            elif [ "${{ matrix.id }}" == "macos_x86" ]; then
                 echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-apple-darwin.tar.gz" >> $GITHUB_ENV
             fi
         shell: bash
@@ -71,8 +85,8 @@ jobs:
           CIBW_BEFORE_BUILD: pip install numpy cython
           CIBW_TEST_REQUIRES: setuptools pytest numpy cython
           CIBW_TEST_COMMAND: 'pytest {package}'
-          CIBW_BUILD: cp3{7,8,9,10}-macosx_x86_64 cp3{7,8,9,10}-manylinux_x86_64 cp3{8,9,10}-macosx_arm64
-          CIBW_ARCHS_MACOS: x86_64 arm64
+          CIBW_BUILD: ${{ matrix.pybuilds }}
+          CIBW_ARCHS_MACOS: ${{ matrix.arch }}
           CIBW_TEST_SKIP: "*:arm64"
 
       - uses: actions/upload-artifact@v2
