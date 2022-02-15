@@ -20,7 +20,7 @@ jobs:
       - run: echo "Latest lib tag ${{ steps.latest-tag.outputs.tag }}"
 
   build_wheels:
-    name: Build wheels on ${{ matrix.os }}
+    name: Build wheels on ${{ matrix.os }} {{ matrix.arch }}
     needs: get_latest_lib_tag
     runs-on: ${{ matrix.os }}
     strategy:
