@@ -34,7 +34,12 @@ THE SOFTWARE.
 import os
 from sys import platform, version_info
 from ctypes import Structure, POINTER, c_void_p, c_size_t, c_double, cast, cdll
-import numpy as np
+
+numpy_installed = True
+try:
+    import numpy as np
+except ImportError:
+    numpy_installed = False
 
 __author__ = "Stephan Hügel"
 __version__ = "0.5.22"
@@ -80,10 +85,17 @@ class _FFIArray(Structure):
         """Allow implicit conversions"""
         return seq if isinstance(seq, cls) else cls(seq)
 
+    # noinspection PyPep8Naming
     def __init__(self, seq, data_type=c_double):
-        self.data = cast(
-            np.array(seq, dtype=np.float64).ctypes.data_as(POINTER(data_type)), c_void_p
-        )
+        if numpy_installed:
+            self.data = cast(
+                np.array(seq, dtype=np.float64).ctypes.data_as(POINTER(data_type)),
+                c_void_p,
+            )
+        else:
+            Coords = data_type * (2 * len(seq))
+            arr = Coords(*[item for sublist in seq for item in sublist])
+            self.data = cast(arr, c_void_p)
         self.len = len(seq)
 
 
@@ -96,10 +108,15 @@ class _CoordResult(Structure):
 def _void_array_to_nested_list(res, _func, _args):
     """Dereference the FFI result to a list of coordinates"""
     try:
-        shape = res.coords.len, 2
         ptr = cast(res.coords.data, POINTER(c_double))
-        array = np.ctypeslib.as_array(ptr, shape)
-        return array.tolist()
+        if numpy_installed:
+            shape = res.coords.len, 2
+            array = np.ctypeslib.as_array(ptr, shape)
+            return array.tolist()
+        else:
+            return list(
+                zip(ptr[0 : res.coords.len * 2 : 2], ptr[1 : res.coords.len * 2 : 2])
+            )
     finally:
         drop_array(res.coords)
 
@@ -132,7 +149,7 @@ simplify_coords_vw.__doc__ = """
     Output: a simplified list of coordinates
 
     Example:
-    simplify_coords([
+    simplify_coords_vw([
         [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],
         30.0
     )
@@ -151,7 +168,7 @@ simplify_coords_vwp.__doc__ = """
     Output: a simplified list of coordinates
 
     Example:
-    simplify_coords([
+    simplify_coords_vwp([
         [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],
         30.0
     )
