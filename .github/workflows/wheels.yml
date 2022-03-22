@@ -59,19 +59,18 @@ jobs:
         shell: bash
 
       - id: get-rust-lib
-        uses: stryd/fetch-release-asset@v1
+        uses: robinraju/release-downloader@v1.3
         name: Download latest Rust lib release
         with:
-          access_token: ${{ secrets.RDP_RETRIEVAL }}
-          repo: urschrei/${{ env.rustlib }}
-          version: ${{ needs.get_latest_lib_tag.outputs.tag }}
-          asset_name: ${{ env.filename }}
-          save_as: rustlib.zip # maps to outputs.location
+          token: ${{ secrets.RDP_RETRIEVAL }}
+          repository: urschrei/${{ env.rustlib }}
+          tag: ${{ needs.get_latest_lib_tag.outputs.tag }}
+          fileName: ${{ env.filename }}
+          out-file-path: rustlib
 
       - name: Extract downloaded lib
         run:   |
-               echo ${{ steps.get-rust-lib.outputs.location }}
-               tar -xvf ${{ steps.get-rust-lib.outputs.location }} -C ${{ env.wheelname }}
+               tar -xvf "rustlib/${{ env.filename }}" -C ${{ env.wheelname }}
                mkdir wheelhouse
                if [ "$RUNNER_OS" == "Windows" ]; then
                     cp ${{ env.wheelname }}/*.{dll,lib} wheelhouse
