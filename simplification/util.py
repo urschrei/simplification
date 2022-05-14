@@ -42,7 +42,7 @@ except ImportError:
     numpy_installed = False
 
 __author__ = "Stephan Hügel"
-__version__ = "0.5.22"
+__version__ = "0.6.0"
 
 file_path = os.path.dirname(__file__)
 
