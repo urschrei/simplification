@@ -22,7 +22,6 @@ Please use a recent (>= 8.1.2) version of `pip`.
 
 ## Usage
 ```python
-import numpy as np
 from simplification.cutil import (
     simplify_coords,
     simplify_coords_idx,
@@ -47,6 +46,7 @@ simplified = simplify_coords(coords, 1.0)
 
 # Using Visvalingam-Whyatt
 # You can also pass numpy arrays, in which case you'll get numpy arrays back
+import numpy as np
 coords_vw = np.array([
     [5.0, 2.0],
     [3.0, 8.0],
