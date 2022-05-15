@@ -54,7 +54,7 @@ jobs:
             if [ "${{ matrix.id }}" == "linux" ]; then
                 echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
             elif [ "${{ matrix.id }}" == "windows" ]; then
-                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-pc-windows-msvc.zip" >> $GITHUB_ENV
+                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-pc-windows-msvc.tar.gz" >> $GITHUB_ENV
             elif [ "${{ matrix.id }}" == "macos_arm64" ]; then
                 echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-aarch64-apple-darwin.tar.gz" >> $GITHUB_ENV
             elif [ "${{ matrix.id }}" == "macos_x86" ]; then
@@ -76,9 +76,6 @@ jobs:
         run:   |
                tar -xvf "rustlib/${{ env.filename }}" -C ${{ env.wheelname }}
                mkdir wheelhouse
-               if [ "$RUNNER_OS" == "Windows" ]; then
-                    cp ${{ env.wheelname }}/*.{dll,lib} wheelhouse
-               fi
         shell: bash
 
       - name: Build and Test Wheels
