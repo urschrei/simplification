@@ -28,19 +28,19 @@ jobs:
       matrix:
         include:
         - os: ubuntu-latest
-          pybuilds: cp3{7,8,9,10}-manylinux_x86_64
+          pybuilds: cp3{7,8,9,10,11}-manylinux_x86_64
           arch: x86_64
           id: linux
         - os: macos-latest
-          pybuilds: cp3{7,8,9,10}-macosx_x86_64
+          pybuilds: cp3{7,8,9,10,11}-macosx_x86_64
           arch: x86_64
           id: macos_x86
         - os: macos-latest
-          pybuilds: cp3{8,9,10}-macosx_arm64
+          pybuilds: cp3{8,9,10,11}-macosx_arm64
           arch: arm64
           id: macos_arm64
         - os: windows-latest
-          pybuilds: cp3{7,8,9,10}-win_amd64
+          pybuilds: cp3{7,8,9,10,11}-win_amd64
           arch: x86_64
           id: windows
 

@@ -14,6 +14,7 @@ Please use a recent (>= 8.1.2) version of `pip`.
 - Python 3.8
 - Python 3.9
 - Python 3.10
+- Python 3.11
 
 ### Supported Platforms
 - Linux (`manylinux`-compatible) x86_64
