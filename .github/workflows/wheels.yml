@@ -45,7 +45,7 @@ jobs:
           id: windows
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         name: Check out repo
 
       - id: set-filename
