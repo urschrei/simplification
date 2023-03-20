@@ -31,6 +31,10 @@ jobs:
           pybuilds: cp3{7,8,9,10,11}-manylinux_x86_64
           arch: x86_64
           id: linux
+        - os: ubuntu-latest
+          pybuilds: cp3{7,8,9,10,11}-manylinux_x86_64
+          arch: arm64
+          id: linux_arm64
         - os: macos-latest
           pybuilds: cp3{7,8,9,10,11}-macosx_x86_64
           arch: x86_64
@@ -53,6 +57,8 @@ jobs:
         run: |
             if [ "${{ matrix.id }}" == "linux" ]; then
                 echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
+            elif [ "${{ matrix.id }}" == "linux_arm64" ]; then
+                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-aarch64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
             elif [ "${{ matrix.id }}" == "windows" ]; then
                 echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-pc-windows-msvc.tar.gz" >> $GITHUB_ENV
             elif [ "${{ matrix.id }}" == "macos_arm64" ]; then
