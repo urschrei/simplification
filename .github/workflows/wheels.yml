@@ -156,17 +156,9 @@ jobs:
 
         token: ${{ secrets.GITHUB_TOKEN }}
 
-  pypi_release:
-    needs: [build_wheels, make_sdist]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'release' && github.event.action == 'published'
-    steps:
-    - uses: actions/download-artifact@v3
+    - name: PyPI upload
+      uses: pypa/gh-action-pypi-publish@v1.8.1
       with:
-        name: artifact
-        path: dist
-
-    - uses: pypa/gh-action-pypi-publish@v1.5.0
-      with:
-        user: __token__
         password: ${{ secrets.pypi_password }}
+        packages-dir: ${{ steps.download.outputs.download-path }}/**/
+
