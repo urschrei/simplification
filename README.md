@@ -9,7 +9,7 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 `pip install simplification`  
 Please use a recent (>= 8.1.2) version of `pip`.
 
-### Supported Python Versions (Linux x86_64, macOS x86_64 + aarch64, Windows amd64)
+### Supported Python Versions (Linux x86_64 + aarch64, macOS x86_64 + arm64, Windows amd64)
 - Python 3.7
 - Python 3.8
 - Python 3.9
