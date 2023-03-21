@@ -17,8 +17,8 @@ Please use a recent (>= 8.1.2) version of `pip`.
 - Python 3.11
 
 ### Supported Platforms
-- Linux (`manylinux`-compatible) x86_64
-- macOS Darwin x86_64 and aarch64
+- Linux (`manylinux`-compatible) x86_64 and aarch64
+- macOS Darwin x86_64 and arm64
 - Windows 64-bit
 
 ## Usage
