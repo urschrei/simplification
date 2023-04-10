@@ -157,7 +157,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: PyPI upload
-      uses: pypa/gh-action-pypi-publish@v1.8.4
+      uses: pypa/gh-action-pypi-publish@v1.8.5
       with:
         password: ${{ secrets.pypi_password }}
         packages-dir: ${{ steps.download.outputs.download-path }}/**/
