@@ -135,6 +135,10 @@ jobs:
     name: Release repaired and tested wheels
     needs: build_wheels
     runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
 
     steps:
     - uses: actions/checkout@v3
@@ -158,7 +162,3 @@ jobs:
 
     - name: PyPI upload
       uses: pypa/gh-action-pypi-publish@v1.8.1
-      with:
-        password: ${{ secrets.pypi_password }}
-        packages-dir: ${{ steps.download.outputs.download-path }}/**/
-
