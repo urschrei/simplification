@@ -514,7 +514,8 @@ class PolylineTests(unittest.TestCase):
         ]
 
     def testNumpy_optional_error(self):
-        result = csimplify_coords_vw(self.bad_coords, 30)
+        """This test only fails when called with numpy arrays"""
+        result = csimplify_coords_vw(np.array(self.bad_coords), 30)
         self.assertEqual(result[0][0], 939.0)
 
     def testSimplify_rdp_numpy(self):
