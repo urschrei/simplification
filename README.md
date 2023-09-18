@@ -14,7 +14,6 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 3. run e.g. `pytest .`
 
 ### Supported Python Versions (Linux x86_64 + aarch64, macOS x86_64 + arm64, Windows amd64)
-- Python 3.7
 - Python 3.8
 - Python 3.9
 - Python 3.10
