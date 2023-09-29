@@ -24,27 +24,26 @@ if sys.platform == "darwin":
     # You must compile your binary with rpath support for this to work
     # RUSTFLAGS="-C rpath" cargo build --release
     platform_lib = "librdp.dylib"
-    ldirs = ["-Wl,-rpath", "-Wl,@loader_path/"]
+    ldirs = ["-Wl,-rpath", "-Wl,@loader_path/simplification"]
 if sys.platform == "win32":
-    ddirs = ["simplification/header.h"]
+    ddirs = ["src/simplification/header.h"]
     platform_lib = "rdp.dll"
 
 
-extensions = Extension(
-    "simplification.cutil",
-    sources=["simplification/cutil.pyx"],
+extension = Extension(
+    "cutil",
+    sources=["src/simplification/cutil.pyx"],
     libraries=["rdp"],
     depends=ddirs,
     language="c",
-    include_dirs=["simplification", numpy.get_include()],
-    library_dirs=["simplification"],
-    extra_compile_args=["-O3"],
+    include_dirs=["src/simplification", numpy.get_include()],
+    library_dirs=["src/simplification"],
     extra_link_args=ldirs,
 )
 
 extensions = cythonize(
     [
-        extensions,
+        extension,
     ],
     compiler_directives={"language_level": "3"},
 )
@@ -53,5 +52,5 @@ setup(
     package_data={
         "simplification": [platform_lib],
     },
-    ext_modules=extensions,
+    ext_modules=[extension],
 )
