@@ -28,10 +28,12 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Scientific/Engineering :: GIS"
     ]
-[project.urls] 
+[project.urls]
 Repository = "https://github.com/urschrei/simplification"
 Tracker = "https://github.com/urschrei/simplification/issues"
 
+[project.optional-dependencies]
+test = ["pytest >= 7.4.2"]
 
 [tool.setuptools.dynamic]
 readme = {file = ["README.md"]}

@@ -9,9 +9,9 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 `pip install simplification`  
 
 ### Installing for local development
-1. Ensure you have a copy of `librdp` from https://github.com/urschrei/rdp/releases, and it's in the `simplification` subdir
-2. run `pip install -e . --use-pep517`
-3. run e.g. `pytest .`
+1. Ensure you have a copy of `librdp` from https://github.com/urschrei/rdp/releases, and it's in the `src/simplification` subdir
+2. run `pip install -e .[test] --use-pep517`
+3. run `pytest .`
 
 ### Supported Python Versions (Linux x86_64 + aarch64, macOS x86_64 + arm64, Windows amd64)
 - Python 3.8
