@@ -87,7 +87,7 @@ jobs:
 
       - name: Extract downloaded lib
         run:   |
-               tar -xvf "rustlib/${{ env.filename }}" -C ${{ env.wheelname }}
+               tar -xvf "rustlib/${{ env.filename }}" -C src/${{ env.wheelname }}
                mkdir wheelhouse
         shell: bash
 
