@@ -34,7 +34,7 @@ Tracker = "https://github.com/urschrei/simplification/issues"
 test = ["pytest >= 7.4.2"]
 
 [tool.setuptools.dynamic]
-readme = {file = ["README.md"]}
+readme = {file = "README.md", content-type = "text/markdown"}
 
 [build-system]
 build-backend = "setuptools.build_meta"
