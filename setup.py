@@ -18,7 +18,7 @@ ddirs = []
 if "linux" in sys.platform:
     # from http://stackoverflow.com/a/10252190/416626
     # the $ORIGIN trick is not perfect, though
-    ldirs = ["-Wl,-rpath", "-Wl,$ORIGIN"]
+    ldirs = ["-Wl,-rpath", "-Wl,$ORIGIN/simplification"]
     platform_lib = "librdp.so"
 if sys.platform == "darwin":
     # You must compile your binary with rpath support for this to work
