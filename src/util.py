@@ -42,7 +42,7 @@ except ImportError:
     numpy_installed = False
 
 __author__ = "Stephan Hügel"
-__version__ = "0.7.1"
+__version__ = "0.7.2"
 
 file_path = os.path.join(os.path.dirname(__file__), "simplification")
 
@@ -127,7 +127,8 @@ simplify_coords.restype = _CoordResult
 simplify_coords.errcheck = _void_array_to_nested_list
 simplify_coords.__doc__ = """
     Simplify a LineString using the Ramer-Douglas-Peucker algorithm.
-    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)
+    Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with,
+    reducing by orders of magnitude)
     Output: a simplified list of coordinates
 
     Example:
