@@ -47,7 +47,9 @@ requires = [
 
 [tool.pytest.ini_options]
 minversion = "6.2.2"
-addopts = "-ra -q"
+addopts = [
+    "--import-mode=importlib",
+]
 testpaths = [
     "tests",
 ]

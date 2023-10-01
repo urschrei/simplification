@@ -3,12 +3,12 @@
 import unittest
 import numpy as np
 import numpy
-from util import simplify_coords, simplify_coords_vw
-from cutil import simplify_coords as csimplify_coords
-from cutil import simplify_coords_idx as csimplify_coords_idx
-from cutil import simplify_coords_vw as csimplify_coords_vw
-from cutil import simplify_coords_vw_idx as csimplify_coords_vw_idx
-from cutil import simplify_coords_vwp as csimplify_coords_vwp
+from simplification.util import simplify_coords, simplify_coords_vw
+from simplification.cutil import simplify_coords as csimplify_coords
+from simplification.cutil import simplify_coords_idx as csimplify_coords_idx
+from simplification.cutil import simplify_coords_vw as csimplify_coords_vw
+from simplification.cutil import simplify_coords_vw_idx as csimplify_coords_vw_idx
+from simplification.cutil import simplify_coords_vwp as csimplify_coords_vwp
 
 
 class PolylineTests(unittest.TestCase):

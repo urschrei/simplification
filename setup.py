@@ -24,14 +24,14 @@ if sys.platform == "darwin":
     # You must compile your binary with rpath support for this to work
     # RUSTFLAGS="-C rpath" cargo build --release
     platform_lib = "librdp.dylib"
-    ldirs = ["-Wl,-rpath", "-Wl,@loader_path/simplification"]
+    ldirs = ["-Wl,-rpath", "-Wl,@loader_path/"]
 if sys.platform == "win32":
     ddirs = ["src/simplification/header.h"]
     platform_lib = "rdp.dll"
 
 
 extension = Extension(
-    "cutil",
+    "simplification.cutil",
     sources=["src/simplification/cutil.pyx"],
     libraries=["rdp"],
     depends=ddirs,

@@ -42,7 +42,7 @@ except ImportError:
     numpy_installed = False
 
 __author__ = "Stephan Hügel"
-file_path = os.path.join(os.path.dirname(__file__), "simplification")
+file_path = os.path.dirname(__file__)
 
 prefix = {"win32": ""}.get(platform, "lib")
 extension = {"darwin": ".dylib", "win32": ".dll"}.get(platform, ".so")
