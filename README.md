@@ -18,6 +18,7 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 - Python 3.9
 - Python 3.10
 - Python 3.11
+- Python 3.12
 
 ### Supported Platforms
 - Linux (`manylinux`-compatible) x86_64 and aarch64
