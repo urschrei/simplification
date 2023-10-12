@@ -22,7 +22,7 @@ A clear and concise description of what you expected to happen
 # Screenshots
 If applicable, add screenshots to help explain your problem.
 
-# System (please complete the following information):**
+# System (please complete the following information)
  - OS: [e.g. macOS]
  - Architecture [e.g. x86_64, aarch64 etc]
  - Library version
