@@ -6,7 +6,7 @@ import json
 import numpy as np
 from shapely.geometry import LineString
 
-with open("test/coords_complex.json", "r") as f:
+with open("tests/coords_complex.json", "r") as f:
     coords = np.array(json.load(f))
     ls = LineString(coords)
 for x in range(50):
