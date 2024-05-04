@@ -1,4 +1,10 @@
 name: Build and test wheels, release on new tag
+
+permissions:
+  id-token: write
+  attestations: write
+  contents: read
+
 env:
   rustlib: rdp
   wheelname: simplification
@@ -40,7 +46,7 @@ jobs:
           arch: x86_64
           id: macos_x86
         - os: macos-latest
-          pybuilds: cp3{8,9,10,11,12}-macosx_arm64
+          pybuilds: cp3{9,10,11,12}-macosx_arm64
           arch: arm64
           id: macos_arm64
         - os: windows-latest
@@ -92,25 +98,31 @@ jobs:
         run:   |
                tar -xvf "rustlib/${{ env.filename }}" -C src/${{ env.wheelname }}
                mkdir wheelhouse
+               git status
         shell: bash
 
       - name: Build and Test Wheels
         uses: pypa/cibuildwheel@v2.17.0
         env:
-          CIBW_BEFORE_BUILD_MACOS: pip install numpy cython
-          CIBW_BEFORE_BUILD: pip install numpy cython
-          CIBW_TEST_REQUIRES: setuptools pytest numpy cython
+          CIBW_TEST_REQUIRES: pytest
           CIBW_TEST_COMMAND: 'pytest {package}'
           CIBW_BUILD: ${{ matrix.pybuilds }}
           CIBW_ARCHS_MACOS: ${{ matrix.arch }}
           CIBW_ARCHS_LINUX: "auto aarch64"
           CIBW_TEST_SKIP: "*:arm64"
 
-      - uses: actions/upload-artifact@v3
+      - id: attest
+        name: Attest Build Provenance
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: "./wheelhouse/*.whl"
+
+      - uses: actions/upload-artifact@v4
         name: Upload repaired wheels as artifact
         with:
-          name: wheels-${{ matrix.os }}
+          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: |
+            ${{ steps.attest.outputs.bundle-path }}
             ./wheelhouse/*.whl
             ./wheelhouse/*.so
             ./wheelhouse/*.dylib
@@ -129,7 +141,7 @@ jobs:
     - name: Build SDist
       run: pipx run build --sdist
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         path: dist/*.tar.gz
 
@@ -146,25 +158,29 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Optional, use if you use setuptools_scm
+        submodules: true  # Optional, use if you have submodules
 
     - name: Download compressed artifacts
       id: download
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         path: ./artifacts
+        merge-multiple: true
 
-    - name: 'List downloaded files'
-      run: ls ${{ steps.download.outputs.download-path }}/**/*.*
+    - name: Display structure of downloaded files
+      run: ls -R ./artifacts
 
     - name: Create release and upload wheels
       uses: ncipollo/release-action@v1
       with:
         allowUpdates: true
-        artifacts: "${{ steps.download.outputs.download-path }}/**/*.whl,${{ steps.download.outputs.download-path }}/**/*.gz,${{ steps.download.outputs.download-path }}/**/*.so,${{ steps.download.outputs.download-path }}/**/*.dylib,${{ steps.download.outputs.download-path }}/**/*.lib,${{ steps.download.outputs.download-path }}/**/*.dll"
+        artifacts: "${{ steps.download.outputs.download-path }}/*.whl,${{ steps.download.outputs.download-path }}/*.gz,${{ steps.download.outputs.download-path }}/*.so,${{ steps.download.outputs.download-path }}/*.dylib,${{ steps.download.outputs.download-path }}/*.lib,${{ steps.download.outputs.download-path }}/*.dll"
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: PyPI Publish
       uses: pypa/gh-action-pypi-publish@v1.8.14
       with:
-        packages-dir: ${{ steps.download.outputs.download-path }}/**/
+        packages-dir: ${{ steps.download.outputs.download-path }}
 
