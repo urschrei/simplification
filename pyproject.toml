@@ -32,6 +32,12 @@ Tracker = "https://github.com/urschrei/simplification/issues"
 [project.optional-dependencies]
 test = ["pytest >= 7.4.2"]
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+simplification = ["*.dylib", "*.dll", "*.so", "*.h"]
+
 [tool.setuptools.dynamic]
 readme = {file = "README.md", content-type = "text/markdown"}
 
