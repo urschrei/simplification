@@ -85,7 +85,7 @@ jobs:
         shell: bash
 
       - id: get-rust-lib
-        uses: robinraju/release-downloader@v1.10
+        uses: robinraju/release-downloader@v1.11
         name: Download latest Rust lib release
         with:
           token: ${{ secrets.RDP_RETRIEVAL }}
