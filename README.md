@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/urschrei/simplification/actions/workflows/wheels.yml/badge.svg)](https://github.com/urschrei/simplification/actions/workflows/wheels.yml) [![Coverage Status](https://coveralls.io/repos/github/urschrei/simplification/badge.svg?branch=master)](https://coveralls.io/github/urschrei/simplification?branch=master) [![Downloads](https://pepy.tech/badge/simplification)](https://pepy.tech/project/simplification)[![DOI](https://zenodo.org/badge/65199659.svg)](https://zenodo.org/badge/latestdoi/65199659)
+[![Build Status](https://github.com/urschrei/simplification/actions/workflows/wheels.yml/badge.svg)](https://github.com/urschrei/simplification/actions/workflows/wheels.yml) [![Coverage Status](https://coveralls.io/repos/github/urschrei/simplification/badge.svg?branch=master)](https://coveralls.io/github/urschrei/simplification?branch=master) [![Downloads](https://pepy.tech/badge/simplification)](https://pepy.tech/project/simplification) [![DOI](https://zenodo.org/badge/65199659.svg)](https://zenodo.org/badge/latestdoi/65199659) [![Anaconda-Server Badge](https://anaconda.org/conda-forge/simplification/badges/version.svg)](https://anaconda.org/conda-forge/simplification)
 
 # Simplification
 Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm) or [Visvalingam-Whyatt](https://bost.ocks.org/mike/simplify/) algorithms
@@ -7,6 +7,7 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 
 ## Installation
 `pip install simplification`  
+`conda install conda-forge::simplification`
 
 ### Installing for local development
 1. Ensure you have a copy of `librdp` from https://github.com/urschrei/rdp/releases, and it's in the `src/simplification` subdir
