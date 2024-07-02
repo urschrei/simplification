@@ -113,7 +113,7 @@ This is based on a test harness available [here](benchmark_runner.py).
 All benchmarks are subjective, and pathological input will greatly increase processing time. Error-checking is non-existent at this point.
 
 ## License
-[MIT](license.txt)
+[Blue Oak Model Licence 1.0.0](LICENSE.md)
 
 ## Citing `Simplification`
 If Simplification has been significant in your research, and you would like to acknowledge the project in your academic publication, we suggest citing it as follows (example in APA style, 7th edition):
