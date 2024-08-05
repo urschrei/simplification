@@ -102,7 +102,7 @@ jobs:
         shell: bash
 
       - name: Build and Test Wheels
-        uses: pypa/cibuildwheel@v2.19.2
+        uses: pypa/cibuildwheel@v2.20.0
         env:
           CIBW_TEST_REQUIRES: pytest
           CIBW_TEST_COMMAND: 'pytest {package}'
