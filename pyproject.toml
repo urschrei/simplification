@@ -39,7 +39,7 @@ where = ["src"]
 simplification = ["*.dylib", "*.dll", "*.so", "*.h"]
 
 [tool.setuptools.dynamic]
-readme = {file = "README.md", content-type = "text/markdown"}
+readme = {file = ["README.md", "LICENSE.md"], content-type = "text/markdown"}
 
 [build-system]
 build-backend = "setuptools.build_meta"
