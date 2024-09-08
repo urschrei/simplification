@@ -6,7 +6,8 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 ![Line](https://cdn.rawgit.com/urschrei/rdp/6c84264fd9cdc0b8fdf974fc98e51fea4834ed05/rdp.svg)  
 
 ## Installation
-`pip install simplification`  
+`uv add simplification` OR  
+`pip install simplification` OR  
 `conda install conda-forge::simplification`
 
 ### Installing for local development
@@ -14,12 +15,8 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 2. run `pip install -e .[test] --use-pep517`
 3. run `pytest .`
 
-### Supported Python Versions (Linux x86_64 + aarch64, macOS x86_64 + arm64, Windows amd64)
-- Python 3.8
-- Python 3.9
-- Python 3.10
-- Python 3.11
-- Python 3.12
+### Supported Python Versions
+Simplification supports all [_currently_ supported Python versions](https://devguide.python.org/versions/).
 
 ### Supported Platforms
 - Linux (`manylinux`-compatible) x86_64 and aarch64
