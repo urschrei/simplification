@@ -8,6 +8,7 @@ permissions:
 env:
   rustlib: rdp
   wheelname: simplification
+  CIBW_BUILD_FRONTEND: build[uv]
 
 on: [push, pull_request]
 
@@ -110,6 +111,7 @@ jobs:
           CIBW_ARCHS_MACOS: ${{ matrix.arch }}
           CIBW_ARCHS_LINUX: "auto aarch64"
           CIBW_TEST_SKIP: "*:arm64"
+          CIBW_BUILD_FRONTEND: build[uv]
 
       - id: attest
         name: Attest Build Provenance
