@@ -105,13 +105,14 @@ jobs:
       - name: Build and Test Wheels
         uses: pypa/cibuildwheel@v2.21.2
         env:
+          CIBW_BEFORE_BUILD_MACOS: pip install uv
+          CIBW_BEFORE_BUILD_WINDOWS: pip install uv
           CIBW_TEST_REQUIRES: pytest
           CIBW_TEST_COMMAND: 'pytest {package}'
           CIBW_BUILD: ${{ matrix.pybuilds }}
           CIBW_ARCHS_MACOS: ${{ matrix.arch }}
           CIBW_ARCHS_LINUX: "auto aarch64"
           CIBW_TEST_SKIP: "*:arm64"
-          CIBW_BUILD_FRONTEND: build[uv]
 
       - id: attest
         name: Attest Build Provenance
