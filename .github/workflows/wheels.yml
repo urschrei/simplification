@@ -102,12 +102,14 @@ jobs:
                git status
         shell: bash
 
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
       - name: Build and Test Wheels
         uses: pypa/cibuildwheel@v2.21.2
         env:
-          CIBW_BEFORE_ALL_MACOS: curl -LsSf https://astral.sh/uv/install.sh | sh
-          CIBW_BEFORE_ALL_WINDOWS: powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-          CIBW_TEST_REQUIRES: pytest
           CIBW_TEST_COMMAND: 'pytest {package}'
           CIBW_BUILD: ${{ matrix.pybuilds }}
           CIBW_ARCHS_MACOS: ${{ matrix.arch }}
