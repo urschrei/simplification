@@ -105,8 +105,8 @@ jobs:
       - name: Build and Test Wheels
         uses: pypa/cibuildwheel@v2.21.2
         env:
-          CIBW_BEFORE_BUILD_MACOS: pip install uv
-          CIBW_BEFORE_BUILD_WINDOWS: pip install uv
+          CIBW_BEFORE_BUILD_MACOS: curl -LsSf https://astral.sh/uv/install.sh | sh
+          CIBW_BEFORE_BUILD_WINDOWS: powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
           CIBW_TEST_REQUIRES: pytest
           CIBW_TEST_COMMAND: 'pytest {package}'
           CIBW_BUILD: ${{ matrix.pybuilds }}
