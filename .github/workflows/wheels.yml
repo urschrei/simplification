@@ -110,6 +110,7 @@ jobs:
       - name: Build and Test Wheels
         uses: pypa/cibuildwheel@v2.21.2
         env:
+          CIBW_TEST_REQUIRES: pytest
           CIBW_TEST_COMMAND: 'pytest {package}'
           CIBW_BUILD: ${{ matrix.pybuilds }}
           CIBW_ARCHS_MACOS: ${{ matrix.arch }}
