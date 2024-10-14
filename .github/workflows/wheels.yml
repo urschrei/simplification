@@ -108,7 +108,7 @@ jobs:
           version: "latest"
 
       - name: Build and Test Wheels
-        uses: pypa/cibuildwheel@v2.21.2
+        uses: pypa/cibuildwheel@v2.21.3
         env:
           CIBW_TEST_REQUIRES: pytest
           CIBW_TEST_COMMAND: 'pytest {package}'
