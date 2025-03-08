@@ -47,7 +47,7 @@ requires = [
     "setuptools >= 45",
     "setuptools-scm[toml] >= 6.2",
     "numpy >= 2.0.0",
-    "cython >= 0.29.0",
+    "cython >= 3.0.0",
     "wheel >= 0.29.0"
 ]
 

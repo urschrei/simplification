@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 setup.py
@@ -7,10 +6,10 @@ Created by Stephan Hügel on 2016-07-25
 """
 
 import sys
-from setuptools import setup, Extension
+
 import numpy
 from Cython.Build import cythonize
-
+from setuptools import Extension, setup
 
 # Set dynamic RPATH differently, depending on platform
 ldirs = []
@@ -28,6 +27,7 @@ if sys.platform == "darwin":
 if sys.platform == "win32":
     ddirs = ["src/simplification/header.h"]
     platform_lib = "rdp.dll"
+ddirs.append("header.h")
 
 
 extension = Extension(
