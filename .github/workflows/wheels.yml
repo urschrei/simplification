@@ -102,16 +102,13 @@ jobs:
                git status
         shell: bash
 
-      - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel
-
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v5
         with:
           version: "latest"
 
       - name: Build and Test Wheels
-        run: python -m cibuildwheel --output-dir wheelhouse
+        uses: pypa/cibuildwheel@v2.23.0
         env:
           CIBW_BUILD_FRONTEND: build[uv]
           CIBW_TEST_REQUIRES: pytest
