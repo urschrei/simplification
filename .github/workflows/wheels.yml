@@ -108,7 +108,7 @@ jobs:
           version: "latest"
 
       - name: Build and Test Wheels
-        uses: pypa/cibuildwheel@v2.23.1
+        uses: pypa/cibuildwheel@v2.23.2
         env:
           CIBW_BUILD_FRONTEND: build[uv]
           CIBW_TEST_REQUIRES: pytest
