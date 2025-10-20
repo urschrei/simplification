@@ -2,7 +2,7 @@
 name = "simplification"
 dynamic = ["version", "readme"]
 description = "Fast linestring simplification using RDP or Visvalingam-Whyatt and a Rust binary"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "numpy >= 2.0.0",
 ]
@@ -12,11 +12,11 @@ license-files = ["LICENSE.md"]
 keywords = ["Geo", "Polyline", "Linestring", "Ramer-Douglas-Peucker", "Douglas-Peucker", "Visvalingam-Whyatt"]
 classifiers = [
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
