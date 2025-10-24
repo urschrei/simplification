@@ -11,9 +11,14 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 `conda install conda-forge::simplification`
 
 ### Installing for local development
-1. Ensure you have a copy of `librdp` from https://github.com/urschrei/rdp/releases, and it's in the `src/simplification` subdir
-2. run `pip install -e .[test] --use-pep517`
+1. Ensure you have a copy of `librdp` and `header.h` from https://github.com/urschrei/rdp/releases, and it's in the `src/simplification` subdir
+2. run `uv sync --dev`
 3. run `pytest .`
+4. If you make changes, you must rebuild the extension: `uv sync --reinstall`
+
+## Building SDist and Wheels
+1. Ensure that `librdp` and header are present, as above
+2. Run `uv build --sdist --wheel`
 
 ### Supported Python Versions
 Simplification supports all [_currently_ supported Python versions](https://devguide.python.org/versions/).
