@@ -9,8 +9,17 @@ updates:
       # if you use those, you don't need updates.
       - dependency-name: "actions/*"
 
-  - package-ecosystem: pip
+  - package-ecosystem: "uv"
     directory: "/"
     schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
+      interval: "monthly"
+    open-pull-requests-limit: 20
+    groups:
+      # Specify a name for the group, which will be used in pull request titles
+      # and branch names
+      python-non-security-dependencies:
+        # Define patterns to include dependencies in the group (based on
+        # dependency name)
+        applies-to: version-updates # Applies the group rule to version updates
+        patterns:
+          - "*"
