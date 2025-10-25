@@ -1,32 +1,32 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.21)
 project(${SKBUILD_PROJECT_NAME} LANGUAGES C)
+
+# Define source directory
+set(SIMPLIFICATION_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/simplification")
 
 # Find Python
 find_package(
   Python
   COMPONENTS Interpreter Development.Module NumPy
   REQUIRED)
+include(UseCython)
 
 # Get NumPy include directory
 message(STATUS "NumPy include directory: ${Python_NumPy_INCLUDE_DIRS}")
 
-# Cythonize the .pyx file to .c
-add_custom_command(
-  OUTPUT cutil.c
-  COMMENT "Cythonizing ${CMAKE_CURRENT_SOURCE_DIR}/src/simplification/cutil.pyx"
-  COMMAND Python::Interpreter -m cython
-          "${CMAKE_CURRENT_SOURCE_DIR}/src/simplification/cutil.pyx"
-          --output-file cutil.c
-          -I "${CMAKE_CURRENT_SOURCE_DIR}/src/simplification"
-  DEPENDS src/simplification/cutil.pyx src/simplification/rdp_p.pxd
-  VERBATIM)
+cython_transpile(
+  "${SIMPLIFICATION_SRC_DIR}/cutil.pyx"
+  LANGUAGE C
+  OUTPUT_VARIABLE cutil
+  CYTHON_ARGS -I "${SIMPLIFICATION_SRC_DIR}"
+)
 
 # Create the extension module
-python_add_library(cutil MODULE cutil.c WITH_SOABI)
+python_add_library(cutil MODULE "${cutil}" WITH_SOABI)
 
 # Set include directories
 target_include_directories(cutil PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/simplification
+  ${SIMPLIFICATION_SRC_DIR}
   ${Python_NumPy_INCLUDE_DIRS}
 )
 
@@ -34,7 +34,7 @@ target_include_directories(cutil PRIVATE
 # The library is pre-built and located in src/simplification/
 find_library(RDP_LIBRARY
   NAMES rdp librdp
-  PATHS ${CMAKE_CURRENT_SOURCE_DIR}/src/simplification
+  PATHS ${SIMPLIFICATION_SRC_DIR}
   NO_DEFAULT_PATH
   REQUIRED
 )
@@ -67,9 +67,9 @@ elseif(WIN32)
   set(RDP_LIB_NAME "rdp.dll")
 endif()
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/simplification/${RDP_LIB_NAME}
+install(FILES ${SIMPLIFICATION_SRC_DIR}/${RDP_LIB_NAME}
         DESTINATION simplification)
 
 # Install header file
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/simplification/header.h
+install(FILES ${SIMPLIFICATION_SRC_DIR}/header.h
         DESTINATION simplification)
