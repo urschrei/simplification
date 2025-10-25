@@ -5,7 +5,7 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 
 ![Line](https://cdn.rawgit.com/urschrei/rdp/6c84264fd9cdc0b8fdf974fc98e51fea4834ed05/rdp.svg)  
 
-## Installation
+# Installation
 `uv add simplification` OR  
 `pip install simplification` OR  
 `conda install conda-forge::simplification`
@@ -14,7 +14,8 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 1. Ensure you have a copy of `librdp` and `header.h` from https://github.com/urschrei/rdp/releases, and it's in the `src/simplification` subdir
 2. run `uv sync --dev`
 3. run `pytest .`
-4. If you make changes, you must rebuild the extension: `uv sync --reinstall`
+
+Changes in `pyx` and `pxd` files, and the Rust library and header will bust the cache, triggering a rebuild when `uv` commands are run.
 
 ## Building SDist and Wheels
 1. Ensure that `librdp` and header are present, as above

@@ -47,6 +47,9 @@ requires = [
 ]
 build-backend = "scikit_build_core.build"
 
+[tool.uv]
+cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.{h,c,pyx,pxd,dylib,so,dll}" }, { file = "CMakeLists.txt" }]
+
 [tool.pytest.ini_options]
 minversion = "8.4.1"
 addopts = [
