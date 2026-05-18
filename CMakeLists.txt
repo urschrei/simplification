@@ -1,5 +1,8 @@
-cmake_minimum_required(VERSION 3.21)
-project(${SKBUILD_PROJECT_NAME} LANGUAGES C)
+cmake_minimum_required(VERSION 3.21...3.31)
+project(
+  ${SKBUILD_PROJECT_NAME}
+  VERSION ${SKBUILD_PROJECT_VERSION}
+  LANGUAGES C)
 
 # Define source directory
 set(SIMPLIFICATION_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/simplification")
@@ -56,7 +59,7 @@ elseif(UNIX)
 endif()
 
 # Install the extension module
-install(TARGETS cutil DESTINATION simplification)
+install(TARGETS cutil DESTINATION ${SKBUILD_PROJECT_NAME})
 
 # Install the shared library
 if(APPLE)
@@ -65,11 +68,13 @@ elseif(UNIX)
   set(RDP_LIB_NAME "librdp.so")
 elseif(WIN32)
   set(RDP_LIB_NAME "rdp.dll")
+else()
+  message(FATAL_ERROR "Unsupported platform: cannot determine RDP library name")
 endif()
 
 install(FILES ${SIMPLIFICATION_SRC_DIR}/${RDP_LIB_NAME}
-        DESTINATION simplification)
+        DESTINATION ${SKBUILD_PROJECT_NAME})
 
 # Install header file
 install(FILES ${SIMPLIFICATION_SRC_DIR}/header.h
-        DESTINATION simplification)
+        DESTINATION ${SKBUILD_PROJECT_NAME})
