@@ -9,7 +9,8 @@ This file is part of simplification.
 
 import os
 from ctypes import POINTER, Structure, c_double, c_size_t, c_void_p, cast, cdll
-from sys import platform, version_info
+from subprocess import getoutput
+from sys import platform
 
 numpy_installed = True
 try:
@@ -24,24 +25,11 @@ prefix = {"win32": ""}.get(platform, "lib")
 extension = {"darwin": ".dylib", "win32": ".dll"}.get(platform, ".so")
 fpath = {"darwin": "", "win32": ""}.get(platform, os.path.join(file_path, ".libs"))
 
-# Python 3 check
-if version_info > (3, 0):
-    from subprocess import getoutput as spop
-
-    py3 = True
-else:
-    from subprocess import check_output as spop
-
-    py3 = False
-
 try:
     lib = cdll.LoadLibrary(os.path.join(file_path, prefix + "rdp" + extension))
 except OSError:
     # the Rust lib's been grafted by manylinux1
-    if not py3:
-        fname = spop(["ls", fpath]).split()[0]
-    else:
-        fname = spop(["ls %s" % fpath]).split()[0]
+    fname = getoutput("ls %s" % fpath).split()[0]
     lib = cdll.LoadLibrary(os.path.join(file_path, ".libs", fname))
 
 
