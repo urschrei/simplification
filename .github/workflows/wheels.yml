@@ -8,7 +8,6 @@ permissions:
 env:
   rustlib: rdp
   wheelname: simplification
-  CIBW_BUILD_FRONTEND: build[uv]
 
 on:
   pull_request:
@@ -107,19 +106,15 @@ jobs:
           version: "latest"
 
       - name: Build and Test Wheels
-        uses: pypa/cibuildwheel@v3.4.0
+        uses: pypa/cibuildwheel@v3.4.1
         env:
-          CIBW_BUILD_FRONTEND: build[uv]
-          CIBW_TEST_REQUIRES: pytest
-          CIBW_TEST_COMMAND: 'pytest {package}'
           CIBW_BUILD: ${{ matrix.pybuilds }}
           CIBW_ARCHS_MACOS: ${{ matrix.arch }}
           CIBW_ARCHS_LINUX: ${{ matrix.arch }}
-          CIBW_ENVIRONMENT_MACOS: MACOSX_DEPLOYMENT_TARGET=11.0
 
       - id: attest
         name: Attest Build Provenance
-        uses: actions/attest-build-provenance@v1
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: "./wheelhouse/*.whl"
 
@@ -144,8 +139,13 @@ jobs:
         fetch-depth: 0  # Optional, use if you use setuptools_scm
         submodules: true  # Optional, use if you have submodules
 
+    - name: Install the latest version of uv
+      uses: astral-sh/setup-uv@v7
+      with:
+        version: "latest"
+
     - name: Build SDist
-      run: pipx run build --sdist
+      run: uv build --sdist
 
     - uses: actions/upload-artifact@v4
       with:

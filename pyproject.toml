@@ -63,3 +63,11 @@ addopts = [
 testpaths = [
     "tests",
 ]
+
+[tool.cibuildwheel]
+build-frontend = "build[uv]"
+test-requires = ["pytest"]
+test-command = "pytest {package}"
+
+[tool.cibuildwheel.macos]
+environment = { MACOSX_DEPLOYMENT_TARGET = "11.0" }
