@@ -1,6 +1,6 @@
 [project]
 name = "simplification"
-version = "0.7.15"
+version = "0.7.16"
 description = "Fast linestring simplification using RDP or Visvalingam-Whyatt and a Rust binary"
 readme = "README.md"
 requires-python = ">=3.10"
