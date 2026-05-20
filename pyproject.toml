@@ -7,8 +7,8 @@ requires-python = ">=3.10"
 dependencies = [
     "numpy >= 2.0.0",
 ]
-authors = [{ name = "Stephan Hügel" }]
-maintainers = [{ email = "urschrei@gmail.com" }]
+authors = [{ name = "Stephan Hügel" }, { email = "urschrei@gmail.com" }]
+maintainers = [{ name = "Stephan Hügel" }, { email = "urschrei@gmail.com" }]
 license = "BlueOak-1.0.0"
 license-files = ["LICENSE.md"]
 keywords = ["Geo", "Polyline", "Linestring", "Ramer-Douglas-Peucker", "Douglas-Peucker", "Visvalingam-Whyatt"]
