@@ -61,7 +61,7 @@ jobs:
           id: windows
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Optional, use if you use setuptools_scm
           submodules: true  # Optional, use if you have submodules
@@ -125,7 +125,7 @@ jobs:
         with:
           subject-path: "./wheelhouse/*.whl"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         name: Upload repaired wheels as artifact
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
@@ -141,7 +141,7 @@ jobs:
     name: Make SDist
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
       with:
         fetch-depth: 0  # Optional, use if you use setuptools_scm
         submodules: true  # Optional, use if you have submodules
@@ -154,7 +154,7 @@ jobs:
     - name: Build SDist
       run: uv build --sdist
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         path: dist/*.tar.gz
 
@@ -170,14 +170,14 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
       with:
         fetch-depth: 0  # Optional, use if you use setuptools_scm
         submodules: true  # Optional, use if you have submodules
 
     - name: Download compressed artifacts
       id: download
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         path: ./artifacts
         merge-multiple: true
