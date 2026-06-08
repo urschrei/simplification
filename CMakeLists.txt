@@ -8,9 +8,12 @@ project(
 set(SIMPLIFICATION_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/simplification")
 
 # Find Python
+# ${SKBUILD_SABI_COMPONENT} resolves to "Development.SABIModule" when
+# scikit-build-core is targeting the Stable ABI (see wheel.py-api in
+# pyproject.toml) and to an empty string otherwise (e.g. CPython 3.10, PyPy).
 find_package(
   Python
-  COMPONENTS Interpreter Development.Module NumPy
+  COMPONENTS Interpreter Development.Module NumPy ${SKBUILD_SABI_COMPONENT}
   REQUIRED)
 include(UseCython)
 
@@ -24,8 +27,17 @@ cython_transpile(
   CYTHON_ARGS -I "${SIMPLIFICATION_SRC_DIR}"
 )
 
-# Create the extension module
-python_add_library(cutil MODULE "${cutil}" WITH_SOABI)
+# Create the extension module.
+# When targeting the Stable ABI, ${SKBUILD_SABI_VERSION} holds the minimum
+# CPython version (e.g. "3.11"); passing it via USE_SABI makes FindPython define
+# Py_LIMITED_API and name the module cutil.abi3.so. When it is empty (CPython
+# 3.10, PyPy) we fall back to a regular, version-specific extension module.
+if(NOT "${SKBUILD_SABI_VERSION}" STREQUAL "")
+  message(STATUS "Building cutil against the Limited API for ${SKBUILD_SABI_VERSION}")
+  python_add_library(cutil MODULE "${cutil}" WITH_SOABI USE_SABI ${SKBUILD_SABI_VERSION})
+else()
+  python_add_library(cutil MODULE "${cutil}" WITH_SOABI)
+endif()
 
 # Set include directories
 target_include_directories(cutil PRIVATE
