@@ -71,3 +71,10 @@ test-command = "pytest {package}"
 
 [tool.cibuildwheel.macos]
 environment = { MACOSX_DEPLOYMENT_TARGET = "11.0" }
+
+[tool.cibuildwheel.windows]
+# cibuildwheel 4.0.0 runs delvewheel by default on Windows. We already bundle
+# rdp.dll next to the extension module via CMake, and it is resolved at runtime
+# from the module's own directory, so the repair step is unnecessary and fails
+# because delvewheel does not search the wheel's package directory for rdp.dll.
+repair-wheel-command = ""
