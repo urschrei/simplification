@@ -112,7 +112,7 @@ jobs:
           key: cibw-${{ matrix.id }}-${{ hashFiles('.github/workflows/wheels.yml') }}
 
       - name: Build and Test Wheels
-        uses: pypa/cibuildwheel@v3.4.1
+        uses: pypa/cibuildwheel@v4.0.0
         env:
           CIBW_CACHE_PATH: ${{ github.workspace }}/.cibw-cache
           CIBW_BUILD: ${{ matrix.pybuilds }}
