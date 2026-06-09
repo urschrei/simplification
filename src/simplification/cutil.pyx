@@ -80,16 +80,11 @@ cpdef simplify_coords(coords, double epsilon):
     """
     if not len(coords):
         return coords
-    # Coerce to float64 and force C-contiguity. np.array uses order='K', which
-    # preserves an F-contiguous input's layout, so an explicit
-    # ascontiguousarray is needed before the buffer can back a double[:, ::1]
-    # memoryview. (This function does the defensive coercion; the other entry
-    # points below assume their input is already C-contiguous.)
-    arr = np.array(coords, dtype=np.float64)
-    if not arr.flags['C_CONTIGUOUS']:
-        arr = np.ascontiguousarray(arr)
-    # double[:, ::1]: 2-D, last axis contiguous (C / row-major).
-    cdef double[:,::1] ncoords = np.array(arr, dtype=np.float64)
+    # np.ascontiguousarray yields a C-contiguous float64 buffer in a single
+    # call, copying only when the input is not already contiguous float64.
+    # That is exactly what a double[:, ::1] memoryview requires: 2-D, last axis
+    # contiguous (C / row-major). All five entry points coerce the same way.
+    cdef double[:,::1] ncoords = np.ascontiguousarray(coords, dtype=np.float64)
     cdef ExternalArray coords_ffi
     # &ncoords[0, 0] is the start of the flat buffer; len is the row count, not
     # the number of doubles. ncoords must stay alive until the FFI call
@@ -120,18 +115,17 @@ cpdef simplify_coords_idx(coords, double epsilon):
     Input: a list of lat, lon coordinates, and an epsilon float (Try 1.0 to begin with, reducing by orders of magnitude)
     Output: a simplified list of coordinate indices
 
-    Example: simplify_coords([
+    Example: simplify_coords_idx([
         [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],
         1.0)
-    Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
+    Result: [0, 1, 2, 4]
 
     """
     if not len(coords):
         return coords
     # Input handling mirrors simplify_coords (see that function and the module
-    # header for the annotated version); this entry point assumes the input is
-    # already C-contiguous rather than forcing it.
-    cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
+    # header for the annotated version).
+    cdef double[:,::1] ncoords = np.ascontiguousarray(coords, dtype=np.float64)
     cdef ExternalArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
@@ -166,7 +160,7 @@ cpdef simplify_coords_vw(coords, double epsilon):
     """
     if not len(coords):
         return coords
-    cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
+    cdef double[:,::1] ncoords = np.ascontiguousarray(coords, dtype=np.float64)
     cdef ExternalArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
@@ -190,15 +184,15 @@ cpdef simplify_coords_vw_idx(coords, double epsilon):
     Input: a list of lat, lon coordinates, and an epsilon float
     Output: a simplified list of coordinate indices
 
-    Example: simplify_coords([
-        [0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]],
-        1.0)
-    Result: [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
+    Example: simplify_coords_vw_idx([
+        [5.0, 2.0], [3.0, 8.0], [6.0, 20.0], [7.0, 25.0], [10.0, 10.0]],
+        30.0)
+    Result: [0, 3, 4]
 
     """
     if not len(coords):
         return coords
-    cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
+    cdef double[:,::1] ncoords = np.ascontiguousarray(coords, dtype=np.float64)
     cdef ExternalArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
@@ -232,7 +226,7 @@ cpdef simplify_coords_vwp(coords, double epsilon):
     """
     if not len(coords):
         return coords
-    cdef double[:,::1] ncoords = np.array(coords, dtype=np.float64)
+    cdef double[:,::1] ncoords = np.ascontiguousarray(coords, dtype=np.float64)
     cdef ExternalArray coords_ffi
     coords_ffi.data = <void*>&ncoords[0, 0]
     coords_ffi.len = ncoords.shape[0]
