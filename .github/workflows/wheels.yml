@@ -61,7 +61,7 @@ jobs:
           id: windows
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0  # Optional, use if you use setuptools_scm
           submodules: true  # Optional, use if you have submodules
@@ -112,7 +112,7 @@ jobs:
           key: cibw-${{ matrix.id }}-${{ hashFiles('.github/workflows/wheels.yml') }}
 
       - name: Build and Test Wheels
-        uses: pypa/cibuildwheel@v4.0.0
+        uses: pypa/cibuildwheel@v4.1.0
         env:
           CIBW_CACHE_PATH: ${{ github.workspace }}/.cibw-cache
           CIBW_BUILD: ${{ matrix.pybuilds }}
@@ -141,7 +141,7 @@ jobs:
     name: Make SDist
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
       with:
         fetch-depth: 0  # Optional, use if you use setuptools_scm
         submodules: true  # Optional, use if you have submodules
@@ -170,7 +170,7 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
       with:
         fetch-depth: 0  # Optional, use if you use setuptools_scm
         submodules: true  # Optional, use if you have submodules
