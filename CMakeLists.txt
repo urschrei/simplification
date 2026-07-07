@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21...3.31)
+cmake_minimum_required(VERSION 3.21...4.3)
 project(
   ${SKBUILD_PROJECT_NAME}
   VERSION ${SKBUILD_PROJECT_VERSION}
