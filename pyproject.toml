@@ -3,7 +3,7 @@ name = "simplification"
 version = "1.0.0"
 description = "Fast linestring simplification using RDP or Visvalingam-Whyatt and a Rust binary"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "numpy >= 2.0.0",
 ]
@@ -14,11 +14,11 @@ license-files = ["LICENSE.md"]
 keywords = ["Geo", "Polyline", "Linestring", "Ramer-Douglas-Peucker", "Douglas-Peucker", "Visvalingam-Whyatt"]
 classifiers = [
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
@@ -44,8 +44,7 @@ minimum-version = "build-system.requires"
 wheel.packages = ["src/simplification"]
 # Build a single Stable ABI (abi3) wheel for CPython 3.11+. Typed memoryviews,
 # which cutil.pyx relies on, are only available under the Limited API from
-# CPython 3.11 onwards, so that is the floor. CPython 3.10 still receives a
-# regular, version-specific wheel.
+# CPython 3.11 onwards, so that is the floor.
 wheel.py-api = "cp311"
 wheel.reproducible = true
 
