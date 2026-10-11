@@ -6,7 +6,6 @@ permissions:
   contents: read
 
 env:
-  rustlib: rdp
   wheelname: simplification
 
 on:
@@ -18,22 +17,16 @@ on:
       - 'v*'
 
 jobs:
-  get_latest_lib_tag:
-    name: Get latest Rust lib tag
+  lint:
+    name: Check Rust formatting and lints
     runs-on: ubuntu-latest
-    outputs:
-      tag: ${{ steps.latest-tag.outputs.tag}}
     steps:
-      - id: latest-tag
-        uses: oprypin/find-latest-tag@v1
-        with:
-          repository: urschrei/${{ env.rustlib }}  # The repository to scan.
-          releases-only: true  # We know that all relevant tags have a GitHub release for them.
-      - run: echo "Latest lib tag ${{ steps.latest-tag.outputs.tag }}"
+      - uses: actions/checkout@v7
+      - run: cargo fmt --check
+      - run: cargo clippy --locked -- -D warnings
 
   build_wheels:
     name: Build wheels on ${{ matrix.os }} ${{ matrix.arch }}
-    needs: get_latest_lib_tag
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -67,39 +60,6 @@ jobs:
           submodules: true  # Optional, use if you have submodules
         name: Check out repo
 
-      - id: set-filename
-        name: Set compressed Rust lib filename to retrieve based on OS
-        run: |
-            if [ "${{ matrix.id }}" == "linux" ]; then
-                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
-            elif [ "${{ matrix.id }}" == "linux_arm64" ]; then
-                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-aarch64-unknown-linux-gnu.tar.gz" >> $GITHUB_ENV
-            elif [ "${{ matrix.id }}" == "windows" ]; then
-                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-pc-windows-msvc.tar.gz" >> $GITHUB_ENV
-            elif [ "${{ matrix.id }}" == "macos_arm64" ]; then
-                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-aarch64-apple-darwin.tar.gz" >> $GITHUB_ENV
-            elif [ "${{ matrix.id }}" == "macos_x86" ]; then
-                echo "filename=${{ env.rustlib }}-${{ needs.get_latest_lib_tag.outputs.tag }}-x86_64-apple-darwin.tar.gz" >> $GITHUB_ENV
-            fi
-        shell: bash
-
-      - id: get-rust-lib
-        uses: robinraju/release-downloader@v1.13
-        name: Download latest Rust lib release
-        with:
-          token: ${{ secrets.RDP_RETRIEVAL }}
-          repository: urschrei/${{ env.rustlib }}
-          tag: ${{ needs.get_latest_lib_tag.outputs.tag }}
-          fileName: ${{ env.filename }}
-          out-file-path: rustlib
-
-      - name: Extract downloaded lib
-        run:   |
-               tar -xvf "rustlib/${{ env.filename }}" -C src/${{ env.wheelname }}
-               mkdir wheelhouse
-               git status
-        shell: bash
-
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v7
         with:
@@ -132,10 +92,6 @@ jobs:
           path: |
             ${{ steps.attest.outputs.bundle-path }}
             ./wheelhouse/*.whl
-            ./wheelhouse/*.so
-            ./wheelhouse/*.dylib
-            ./wheelhouse/*.lib
-            ./wheelhouse/*.dll
 
   make_sdist:
     name: Make SDist
@@ -161,7 +117,7 @@ jobs:
   release_artifacts:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     name: Release repaired and tested wheels
-    needs: build_wheels
+    needs: [lint, build_wheels, make_sdist]
     runs-on: ubuntu-latest
     environment: release
     permissions:
@@ -196,7 +152,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         allowUpdates: true
-        artifacts: "${{ steps.download.outputs.download-path }}/*.whl,${{ steps.download.outputs.download-path }}/*.gz,${{ steps.download.outputs.download-path }}/*.so,${{ steps.download.outputs.download-path }}/*.dylib,${{ steps.download.outputs.download-path }}/*.lib,${{ steps.download.outputs.download-path }}/*.dll"
+        artifacts: "${{ steps.download.outputs.download-path }}/*.whl,${{ steps.download.outputs.download-path }}/*.gz"
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: PyPI Publish
