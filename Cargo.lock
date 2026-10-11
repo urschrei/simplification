@@ -508,7 +508,7 @@ checksum = "d7f45b8998ced5134fb1d75732c77842a3e888f19c1ff98481822e8fbfbf930b"
 
 [[package]]
 name = "simplification"
-version = "1.0.0"
+version = "2.0.0"
 dependencies = [
  "geo",
  "numpy",
