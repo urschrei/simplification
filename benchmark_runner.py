@@ -9,7 +9,7 @@ import pstats
 import profile
 import numpy as np
 
-print("Running Rust + Cython benchmarks")
+print("Running Rust benchmarks")
 
 # calibrate
 pr = profile.Profile()

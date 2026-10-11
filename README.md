@@ -11,14 +11,14 @@ Simplify a LineString using the [Ramer–Douglas–Peucker](https://en.wikipedia
 `conda install conda-forge::simplification`
 
 ### Installing for local development
-1. Ensure you have a copy of `librdp` and `header.h` from https://github.com/urschrei/rdp/releases, and it's in the `src/simplification` subdir
-2. run `uv sync --dev`
-3. run `pytest .`
+1. Ensure you have a [Rust toolchain](https://rustup.rs) installed
+2. run `uv sync --dev` (this builds the extension using [maturin](https://www.maturin.rs))
+3. run `uv run pytest`
 
-Changes in `pyx` and `pxd` files, and the Rust library and header will bust the cache, triggering a rebuild when `uv` commands are run.
+Changes to `Cargo.toml`, `Cargo.lock`, or any `.rs` file will bust the cache, triggering a rebuild when `uv` commands are run.
 
 ## Building SDist and Wheels
-1. Ensure that `librdp` and header are present, as above
+1. Ensure you have a Rust toolchain installed, as above
 2. Run `uv build --sdist --wheel`
 
 ### Supported Python Versions
@@ -72,6 +72,8 @@ simplified_vw = simplify_coords_vw(coords_vw, 30.0)
 
 Passing empty and/or 1-element lists will return them unaltered.
 
+Coordinates must be a sequence of (`x, y`) pairs, or an `(N, 2)` array. Anything else (including `(N, 3)` arrays) raises a `ValueError`.
+
 ## But I only want the simplified **Indices**
 `simplification` now has:
 
@@ -105,7 +107,7 @@ simplified = [simplify_coords(line, 1.0) for line in decoded]
 ```
 
 ## How it Works
-FFI and a [Rust binary](https://github.com/urschrei/rdp)
+[PyO3](https://pyo3.rs) bindings to the simplification algorithms in the Rust [geo](https://crates.io/crates/geo) crate. The GIL is released while simplifying.
 
 ## Is It Fast
 I should think so.

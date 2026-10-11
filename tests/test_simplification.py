@@ -2,6 +2,7 @@
 
 import unittest
 import numpy as np
+import pytest
 import numpy
 from simplification.util import simplify_coords, simplify_coords_vw
 from simplification.cutil import simplify_coords as csimplify_coords
@@ -592,3 +593,59 @@ class PolylineTests(unittest.TestCase):
         """Test that an empty LineString is returned unaltered from VW (Cython)"""
         result = csimplify_coords_vw(self.empty, 1.0)
         self.assertEqual(result, [])
+
+
+COORDS = [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [17.3, 3.2], [27.8, 0.1]]
+RDP = [[0.0, 0.0], [5.0, 4.0], [11.0, 5.5], [27.8, 0.1]]
+ALL = [
+    csimplify_coords,
+    csimplify_coords_idx,
+    csimplify_coords_vw,
+    csimplify_coords_vw_idx,
+    csimplify_coords_vwp,
+]
+
+
+@pytest.mark.parametrize(
+    "coords",
+    [
+        np.array(COORDS),
+        np.asfortranarray(COORDS),
+        np.array(COORDS, dtype=np.float32),
+        np.repeat(np.array(COORDS), 2, axis=0)[::2],
+    ],
+)
+def test_numpy_layouts(coords):
+    result = csimplify_coords(coords, 1.0)
+    assert result.dtype == np.float64
+    np.testing.assert_allclose(result, RDP, rtol=1e-6)
+
+
+def test_tuples():
+    assert csimplify_coords(tuple(map(tuple, COORDS)), 1.0) == RDP
+
+
+def test_idx_dtype():
+    assert csimplify_coords_idx(np.array(COORDS), 1.0).dtype == np.uintp
+
+
+@pytest.mark.parametrize("func", ALL)
+@pytest.mark.parametrize(
+    "coords",
+    [
+        [[0.0, 0.0, 1.0], [5.0, 4.0, 1.0], [11.0, 5.5, 1.0]],
+        np.zeros((3, 3)),
+        [[1.0, 2.0], [3.0]],
+        [1.0, 2.0],
+        [["1.0", "2.0"], ["3.0", "4.0"]],
+    ],
+)
+def test_bad_coords(func, coords):
+    with pytest.raises(ValueError):
+        func(coords, 1.0)
+
+
+def test_util_returns_lists():
+    assert simplify_coords(np.array(COORDS), 1.0) == RDP
+    with pytest.raises(ValueError):
+        simplify_coords(np.zeros((3, 3)), 1.0)

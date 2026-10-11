@@ -1,1 +1,8 @@
 tests/output_*
+/target
+/dist
+__pycache__/
+*.so
+*.dylib
+*.dll
+*.pyd
